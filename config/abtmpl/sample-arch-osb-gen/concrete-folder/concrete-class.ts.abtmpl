@@ -1,0 +1,12 @@
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+	selector: '&{(cC2dashed)a}',
+	templateUrl: './&{(cC2dashed)a}-main.component.html',
+	styleUrls: ['/app.component.css']
+})
+export class &{b}Stub {
+
+  constructor(private route: ActivatedRoute) {}
+}

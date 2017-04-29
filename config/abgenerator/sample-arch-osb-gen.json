@@ -1,0 +1,38 @@
+{
+    "generateSampleArchOSB1": {
+        "rootContents": [
+            {
+                "abtmpl": {
+                    "filename": "generic-class.ts.abtmpl",
+                    "tmplname": "&{a}-&{b}-V&{c}.ts"
+                }
+            },
+            {
+                "abtmpl": {
+                    "filename": "generic-class.html.abtmpl",
+                    "tmplname": "&{a}-&{b}-V&{c}.html"
+                }
+            },
+            {
+                "folder": {
+                    "name": "concrete-folder",
+                    "tmplname": "CONCRETE-&{a}",
+                    "contents": [
+                        {
+                            "abtmpl": {
+                                "filename": "concrete-class.html.abtmpl",
+                                "tmplname": "CONCRETE-&{a}-&{b}-V&{c}.html"
+                            }
+                        },
+                        {
+                            "abtmpl": {
+                                "filename": "concrete-class.ts.abtmpl",
+                                "tmplname": "CONCRETE-&{a}-&{b}-V&{c}.ts"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

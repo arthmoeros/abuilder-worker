@@ -1,31 +1,27 @@
-import * as archiver from "archiver";
 import * as fs from "fs-extra";
 import * as uuid from "uuid/v1";
+import * as zipFolder from "folder-zip-sync";
 import * as shelljs from "shelljs";
-import { Archiver } from "archiver";
 
-const tmpFilesFolder: string = __dirname + "/../tmp/";
+import { GeneratorProcessor } from "./generator.processor";
+
+const tmpFilesFolder: string = "./tmp/";
 export class MainWorker {
 
-	public run(generatorKey: string, generatorComponent: string, formFunction: string, map: Map<string, string>, callback: any) {
-		var generator = require("../config/abgenerator/" + generatorComponent);
+	public run(generatorComponent: string, formFunction: string, map: Map<string, string>): Buffer {
 		let tmpFolder: string = this.generateTmpDir();
-		eval("generator." + formFunction + "(generatorKey, tmpFolder, map)");
+		try {
+			GeneratorProcessor.find(generatorComponent, formFunction, tmpFolder).run(map);
+			zipFolder(tmpFolder, tmpFolder + "_zip/out.zip");
 
-		let archive: Archiver = archiver.create("zip");
-		var output = fs.createWriteStream(tmpFolder + "_zip/out.zip");
-		
-		archive.on("end", function(){
-			console.log("Se cerró la wea");
-			let zipFile = fs.readFileSync(tmpFolder + "_zip/out.zip");
-			fs.emptyDirSync(tmpFolder);
-			fs.unlinkSync(tmpFolder + "_zip/out.zip");
-			fs.rmdirSync(tmpFolder);
-			callback(zipFile);
-		});
-		archive.directory(tmpFolder, "");
-		archive.pipe(output);
-		archive.finalize();
+			let zipFile: Buffer = fs.readFileSync(tmpFolder + "_zip/out.zip");
+			return zipFile;
+		} catch (error) {
+			throw error;
+		} finally {
+			shelljs.rm("-rf", tmpFolder);
+			shelljs.rm("-rf", tmpFolder + "_zip");
+		}
 	}
 
 	private generateTmpDir(): string {
