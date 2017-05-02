@@ -3,29 +3,64 @@ import { TemplateProcessor, MappedExpression } from "@ab/template-processor";
 
 const generatorsPath = "./config/abgenerator";
 const templatesPath = "./config/abtmpl";
+/**
+ * @class GeneratorProcessor
+ * @version 0.9.0
+ * @see npm @ab/worker
+ * @see also the abgenerator.schema.json file
+ * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
+ * 
+ * This class manages the template processors and packages a outputs in a temporary
+ * folder the generated artifacts.
+ * 
+ * It makes use of a JSON file as a "tasked script" for to-be generated artifacts,
+ * this file is called the "generator"
+ * 
+ */
 export class GeneratorProcessor {
 
+    /**
+     * Reference to the json 
+     */
     private generator: any;
+
+    /**
+     * Path to the templates folder to use
+     */
     private templatesFolder: string;
+
+    /**
+     * Path to the temporary working folder where to store generated artifacts
+     */
     private workingFolder: string;
 
-    private constructor() {
-
-    }
-
-    public static find(generatorComponent: string, formFunction: string, workingFolder: string): GeneratorProcessor {
-        if (!fs.existsSync(generatorsPath + "/" + generatorComponent + ".json")) {
-            throw new Error("Couldn't find a generator file at location: " + generatorsPath + "/" + generatorComponent + ".json");
+    /**
+     * Creates a GeneratorProcessor availale to run, it loads the generator tasked script
+     * and underlying formFunction into memory, if it can't find either of those it will
+     * throw an Error
+     * 
+     * @param generator Generator's name
+     * @param formFunction FormFunction to use in the generator
+     * @param workingFolder Path to the temporary working folder to store generated artifacts
+     */
+    constructor(generator: string, formFunction: string, workingFolder: string) {
+        if (!fs.existsSync(generatorsPath + "/" + generator + ".json")) {
+            throw new Error("Couldn't find a generator file at location: " + generatorsPath + "/" + generator + ".json");
         }
-        let generatorFile: Buffer = fs.readFileSync(generatorsPath + "/" + generatorComponent + ".json");
-        let instance: GeneratorProcessor = new GeneratorProcessor();
-        instance.generator = JSON.parse(generatorFile.toString())[formFunction];
-        instance.workingFolder = workingFolder;
-        instance.templatesFolder = templatesPath + "/" + generatorComponent;
-
-        return instance;
+        let generatorFile: Buffer = fs.readFileSync(generatorsPath + "/" + generator + ".json");
+        this.generator = JSON.parse(generatorFile.toString())[formFunction];
+        if(this.generator == null){
+            throw new Error("Couldn't find a FormFunction named '"+formFunction+"' at the generator "+ generator +".json");
+        }
+        this.workingFolder = workingFolder;
+        this.templatesFolder = templatesPath + "/" + generator;
     }
 
+    /**
+     * Runs the Generator, it will execute the generator tasked script's formFunction
+     * 
+     * @param map values map to use with the generator
+     */
     public run(map: Map<string, string>) {
         this.generator.rootContents.forEach(element => {
             if (element.folder) {
@@ -84,7 +119,6 @@ export class GeneratorProcessor {
         let folderName: string = this.resolveFilename(folder, map);
 
         fs.mkdirSync(this.workingFolder + "/" + targetpath + "/" + folderName);
-        console.log(folder);
         if (folder.contents) {
             folder.contents.forEach(element => {
                 if (element.folder) {

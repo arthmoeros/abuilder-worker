@@ -1,10 +1,11 @@
 {
-  "name": "abuilder-worker",
-  "version": "0.0.9",
+  "name": "@ab/worker",
+  "version": "0.9.0",
   "description": "Artifact Builder's worker module (artifact generation management)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node -P .\\src .\\src\\start-server.ts"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "folder-zip-sync": "^1.0.4",
     "fs-extra": "^3.0.0",
     "morgan": "^1.8.1",
+    "reflect-metadata": "^0.1.10",
     "shelljs": "^0.7.7",
     "uuid": "^3.0.1"
   }
