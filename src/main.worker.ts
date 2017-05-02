@@ -8,10 +8,10 @@ import { GeneratorProcessor } from "./generator.processor";
 const tmpFilesFolder: string = "./tmp/";
 export class MainWorker {
 
-	public run(generatorComponent: string, formFunction: string, map: Map<string, string>): Buffer {
+	public run(generator: string, formFunction: string, map: Map<string, string>): Buffer {
 		let tmpFolder: string = this.generateTmpDir();
 		try {
-			GeneratorProcessor.find(generatorComponent, formFunction, tmpFolder).run(map);
+			GeneratorProcessor.find(generator, formFunction, tmpFolder).run(map);
 			zipFolder(tmpFolder, tmpFolder + "_zip/out.zip");
 
 			let zipFile: Buffer = fs.readFileSync(tmpFolder + "_zip/out.zip");

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId">
+    <wb-module deploy-name="OSB_&{(aup)bizDomain}_&{(aup)bizEntity}"/>
+</project-modules>

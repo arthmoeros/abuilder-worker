@@ -2,32 +2,53 @@
     "generateSampleArchOSB1": {
         "rootContents": [
             {
-                "abtmpl": {
-                    "filename": "generic-class.ts.abtmpl",
-                    "tmplname": "&{a}-&{b}-V&{c}.ts"
-                }
-            },
-            {
-                "abtmpl": {
-                    "filename": "generic-class.html.abtmpl",
-                    "tmplname": "&{a}-&{b}-V&{c}.html"
-                }
-            },
-            {
                 "folder": {
-                    "name": "concrete-folder",
-                    "tmplname": "CONCRETE-&{a}",
+                    "name": "osb_project",
+                    "targetTmplName": "OSB_&{(aup)bizDomain}_&{(aup)bizEntity}",
                     "contents": [
                         {
                             "abtmpl": {
-                                "filename": "concrete-class.html.abtmpl",
-                                "tmplname": "CONCRETE-&{a}-&{b}-V&{c}.html"
+                                "name": "project_file.abtmpl",
+                                "targetname": ".project"
                             }
                         },
                         {
                             "abtmpl": {
-                                "filename": "concrete-class.ts.abtmpl",
-                                "tmplname": "CONCRETE-&{a}-&{b}-V&{c}.ts"
+                                "name": "proxy_service.proxy.abtmpl",
+                                "targetTmplName": "PX_&{(sixPaddLeftZero)serviceId}_&{serviceName}&{(prefixUnderscore)serviceType}_&{(aup)serviceVersion}.proxy"
+                            }
+                        },
+                        {
+                            "folder": {
+                                "name": "settings_folder",
+                                "targetname": ".settings",
+                                "contents": [
+                                    {
+                                        "abtmpl": {
+                                            "name": "org.eclipse.wst.common.component.abtmpl",
+                                            "targetname": "org.eclipse.wst.common.component"
+                                        }
+                                    },
+                                    {
+                                        "static": {
+                                            "name": "org.eclipse.wst.common.project.facet.core.xml.static",
+                                            "targetname": "org.eclipse.wst.common.project.facet.core.xml"
+                                        }
+                                    },
+                                    {
+                                        "static": {
+                                            "name": "org.eclipse.wst.validation.prefs.static",
+                                            "targetname": "org.eclipse.wst.validation.prefs"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "includeif": "&{additionalFolders}",
+                                "name": "resources_folder",
+                                "targetname": "Resources"
                             }
                         }
                     ]
