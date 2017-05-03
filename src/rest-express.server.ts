@@ -1,6 +1,6 @@
 import { Application, Router } from "express";
-import { RestApi } from "./rest.api";
-import { Annotation } from "./metadata-definitions";
+import { Annotation } from "@ab/common";
+
 import * as express from "express";
 import * as logger from "morgan";
 import * as bodyParser from "body-parser";
@@ -8,13 +8,15 @@ import * as http from "http";
 import * as cors from "cors";
 import * as fs from "fs";
 
+import { RestApi } from "./rest.api";
+
 /**
  * @class WorkerHttpApiServer
  * @version 0.9.0
  * @see npm @ab/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
- * This singleton class starts up a express server, serving the REST api
+ * This singleton class starts up a nodejs express server, serving the REST api available
  * to request artifact generation to the Worker
  * 
  */
@@ -39,7 +41,7 @@ export class RestExpressServer {
     private server;
 
     /**
-     * Server config JSON
+     * Server config JSON @see ./config/server-config.json
      */
     private config: any;
 
@@ -55,7 +57,7 @@ export class RestExpressServer {
         this.expressApp.set("port", this.config.listenPort);
         this.server = http.createServer(this.expressApp);
         this.server.listen(this.config.listenPort);
-        console.info("Server started")
+        console.info("Server started - listening to port "+this.config.listenPort);
     }
 
     /**
@@ -67,7 +69,8 @@ export class RestExpressServer {
     }
 
     /**
-     * Sets the routes 
+     * Sets the routes using the decorators @RestMethod, @RestRequestType and @RestResponseType
+     * on the methods contained into the RestApi class
      */
     private setupRoutes() {
         let router: Router = express.Router();
@@ -84,7 +87,7 @@ export class RestExpressServer {
                         console.warn("WARNING: method "+member+" is annotated with @RestMethod but it doesn't define @RestRequestType and @RestResponseType, this method will be skipped");
                     }else{
                         router.post(restMethod, this.resolveBodyParser(reqType), (req, res, next) => {
-                            res.contentType("application/zip");
+                            res.contentType(resType);
                             eval("restApi."+member+"(req,res,next);");
                         })
                     }

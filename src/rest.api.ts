@@ -1,21 +1,26 @@
 import { MainWorker } from "./main.worker";
-import { RestMethod, RestRequestType, RestResponseType } from "./metadata-definitions";
+import { RestMethod, RestRequestType, RestResponseType } from "@ab/common";
 
 
 /**
- * @class WorkerHttpApiServer
+ * @class RestApi
  * @version 0.9.0
  * @see npm @ab/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
- * This singleton class starts up a express server, serving the REST api
- * to request artifact generation to the Worker
+ * This class defines the methods available as a REST API, each method for this
+ * purpose must be decorated with @RestMethod, @RestRequestType and @RestResponseType
  * 
  */
 export class RestApi {
 
-	private datito: string = "" ;
-
+	/**
+	 * Requests an artifact generations and responds synchronously with a zip file
+	 * containing the result of the generation.
+	 * @param req 
+	 * @param res 
+	 * @param next 
+	 */
 	@RestMethod("/requestArtifactGeneration")
 	@RestRequestType("application/json")
 	@RestResponseType("application/zip")
