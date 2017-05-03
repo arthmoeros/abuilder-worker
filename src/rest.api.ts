@@ -1,6 +1,6 @@
-import { MainWorker } from "./main.worker";
 import { RestMethod, RestRequestType, RestResponseType } from "@ab/common";
 
+import { MainWorker } from "./main.worker";
 
 /**
  * @class RestApi
