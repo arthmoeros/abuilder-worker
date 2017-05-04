@@ -1,5 +1,5 @@
 import { Application, Router } from "express";
-import { Annotation } from "@ab/common";
+import { Annotation } from "@artifacter/common";
 
 import * as express from "express";
 import * as logger from "morgan";
@@ -12,7 +12,7 @@ import { RestApi } from "./rest.api";
 
 /**
  * @class WorkerHttpApiServer
- * @see npm @ab/worker
+ * @see npm @artifacter/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
  * This singleton class starts up a nodejs express server, serving the REST api available

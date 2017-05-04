@@ -1,11 +1,11 @@
 import * as fs from "fs";
-import { TemplateProcessor, MappedExpression } from "@ab/template-processor";
+import { TemplateProcessor, MappedExpression } from "@artifacter/template-processor";
 
 const generatorsPath = "./config/abgenerator";
 const templatesPath = "./config/abtmpl";
 /**
  * @class GeneratorProcessor
- * @see npm @ab/worker
+ * @see npm @artifacter/worker
  * @see also the abgenerator.schema.json file
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 

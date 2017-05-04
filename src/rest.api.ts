@@ -1,10 +1,10 @@
-import { RestMethod, RestRequestType, RestResponseType } from "@ab/common";
+import { RestMethod, RestRequestType, RestResponseType } from "@artifacter/common";
 
 import { MainWorker } from "./main.worker";
 
 /**
  * @class RestApi
- * @see npm @ab/worker
+ * @see npm @artifacter/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
  * This class defines the methods available as a REST API, each method for this

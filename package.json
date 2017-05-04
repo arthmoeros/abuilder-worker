@@ -1,5 +1,5 @@
 {
-  "name": "@ab/worker",
+  "name": "@artifacter/worker",
   "version": "0.9.0",
   "description": "Artifacter's worker module (artifact generation management)",
   "main": "index.js",

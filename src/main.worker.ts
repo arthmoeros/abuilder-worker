@@ -8,7 +8,7 @@ import { GeneratorProcessor } from "./generator.processor";
 const tmpFilesFolder: string = "./tmp/";
 /**
  * @class MainWorker
- * @see npm @ab/worker
+ * @see npm @artifacter/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
  * This class runs the Generator Processor through a temporary working folder, and
