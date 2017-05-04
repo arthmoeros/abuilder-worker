@@ -1,8 +1,8 @@
 import * as fs from "fs";
-import { TemplateProcessor, MappedExpression } from "@artifacter/template-processor";
+import { TemplateProcessor } from "@artifacter/template-processor";
 
 const generatorsPath = "./config/abgenerator";
-const templatesPath = "./config/abtmpl";
+const templatesPath = "./config/atmpl";
 /**
  * @class GeneratorProcessor
  * @see npm @artifacter/worker
@@ -69,16 +69,16 @@ export class GeneratorProcessor {
                     }
                 }
                 this.processFolder(map, element.folder, ".", ".");
-            } else if (element.abtmpl) {
-                if (element.abtmpl.includeif) {
-                    if (!TemplateProcessor.evaluateBoolean(element.abtmpl.includeif, map)) {
+            } else if (element.atmpl) {
+                if (element.atmpl.includeif) {
+                    if (!TemplateProcessor.evaluateBoolean(element.atmpl.includeif, map)) {
                         return;
                     }
                 }
-                this.processAbtmpl(map, element.abtmpl, ".", ".");
+                this.processatmpl(map, element.atmpl, ".", ".");
             } else if (element.static) {
                 if (element.static.includeif) {
-                    if (!TemplateProcessor.evaluateBoolean(element.abtmpl.includeif, map)) {
+                    if (!TemplateProcessor.evaluateBoolean(element.atmpl.includeif, map)) {
                         return;
                     }
                 }
@@ -105,11 +105,11 @@ export class GeneratorProcessor {
         fs.writeFileSync(this.workingFolder + "/" + targetpath + "/" + filename, fileContents);
     }
 
-    private processAbtmpl(map: Map<string, string>, abtmpl: any, tmplpath: string, targetpath: string) {
-        let abtmplProcessor: TemplateProcessor = new TemplateProcessor(this.templatesFolder + "/" + tmplpath + "/" + abtmpl.name, fs.readFileSync(this.templatesFolder + "/" + tmplpath + "/" + abtmpl.name));
+    private processatmpl(map: Map<string, string>, atmpl: any, tmplpath: string, targetpath: string) {
+        let atmplProcessor: TemplateProcessor = new TemplateProcessor(this.templatesFolder + "/" + tmplpath + "/" + atmpl.name, fs.readFileSync(this.templatesFolder + "/" + tmplpath + "/" + atmpl.name));
 
-        let filename: string = this.resolveFilename(abtmpl, map);
-        let fileContents: string = abtmplProcessor.run(map);
+        let filename: string = this.resolveFilename(atmpl, map);
+        let fileContents: string = atmplProcessor.run(map);
 
         fs.writeFileSync(this.workingFolder + "/" + targetpath + "/" + filename, fileContents);
     }
@@ -127,13 +127,13 @@ export class GeneratorProcessor {
                         }
                     }
                     this.processFolder(map, element.folder, tmplpath + "/" + folder.name, targetpath + "/" + folderName);
-                } else if (element.abtmpl) {
-                    if (element.abtmpl.includeif) {
-                        if (!TemplateProcessor.evaluateBoolean(element.abtmpl.includeif, map)) {
+                } else if (element.atmpl) {
+                    if (element.atmpl.includeif) {
+                        if (!TemplateProcessor.evaluateBoolean(element.atmpl.includeif, map)) {
                             return;
                         }
                     }
-                    this.processAbtmpl(map, element.abtmpl, tmplpath + "/" + folder.name, targetpath + "/" + folderName);
+                    this.processatmpl(map, element.atmpl, tmplpath + "/" + folder.name, targetpath + "/" + folderName);
                 } else if (element.static) {
                     if (element.static.includeif) {
                         if (!TemplateProcessor.evaluateBoolean(element.static.includeif, map)) {

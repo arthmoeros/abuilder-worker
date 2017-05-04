@@ -7,14 +7,14 @@
                     "targetTmplName": "OSB_&{(aup)bizDomain}_&{(aup)bizEntity}",
                     "contents": [
                         {
-                            "abtmpl": {
-                                "name": "project_file.abtmpl",
+                            "atmpl": {
+                                "name": "project_file.atmpl",
                                 "targetname": ".project"
                             }
                         },
                         {
-                            "abtmpl": {
-                                "name": "proxy_service.proxy.abtmpl",
+                            "atmpl": {
+                                "name": "proxy_service.proxy.atmpl",
                                 "targetTmplName": "PX_&{(sixPaddLeftZero)serviceId}_&{serviceName}&{(prefixUnderscore)serviceType}_&{(aup)serviceVersion}.proxy"
                             }
                         },
@@ -24,8 +24,8 @@
                                 "targetname": ".settings",
                                 "contents": [
                                     {
-                                        "abtmpl": {
-                                            "name": "org.eclipse.wst.common.component.abtmpl",
+                                        "atmpl": {
+                                            "name": "org.eclipse.wst.common.component.atmpl",
                                             "targetname": "org.eclipse.wst.common.component"
                                         }
                                     },

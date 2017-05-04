@@ -12,7 +12,7 @@
     "url": "git+https://github.com/arthmoeros/abuilder-worker.git"
   },
   "keywords": [
-    "artifact-builder",
+    "artifacter",
     "artifact",
     "generation",
     "worker"
