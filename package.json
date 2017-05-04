@@ -1,7 +1,7 @@
 {
   "name": "@ab/worker",
   "version": "0.9.0",
-  "description": "Artifact Builder's worker module (artifact generation management)",
+  "description": "Artifacter's worker module (artifact generation management)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

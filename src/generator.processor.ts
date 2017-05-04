@@ -5,7 +5,6 @@ const generatorsPath = "./config/abgenerator";
 const templatesPath = "./config/abtmpl";
 /**
  * @class GeneratorProcessor
- * @version 0.9.0
  * @see npm @ab/worker
  * @see also the abgenerator.schema.json file
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com

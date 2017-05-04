@@ -4,7 +4,6 @@ import { MainWorker } from "./main.worker";
 
 /**
  * @class RestApi
- * @version 0.9.0
  * @see npm @ab/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 

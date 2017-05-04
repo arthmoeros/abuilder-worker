@@ -8,7 +8,6 @@ import { GeneratorProcessor } from "./generator.processor";
 const tmpFilesFolder: string = "./tmp/";
 /**
  * @class MainWorker
- * @version 0.9.0
  * @see npm @ab/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 

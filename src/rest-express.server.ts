@@ -12,7 +12,6 @@ import { RestApi } from "./rest.api";
 
 /**
  * @class WorkerHttpApiServer
- * @version 0.9.0
  * @see npm @ab/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
