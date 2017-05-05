@@ -1,4 +1,4 @@
-import { RestMethod, RestRequestType, RestResponseType } from "@artifacter/common";
+import { RestService, RestMethod, ContentType } from "@artifacter/common";
 
 import { MainWorker } from "./main.worker";
 
@@ -8,21 +8,24 @@ import { MainWorker } from "./main.worker";
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
  * This class defines the methods available as a REST API, each method for this
- * purpose must be decorated with @RestMethod, @RestRequestType and @RestResponseType
+ * purpose must be decorated with @RestService
  * 
  */
 export class RestApi {
 
 	/**
-	 * Requests an artifact generations and responds synchronously with a zip file
+	 * Requests an artifact generation and responds synchronously with a zip file
 	 * containing the result of the generation.
 	 * @param req 
 	 * @param res 
 	 * @param next 
 	 */
-	@RestMethod("/requestArtifactGeneration")
-	@RestRequestType("application/json")
-	@RestResponseType("application/zip")
+	@RestService({
+		method : RestMethod.POST,
+		resource : "/artifactGenerationRequest",
+		requestContentType : ContentType.applicationJson,
+		responseContentType : ContentType.applicationZip
+	})
 	public requestArtifactGeneration(req, res, next) {
 		let generatorName: string = req.body.generator;
 		let formFunction: string = req.body.formFunction;

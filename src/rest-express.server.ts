@@ -1,5 +1,5 @@
 import { Application, Router } from "express";
-import { Annotation } from "@artifacter/common";
+import { Annotation, RestMethod } from "@artifacter/common";
 
 import * as express from "express";
 import * as logger from "morgan";
@@ -83,7 +83,7 @@ export class RestExpressServer {
     }
 
     /**
-     * Sets the routes using the decorators @RestMethod, @RestRequestType and @RestResponseType
+     * Sets the routes using the decorator @RestService
      * on the methods contained into the RestApi class
      */
     private setupRoutes() {
@@ -93,23 +93,33 @@ export class RestExpressServer {
 
         members.forEach(member => {
             if (typeof restApi[member] == "function") {
-                let restMethod = Reflect.getMetadata(Annotation.RestMethod, restApi, member);
-                let reqType = Reflect.getMetadata(Annotation.RestRequestType, restApi, member);
-                let resType = Reflect.getMetadata(Annotation.RestResponseType, restApi, member);
-                if (restMethod) {
-                    if (!reqType && !resType) {
-                        console.warn("WARNING: method " + member + " is annotated with @RestMethod but it doesn't define @RestRequestType and @RestResponseType, this method will be skipped");
-                    } else {
-                        router.post(restMethod, this.resolveBodyParser(reqType), (req, res, next) => {
-                            res.contentType(resType);
-                            eval("restApi." + member + "(req,res,next);");
-                        });
-                        console.info("Setup route for method RestApi#" + member + " on path '" + restMethod + "', expects a '" + reqType + "' on request and a '" + resType + "' on response");
-                    }
+                let restMetadata = Annotation.getRestServiceMetadata(restApi, member);
+                if (restMetadata) {
+                    let routeFunction = this.resolveRouteFunction(router, restMetadata.method);
+                    routeFunction(restMetadata.resource, this.resolveBodyParser(restMetadata.requestContentType.value), (req, res, next) => {
+                        res.contentType(restMetadata.responseContentType.value);
+                        let restMethod = restApi[member];
+                        restMethod(req, res, next);
+                    });
+                    console.info("Setup route for method RestApi#" + member + " on path '" + restMetadata.resource + "', expects a '" + restMetadata.requestContentType.value + "' on request and a '" + restMetadata.responseContentType.value + "' on response");
                 }
             }
         });
         this.expressApp.use(router);
+    }
+
+    private resolveRouteFunction(router: Router, method: RestMethod) {
+        if (method == RestMethod.POST) {
+            return router.post;
+        } else if (method == RestMethod.GET) {
+            return router.get;
+        } else if (method == RestMethod.PUT) {
+            return router.put;
+        } else if (method == RestMethod.DELETE) {
+            return router.delete;
+        } else {
+            throw Error("Undefined RestMethod");
+        }
     }
 
     private resolveBodyParser(contentType: string): express.RequestHandler {
