@@ -4,7 +4,7 @@
             {
                 "folder": {
                     "name": "osb_project",
-                    "targetTmplName": "OSB_&{(aup)bizDomain}_&{(aup)bizEntity}",
+                    "targetTmplName": "OSB_&{(auc)bizDomain}_&{(auc)bizEntity}",
                     "contents": [
                         {
                             "atmpl": {
@@ -15,7 +15,7 @@
                         {
                             "atmpl": {
                                 "name": "proxy_service.proxy.atmpl",
-                                "targetTmplName": "PX_&{(sixPaddLeftZero)serviceId}_&{serviceName}&{(prefixUnderscore)serviceType}_&{(aup)serviceVersion}.proxy"
+                                "targetTmplName": "PX_&{(sixPaddLeftZero)serviceId}_&{serviceName}&{(prefixUnderscore)serviceType}_&{(auc)serviceVersion}.proxy"
                             }
                         },
                         {

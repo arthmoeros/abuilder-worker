@@ -1,7 +1,7 @@
 import * as fs from "fs";
-import { TemplateProcessor } from "@artifacter/template-processor";
+import { TemplateProcessor } from "@artifacter/template-engine";
 
-const generatorsPath = "./config/abgenerator";
+const generatorsPath = "./config/generator";
 const templatesPath = "./config/atmpl";
 /**
  * @class GeneratorProcessor
@@ -75,7 +75,7 @@ export class GeneratorProcessor {
                         return;
                     }
                 }
-                this.processatmpl(map, element.atmpl, ".", ".");
+                this.processAtmpl(map, element.atmpl, ".", ".");
             } else if (element.static) {
                 if (element.static.includeif) {
                     if (!TemplateProcessor.evaluateBoolean(element.atmpl.includeif, map)) {
@@ -89,6 +89,11 @@ export class GeneratorProcessor {
         });
     }
 
+    /**
+     * Uses the template engine for artifact target name resolution
+     * @param element folder, atmpl or static from the generator
+     * @param map values map
+     */
     private resolveFilename(element: any, map: Map<string, string>) {
         if (element.targetTmplName) {
             let nameProcessor: TemplateProcessor = new TemplateProcessor(element.targetTmplName);
@@ -98,6 +103,13 @@ export class GeneratorProcessor {
         }
     }
 
+    /**
+     * Processes a static element
+     * @param map values map
+     * @param staticType  static element
+     * @param tmplpath path where the file is located in the templates folder
+     * @param targetpath target path where to copy the static element
+     */
     private processStatic(map: Map<string, string>, staticType: any, tmplpath: string, targetpath: string) {
         let filename: string = this.resolveFilename(staticType, map);
         let fileContents: string = fs.readFileSync(this.templatesFolder + "/" + tmplpath + "/" + staticType.name).toString();
@@ -105,7 +117,14 @@ export class GeneratorProcessor {
         fs.writeFileSync(this.workingFolder + "/" + targetpath + "/" + filename, fileContents);
     }
 
-    private processatmpl(map: Map<string, string>, atmpl: any, tmplpath: string, targetpath: string) {
+    /**
+     * Process an atmpl element
+     * @param map values map
+     * @param atmpl atmpl element
+     * @param tmplpath path where the atmpl file is located in the templates folder
+     * @param targetpath target path where to write the generated artifact
+     */
+    private processAtmpl(map: Map<string, string>, atmpl: any, tmplpath: string, targetpath: string) {
         let atmplProcessor: TemplateProcessor = new TemplateProcessor(this.templatesFolder + "/" + tmplpath + "/" + atmpl.name, fs.readFileSync(this.templatesFolder + "/" + tmplpath + "/" + atmpl.name));
 
         let filename: string = this.resolveFilename(atmpl, map);
@@ -114,6 +133,13 @@ export class GeneratorProcessor {
         fs.writeFileSync(this.workingFolder + "/" + targetpath + "/" + filename, fileContents);
     }
 
+    /**
+     * Process a folder element, it also processes inner elements (atmpl, static, sub-folders)
+     * @param map values map
+     * @param folder folder element
+     * @param tmplpath path where the folder is located in the templates folder
+     * @param targetpath target path where to make the folder into the generated artifacts
+     */
     private processFolder(map: Map<string, string>, folder: any, tmplpath: string, targetpath: string) {
         let folderName: string = this.resolveFilename(folder, map);
 
@@ -133,7 +159,7 @@ export class GeneratorProcessor {
                             return;
                         }
                     }
-                    this.processatmpl(map, element.atmpl, tmplpath + "/" + folder.name, targetpath + "/" + folderName);
+                    this.processAtmpl(map, element.atmpl, tmplpath + "/" + folder.name, targetpath + "/" + folderName);
                 } else if (element.static) {
                     if (element.static.includeif) {
                         if (!TemplateProcessor.evaluateBoolean(element.static.includeif, map)) {

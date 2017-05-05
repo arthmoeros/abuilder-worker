@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node -P .\\src .\\src\\start-server.ts"
+    "start": "ts-node --no-ignore -P .\\src .\\src\\start-server.ts"
   },
   "repository": {
     "type": "git",

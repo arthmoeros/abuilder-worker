@@ -96,11 +96,11 @@ export class RestExpressServer {
                 let restMetadata = Annotation.getRestServiceMetadata(restApi, member);
                 if (restMetadata) {
                     let routeFunction = this.resolveRouteFunction(router, restMetadata.method);
-                    routeFunction(restMetadata.resource, this.resolveBodyParser(restMetadata.requestContentType.value), (req, res, next) => {
+                    routeFunction.apply(router, [restMetadata.resource, this.resolveBodyParser(restMetadata.requestContentType.value), (req, res, next) => {
                         res.contentType(restMetadata.responseContentType.value);
                         let restMethod = restApi[member];
-                        restMethod(req, res, next);
-                    });
+                        restMethod.apply(restApi,[req, res, next]);
+                    }]);
                     console.info("Setup route for method RestApi#" + member + " on path '" + restMetadata.resource + "', expects a '" + restMetadata.requestContentType.value + "' on request and a '" + restMetadata.responseContentType.value + "' on response");
                 }
             }
