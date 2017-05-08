@@ -1,4 +1,4 @@
-# @artifacter/worker
+# ![artifacter-logo](https://raw.githubusercontent.com/arthmoeros/artifacter-ui/master/src/rsz_artifacter-logo.png)@artifacter/worker
 
 ### Artifacter's artifacts generation service
 
