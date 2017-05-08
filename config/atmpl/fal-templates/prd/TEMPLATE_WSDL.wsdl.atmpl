@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/wsdl/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/IMPL/##VERSIONWSDL##" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/wsdl/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/IMPL/##VERSIONWSDL##" xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice" xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##" xmlns:resp="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Resp/IMPL/##VERSIONXSDRESP##">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/wsdl/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/IMPL/##VERSIONWSDL##" elementFormDefault="qualified">
+			<xs:import namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##" schemaLocation="../Schemas/WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##Req_IMPL.xsd"/>
+			<xs:import namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Resp/IMPL/##VERSIONXSDRESP##" schemaLocation="../Schemas/WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##Resp_IMPL.xsd"/>
+			<xs:import namespace="http://mdwcorp.falabella.com/common/schema/clientservice" schemaLocation="../../../UT_EsquemasComunes_V.2.0/Specifications/XSD/Common/MdwCorp_Common_clientService.xsd"/>
+			<xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="../../../UT_EsquemasComunes_V.2.0/Specifications/XSD/Common/MdwCorp_Common_soapFault.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##MsgReq">
+		<wsdl:part name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##ReqParam" element="req:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Req"/>
+	</wsdl:message>
+	<wsdl:message name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##MsgResp">
+		<wsdl:part name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##RespParam" element="resp:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Resp"/>
+	</wsdl:message>
+	<wsdl:message name="FaultMsg">
+		<wsdl:part name="FaultParam" element="env:Fault"/>
+	</wsdl:message>
+	<wsdl:message name="ClientServiceMsg">
+		<wsdl:part name="ClientServiceParam" element="cs:ClientService"/>
+	</wsdl:message>
+	<wsdl:portType name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Pt">
+		<wsdl:operation name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Op">
+			<wsdl:input message="tns:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##MsgReq"/>
+			<wsdl:output message="tns:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##MsgResp"/>
+			<wsdl:fault name="Fault" message="tns:FaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Binding" type="tns:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Pt">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Op">
+			<soap:operation soapAction="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/wsdl/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/IMPL/##VERSIONWSDL##/Op" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:ClientServiceMsg" part="ClientServiceParam" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##ServiceIMPL">
+		<wsdl:port name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##PortIMPL" binding="tns:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Binding">
+			<soap:address location="osb"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

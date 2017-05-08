@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<jws:workspace xmlns:jws="http://xmlns.oracle.com/ide/project">
+   <value n="application-package-prefix" v="${core:postProcess('##LOCALIZACION##','ALC')}.${core:postProcess('##NEGOCIO##','ALC')}.${core:postProcess('##BACKEND##','ALC')}.${core:postProcess('##OBJDEDATOS##','ALC')}${core:postProcess('##INTERFAZPACKAGE##','ALC','.%%')}.${core:postProcess('##OPECOMBACKEND##','ALC')}"/>
+   <value n="appTemplateId" v="#genericApplicationTemplate"/>
+   <hash n="component-versions">
+      <value n="oracle.adf.share.dt.migration.jps.JaznCredStoreMigratorHelper" v="11.1.1.1.0"/>
+      <value n="oracle.ide.model.Project" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.deploy.ear.OarMigratorHelper" v="11.1.1.1.0"/>
+      <value n="oracle.jdevimpl.xml.oc4j.jps.JpsConfigMigratorHelper" v="11.1.1.1.0.1"/>
+      <value n="oracle.jdevimpl.xml.wl.WeblogicMigratorHelper" v="11.1.1.1.0"/>
+   </hash>
+   <list n="listOfChildren">
+      <hash><url n="URL" path="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB.jpr"/></hash>
+   </list>
+</jws:workspace>

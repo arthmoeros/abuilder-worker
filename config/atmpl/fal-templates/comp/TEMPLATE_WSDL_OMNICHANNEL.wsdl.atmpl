@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##"
+	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##-##VERSIONWSDL##/COMP" 
+	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##-##VERSIONWSDL##/COMP" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ws="http://www.example.com/webservice"
+	xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice"
+	xmlns:csfif="http://mdwcorp.falabella.com/common/schema/clientserviceFIF"
+	xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:req="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##/Req/COMP/##VERSIONXSDREQ##" 
+	xmlns:resp="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##/Resp/COMP/##VERSIONXSDRESP##">
+	
+	<wsdl:types>
+		<xs:schema targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##-##VERSIONWSDL##/COMP" elementFormDefault="qualified">
+			<xs:import namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##/Req/COMP/##VERSIONXSDREQ##" schemaLocation="../Schemas/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_##OBJDENEGOCIO##&{(prefixUnderscore)localizacion}_##OPERACION##_COMP_Req.xsd"/>
+			<xs:import namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##/Resp/COMP/##VERSIONXSDRESP##" schemaLocation="../Schemas/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_##OBJDENEGOCIO##&{(prefixUnderscore)localizacion}_##OPERACION##_COMP_Resp.xsd"/>
+			<xs:import namespace="http://mdwcorp.falabella.com/common/schema/clientservice" schemaLocation="../../../UT_EsquemasComunes_V.2.0/Specifications/XSD/Common/MdwCorp_Common_clientService.xsd"/>
+			<xs:import
+				schemaLocation="../../../UT_EsquemasComunesFIF_V.1.0/Specifications/XSD/Common/MdwCorp_Common_clientServiceFIF.xsd"
+				namespace="http://mdwcorp.falabella.com/common/schema/clientserviceFIF" />
+			<xs:import namespace="http://schemas.xmlsoap.org/soap/envelope/" schemaLocation="../../../UT_EsquemasComunes_V.2.0/Specifications/XSD/Common/MdwCorp_Common_soapFault.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##MsgReq">
+		<wsdl:part name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##ReqParam" element="req:##OBJDENEGOCIO####ENTDISCRETA####OPERACION##CompReq"/>
+	</wsdl:message>
+	<wsdl:message name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##MsgResp">
+		<wsdl:part name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##RespParam" element="resp:##OBJDENEGOCIO####ENTDISCRETA####OPERACION##CompResp"/>
+	</wsdl:message>
+	<wsdl:message name="FaultMsg">
+		<wsdl:part name="FaultParam" element="env:Fault"/>
+	</wsdl:message>
+	<wsdl:message name="ClientServiceMsg">
+		<wsdl:part name="ClientServiceParam" element="cs:ClientService"/>
+	</wsdl:message>
+	<wsdl:message name="ClientServiceFIFMsg">
+		<wsdl:part name="ClientServiceFIFParam" element="csfif:ClientServiceFIF" />
+	</wsdl:message>
+
+	<wsdl:portType name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##Pt">
+		<wsdl:operation name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##Op">
+			<wsdl:input message="tns:##OBJDENEGOCIO####ENTDISCRETA####OPERACION##MsgReq"/>
+			<wsdl:output message="tns:##OBJDENEGOCIO####ENTDISCRETA####OPERACION##MsgResp"/>
+			<wsdl:fault name="Fault" message="tns:FaultMsg"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##Binding" type="tns:##OBJDENEGOCIO####ENTDISCRETA####OPERACION##Pt">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##Op">
+			<soap:operation soapAction="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##-##VERSIONWSDL##/COMP/Op" style="document"/>
+			<wsdl:input>
+				<soap:header message="tns:ClientServiceMsg" part="ClientServiceParam" use="literal"/>
+				<soap:header message="tns:ClientServiceFIFMsg" part="ClientServiceFIFParam"
+					use="literal" />
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="Fault">
+				<soap:fault name="Fault" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##ServiceCOMP">
+		<wsdl:port name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##PortCOMP" binding="tns:##OBJDENEGOCIO####ENTDISCRETA####OPERACION##Binding">
+			<soap:address location="osb"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

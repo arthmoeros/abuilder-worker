@@ -1,0 +1,7 @@
+package ${core:postProcess('##LOCALIZACION##','ALC')}.${core:postProcess('##NEGOCIO##','ALC')}.${core:postProcess('##BACKEND##','ALC')}.${core:postProcess('##OBJDEDATOS##','ALC')}${core:postProcess('##INTERFAZPACKAGE##','ALC','.%%')}.${core:postProcess('##OPECOMBACKEND##','ALC')}.model.dao;
+
+import javax.ejb.Local;
+
+@Local
+public interface &{(auc)backend}##OBJDEDATOS##${core:postProcess('##INTERFAZPACKAGE##','AUC')}##OPECOMBACKEND##DAOLocal {
+}
