@@ -1,4 +1,4 @@
-package ${core:postProcess('##LOCALIZACION##','ALC')}.${core:postProcess('##NEGOCIO##','ALC')}.${core:postProcess('##BACKEND##','ALC')}.${core:postProcess('##OBJDEDATOS##','ALC')}${core:postProcess('##INTERFAZPACKAGE##','ALC','.%%')}.${core:postProcess('##OPECOMBACKEND##','ALC')}.model.util;
+package &{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)opeComBackend}.model.util;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,7 +31,7 @@ public class Configurator
     /**
      * Archivo de propiedades.
      */
-	private static final String CMR_APP_CONFIG_PATH = "./Corp/AppProperties/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}.properties";
+	private static final String CMR_APP_CONFIG_PATH = "./Corp/AppProperties/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}.properties";
     /**
      * Atributo que representa la instacia.
      */
@@ -53,7 +53,7 @@ public class Configurator
    * @since 1.0
    */
   public Configurator() throws FileNotFoundException, IOException {
-	  logger.info("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}][Configurator] INICIO.");
+	  logger.info("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}][Configurator] INICIO.");
     InputStream inputStream = null;
     try
     {
@@ -61,18 +61,18 @@ public class Configurator
       this.properties = new Properties();
       this.properties.load(inputStream);
       PropertyConfigurator.configure(this.properties);
-      logger.info("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}][Configurator] Configuraciones seteadas");
+      logger.info("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}][Configurator] Configuraciones seteadas");
     }
     catch (FileNotFoundException e) {
-        logger.error("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}][Configurator] No se encontro el archivo de configuracion.");
+        logger.error("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}][Configurator] No se encontro el archivo de configuracion.");
       throw e;
       
     }
     catch (IOException e) {
-        logger.error("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}][Configurator] No fue posible leer las propiedades del archivo de configuracion.");
+        logger.error("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}][Configurator] No fue posible leer las propiedades del archivo de configuracion.");
         throw e;
     }
-    logger.info("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}][Configurator] FIN");
+    logger.info("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}][Configurator] FIN");
   }
   
   /**

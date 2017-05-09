@@ -1,11 +1,12 @@
+#iteration(actionId=generateOsb11gGUID)
 <?xml version="1.0" encoding="UTF-8"?>
 <xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con4="http://www.bea.com/wli/sb/stages/routing/config">
   <ser:coreEntry isProxy="true" isEnabled="true">
     <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
-      <con:wsdl ref="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##_&{(urd)versionSvc}_IMPL/Resources/WSDL/&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##_IMPL"/>
+      <con:wsdl ref="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_&{(urd)versionSvc}_IMPL/Resources/WSDL/&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_IMPL"/>
       <con:port>
-        <con:name>##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##PortIMPL</con:name>
-        <con:namespace>http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/IMPL/##VERSIONWSDL##</con:namespace>
+        <con:name>&{backend}&{objDeDatos}&{interfazPackage}&{opeComBackend}PortIMPL</con:name>
+        <con:namespace>http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/IMPL/&{versionWsdl}</con:namespace>
       </con:port>
       <con:selector type="SOAP body"/>
       <con:WSI-compliant>false</con:WSI-compliant>
@@ -34,7 +35,7 @@
     <tran:inbound-properties/>
     <tran:all-headers>true</tran:all-headers>
   </ser:endpointConfig>
-  <ser:router errorHandler="_onErrorHandler-##PROXYIDSEQ1##">
+  <ser:router errorHandler="_onErrorHandler-&{#actionId}">
     <con:pipeline type="request" name="proxyImplementacion_request">
       <con:stage name="LEER_DESCRIPCION_TO-DO">
         <con:comment>1. Crear y configurar XQuery faltantes (Ver errores)
@@ -46,11 +47,11 @@
       <con:stage name="validateRequestImpl">
         <con:context>
           <con2:varNsDecl namespace="http://mdwcorp.falabella.com/common/schema/clientservice" prefix="cli"/>
-          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/Req/IMPL/&{versionXsdReq}" prefix="req"/>
         </con:context>
         <con:actions>
           <con3:validate>
-            <con2:id>_ActionId-##PROXYIDSEQ3##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
             <con3:schema ref="UT_EsquemasComunes_V.2.0/Specifications/XSD/Common/MdwCorp_Common_clientService"/>
             <con3:schemaElement xmlns:cli="http://mdwcorp.falabella.com/common/schema/clientservice">cli:ClientService</con3:schemaElement>
             <con3:varName>header</con3:varName>
@@ -59,28 +60,28 @@
             </con3:location>
           </con3:validate>
           <con3:validate>
-            <con2:id>_ActionId-##PROXYIDSEQ4##</con2:id>
-            <con3:schema ref="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##_&{(urd)versionSvc}_IMPL/Resources/Schemas/&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##_IMPL_Req"/>
-            <con3:schemaElement xmlns:req="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##">req:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Req</con3:schemaElement>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
+            <con3:schema ref="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_&{(urd)versionSvc}_IMPL/Resources/Schemas/&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_IMPL_Req"/>
+            <con3:schemaElement xmlns:req="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/Req/IMPL/&{versionXsdReq}">req:&{backend}&{objDeDatos}&{interfazPackage}&{opeComBackend}Req</con3:schemaElement>
             <con3:varName>body</con3:varName>
             <con3:location>
-              <con2:xpathText>./req:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Req</con2:xpathText>
+              <con2:xpathText>./req:&{backend}&{objDeDatos}&{interfazPackage}&{opeComBackend}Req</con2:xpathText>
             </con3:location>
           </con3:validate>
         </con:actions>
       </con:stage>
       <con:stage name="setRequestBusiness">
         <con:context>
-          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/Req/IMPL/&{versionXsdReq}" prefix="req"/>
         </con:context>
         <con:actions>
           <con3:assign varName="requestBusiness">
-            <con2:id>_ActionId-##PROXYIDSEQ5##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
             <con3:expr>
               <con2:xqueryTransform>
                 <con2:resource ref="CONFIGURAR/XQUERY_ENTRADA"/>
-                <con2:param name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Req">
-                  <con2:path>$body/req:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Req</con2:path>
+                <con2:param name="&{backend}&{objDeDatos}&{interfazPackage}&{opeComBackend}Req">
+                  <con2:path>$body/req:&{backend}&{objDeDatos}&{interfazPackage}&{opeComBackend}Req</con2:path>
                 </con2:param>
               </con2:xqueryTransform>
             </con3:expr>
@@ -91,12 +92,12 @@
     <con:pipeline type="response" name="proxyImplementacion_response">
       <con:stage name="setResponse">
         <con:context>
-          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##" prefix="req"/>
-          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Resp/IMPL/##VERSIONXSDRESP##" prefix="resp"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/Req/IMPL/&{versionXsdReq}" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/Resp/IMPL/&{versionXsdResp}" prefix="resp"/>
         </con:context>
         <con:actions>
           <con3:assign varName="responseImplementacion">
-            <con2:id>_ActionId-##PROXYIDSEQ6##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
             <con3:expr>
               <con2:xqueryTransform>
                 <con2:resource ref="CONFIGURAR/XQUERY_SALIDA"/>
@@ -107,7 +108,7 @@
             </con3:expr>
           </con3:assign>
           <con3:assign varName="body">
-            <con2:id>_ActionId-##PROXYIDSEQ7##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
             <con3:expr>
               <con2:xqueryText>element soap-env:Body{
 	$responseImplementacion
@@ -120,28 +121,28 @@
         <con:context/>
         <con:actions>
           <con3:delete varName="requestBusiness">
-            <con2:id>_ActionId-##PROXYIDSEQ8##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
           </con3:delete>
           <con3:delete varName="responseBusiness">
-            <con2:id>_ActionId-##PROXYIDSEQ9##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
           </con3:delete>
           <con3:delete varName="responseImplementacion">
-            <con2:id>_ActionId-##PROXYIDSEQ10##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
           </con3:delete>
         </con:actions>
       </con:stage>
     </con:pipeline>
-    <con:pipeline type="error" name="_onErrorHandler-##PROXYIDSEQ1##">
+    <con:pipeline type="error" name="_onErrorHandler-&{#actionId}">
       <con:stage name="logErrorTecnicoImpl">
         <con:context/>
         <con:actions>
           <con1:log>
-            <con2:id>_ActionId-##PROXYIDSEQ12##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
             <con1:logLevel>debug</con1:logLevel>
             <con1:expr>
               <con2:xqueryText>$fault</con2:xqueryText>
             </con1:expr>
-            <con1:message>Error en [PX_&{(auc)localizacion}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##Impl] --></con1:message>
+            <con1:message>Error en [PX_&{(auc)localizacion}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}Impl] --></con1:message>
           </con1:log>
         </con:actions>
       </con:stage>
@@ -149,16 +150,16 @@
         <con:context/>
         <con:actions>
           <con3:delete varName="requestBusiness">
-            <con2:id>_ActionId-##PROXYIDSEQ13##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
           </con3:delete>
           <con3:delete varName="responseBusiness">
-            <con2:id>_ActionId-##PROXYIDSEQ14##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
           </con3:delete>
           <con3:delete varName="responseImplementacion">
-            <con2:id>_ActionId-##PROXYIDSEQ15##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
           </con3:delete>
           <con3:delete varName="header">
-            <con2:id>_ActionId-##PROXYIDSEQ11##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
           </con3:delete>
         </con:actions>
       </con:stage>
@@ -166,7 +167,7 @@
         <con:context/>
         <con:actions>
           <con3:ifThenElse>
-            <con2:id>_ActionId-##PROXYIDSEQ16##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
             <con3:case>
               <con3:condition>
                 <con2:xqueryText>fn:exists($body/soap-env:Fault)</con2:xqueryText>
@@ -175,7 +176,7 @@
             </con3:case>
             <con3:default>
               <con1:assign varName="body" xmlns:con3="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con1="http://www.bea.com/wli/sb/stages/transform/config">
-                <con2:id>_ActionId-##PROXYIDSEQ17##</con2:id>
+                <con2:id>_ActionId-&{#actionId}</con2:id>
                 <con1:expr>
                   <con2:xqueryText><![CDATA[<soapenv:Fault xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
    <faultcode>{data("Server")}</faultcode>
@@ -188,7 +189,7 @@
             </con3:default>
           </con3:ifThenElse>
           <con2:reply isError="true">
-            <con2:id>_ActionId-##PROXYIDSEQ18##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
           </con2:reply>
         </con:actions>
       </con:stage>
@@ -202,12 +203,12 @@
         <con:context/>
         <con:actions>
           <con4:route>
-            <con2:id>_ActionId-##PROXYIDSEQ19##</con2:id>
+            <con2:id>_ActionId-&{#actionId}</con2:id>
             <con4:service ref="CONFIGURAR_BUSINESS/BIZ" xsi:type="ref:ProxyRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
             <con4:operation>CONFIGURAR_OP_BIZ</con4:operation>
             <con4:outboundTransform>
               <con3:assign varName="body">
-                <con2:id>_ActionId-##PROXYIDSEQ20##</con2:id>
+                <con2:id>_ActionId-&{#actionId}</con2:id>
                 <con3:expr>
                   <con2:xqueryText>element soap-env:Body{
 	$requestBusiness
@@ -217,13 +218,13 @@
             </con4:outboundTransform>
             <con4:responseTransform>
               <con3:assign varName="responseBusiness">
-                <con2:id>_ActionId-##PROXYIDSEQ21##</con2:id>
+                <con2:id>_ActionId-&{#actionId}</con2:id>
                 <con3:expr>
                   <con2:xqueryText>$body/*[1]</con2:xqueryText>
                 </con3:expr>
               </con3:assign>
               <con3:validate>
-                <con2:id>_ActionId-##PROXYIDSEQ22##</con2:id>
+                <con2:id>_ActionId-&{#actionId}</con2:id>
                 <con3:varName>responseBusiness</con3:varName>
                 <con3:location>
                   <con2:xpathText>.</con2:xpathText>

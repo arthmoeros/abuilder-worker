@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##"
-	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/##OBJDEDATOS##&{(prefixFwdSlash)interfazPackage}/##OPECOMBACKEND##/Req/IMPL/##VERSIONXSDREQ##">
-	<xs:element name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Req" type="tns:##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Req_TYPE"/>
-	<xs:complexType name="##BACKEND####OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##Req_TYPE">
+<xs:schema xmlns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/Req/IMPL/&{versionXsdReq}" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/Req/IMPL/&{versionXsdReq}"
+	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{(auc)backend}/&{objDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{opeComBackend}/Req/IMPL/&{versionXsdReq}">
+	<xs:element name="&{backend}&{objDeDatos}&{interfazPackage}&{opeComBackend}Req" type="tns:&{backend}&{objDeDatos}&{interfazPackage}&{opeComBackend}Req_TYPE"/>
+	<xs:complexType name="&{backend}&{objDeDatos}&{interfazPackage}&{opeComBackend}Req_TYPE">
 		<!-- ##REQ_CONTENTS## !-->
 	</xs:complexType>
 </xs:schema>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##/Req/COMP/##VERSIONXSDREQ##" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##/Req/COMP/##VERSIONXSDREQ##"
-	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/##OBJDENEGOCIO##$&{(prefixFwdSlash)entDiscreta}/##OPERACION##/Req/COMP/##VERSIONXSDREQ##">
-	<xs:element name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##CompReq" type="tns:##OBJDENEGOCIO####ENTDISCRETA####OPERACION##CompReq_TYPE"/>
-	<xs:complexType name="##OBJDENEGOCIO####ENTDISCRETA####OPERACION##CompReq_TYPE">
+<xs:schema xmlns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objDeNegocio}$&{*(prefixFwdSlash)entDiscreta}/&{operacion}/Req/COMP/&{versionXsdReq}" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objDeNegocio}$&{*(prefixFwdSlash)entDiscreta}/&{operacion}/Req/COMP/&{versionXsdReq}"
+	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objDeNegocio}$&{*(prefixFwdSlash)entDiscreta}/&{operacion}/Req/COMP/&{versionXsdReq}">
+	<xs:element name="&{objDeNegocio}&{entDiscreta}&{operacion}CompReq" type="tns:&{objDeNegocio}&{entDiscreta}&{operacion}CompReq_TYPE"/>
+	<xs:complexType name="&{objDeNegocio}&{entDiscreta}&{operacion}CompReq_TYPE">
 		<!-- ##REQ_CONTENTS## !-->
 	</xs:complexType>
 </xs:schema>

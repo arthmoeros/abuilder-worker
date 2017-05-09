@@ -1,4 +1,4 @@
-package ${core:postProcess('##LOCALIZACION##','ALC')}.${core:postProcess('##NEGOCIO##','ALC')}.${core:postProcess('##BACKEND##','ALC')}.${core:postProcess('##OBJDEDATOS##','ALC')}${core:postProcess('##INTERFAZPACKAGE##','ALC','.%%')}.${core:postProcess('##OPECOMBACKEND##','ALC')}.util;
+package &{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)opeComBackend}.util;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,7 +26,7 @@ public class Log4jLoadProperties {
 	/**
      * Archivo de propiedades.
      */
-    private static final String CONFIG_LOG4J = "./Corp/AppProperties/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}_log4j.properties";
+    private static final String CONFIG_LOG4J = "./Corp/AppProperties/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}_log4j.properties";
     /**
      * Atributo de instacia las configuraciones del log4j.
      */
@@ -49,10 +49,10 @@ public class Log4jLoadProperties {
             prop.load(inputStream);
             PropertyConfigurator.configure(prop);
         } catch (FileNotFoundException e) {
-            System.out.println("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}_log4j] no fue posible configurar log4j, el archivo de configuracion no fue encontrado.");
+            System.out.println("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}_log4j] no fue posible configurar log4j, el archivo de configuracion no fue encontrado.");
             BasicConfigurator.configure();
         } catch (IOException e) {
-            System.out.println("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS####INTERFAZPACKAGE####OPECOMBACKEND##-&{(urd)versionSvc}_log4j] no fue posible configurar log4j, no es posible leer la configuraci�n.");
+            System.out.println("[&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}_log4j] no fue posible configurar log4j, no es posible leer la configuraci�n.");
             BasicConfigurator.configure();
         }
     }

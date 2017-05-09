@@ -1,8 +1,8 @@
-package ${core:postProcess('##LOCALIZACION##','ALC')}.${core:postProcess('##NEGOCIO##','ALC')}.${core:postProcess('##BACKEND##','ALC')}.${core:postProcess('##OBJDEDATOS##','ALC')}${core:postProcess('##INTERFAZPACKAGE##','ALC','.%%')}.${core:postProcess('##OPECOMBACKEND##','ALC')}.model.dto;
+package &{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)opeComBackend}.model.dto;
 
 import java.io.Serializable;
 
-public class &{(auc)backend}##OBJDEDATOS##${core:postProcess('##INTERFAZPACKAGE##','AUC')}##OPECOMBACKEND##InDTO implements Serializable {
+public class &{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}InDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 }

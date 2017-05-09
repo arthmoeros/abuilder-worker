@@ -33,7 +33,7 @@
       <string v="oracle.bm.commonIde.data.project.ModelerProjectSettings/modelersContentSet"/>
       <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
    </list>
-   <value n="defaultPackage" v="${core:postProcess('##LOCALIZACION##','ALC')}.${core:postProcess('##NEGOCIO##','ALC')}.${core:postProcess('##BACKEND##','ALC')}.${core:postProcess('##OBJDEDATOS##','ALC')}${core:postProcess('##INTERFAZPACKAGE##','ALC','.%%')}.${core:postProcess('##OPECOMBACKEND##','ALC')}"/>
+   <value n="defaultPackage" v="&{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)opeComBackend}"/>
    <hash n="ejbModuleContainer">
       <value n="ejbMetaDataPrefs" v="PREFASANNON"/>
       <value n="ejbVersion" v="3.0"/>
@@ -61,12 +61,12 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB_ejb1">
+         <hash n="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB_ejb1">
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
             </hash>
-            <url n="earURL" path="deploy/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB_ejb1.ear"/>
-            <value n="enterpriseAppName" v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB_ejb1"/>
+            <url n="earURL" path="deploy/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB_ejb1.ear"/>
+            <value n="enterpriseAppName" v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB_ejb1"/>
             <hash n="fileGroups">
                <list n="groups">
                   <hash>
@@ -87,21 +87,21 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB_ejb1.jar"/>
+            <url n="jarURL" path="deploy/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB_ejb1.jar"/>
             <hash n="libraryDependencies">
                <value n="IncludeLibrariesFromOtherContainers" v="true"/>
             </hash>
             <value n="profileClass" v="oracle.jdeveloper.deploy.ejb.EjbProfile"/>
-            <value n="profileName" v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB_ejb1"/>
+            <value n="profileName" v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB_ejb1"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB_ejb1"/>
+         <string v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB_ejb1"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
-      <value n="j2eeWebAppName" v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##-&{(urd)versionSvc}_APP-&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB-webapp"/>
-      <value n="j2eeWebContextRoot" v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##-&{(urd)versionSvc}_APP-&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_##OBJDEDATOS##&{(prefixUnderscore)interfazPackage}_##OPECOMBACKEND##EJB-context-root"/>
+      <value n="j2eeWebAppName" v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP-&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB-webapp"/>
+      <value n="j2eeWebContextRoot" v="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP-&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB-context-root"/>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="javaContentSet">
