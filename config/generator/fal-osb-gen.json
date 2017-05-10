@@ -1,12 +1,452 @@
 {
-    "generateExpComp" :{
+    "generateExpComp": {
         "rootContents": [
-
+            {
+                "folder": {
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_EXP",
+                    "contents": [
+                        {
+                            "folder": {
+                                "targetName": ".settings",
+                                "contents": [
+                                    {
+                                        "static": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.common.project.facet.core.xml",
+                                            "targetName": "org.eclipse.wst.common.project.facet.core.xml"
+                                        }
+                                    },
+                                    {
+                                        "static": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.validation.prefs",
+                                            "targetName": "org.eclipse.wst.validation.prefs"
+                                        }
+                                    },
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
+                                            "targetName": "org.eclipse.wst.common.component",
+                                            "parameters": {
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_EXP"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/common/.project.atmpl",
+                                            "targetName": ".project",
+                                            "parameters": {
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_EXP"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "ProxyServices",
+                                "contents": [
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/exp/TEMPLATE_PROXY.proxy.atmpl",
+                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}Exp.proxy"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "Resources",
+                                "contents": [
+                                    {
+                                        "folder": {
+                                            "targetName": "Schemas",
+                                            "contents": [
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/exp/TEMPLATE_XSD_REQ.xsd.atmpl",
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}Req.xsd"
+                                                    }
+                                                },
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/exp/TEMPLATE_XSD_RESP.xsd.atmpl",
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}Resp.xsd"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "folder": {
+                                            "targetName": "WSDL",
+                                            "contents": [
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/exp/TEMPLATE_WSDL.wsdl.atmpl",
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}.wsdl"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "folder": {
+                                            "targetName": "XQuery",
+                                            "contents": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "folder": {
+                    "includeif": "&{isComp}",
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_COMP",
+                    "contents": [
+                        {
+                            "folder": {
+                                "targetName": ".settings",
+                                "contents": [
+                                    {
+                                        "static": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.common.project.facet.core.xml",
+                                            "targetName": "org.eclipse.wst.common.project.facet.core.xml"
+                                        }
+                                    },
+                                    {
+                                        "static": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.validation.prefs",
+                                            "targetName": "org.eclipse.wst.validation.prefs"
+                                        }
+                                    },
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
+                                            "targetName": "org.eclipse.wst.common.component",
+                                            "parameters": {
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_COMP"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/common/.project.atmpl",
+                                            "targetName": ".project",
+                                            "parameters": {
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_COMP"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "ProxyServices",
+                                "contents": [
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/comp/TEMPLATE_PROXY.proxy.atmpl",
+                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}Comp.proxy"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "Resources",
+                                "contents": [
+                                    {
+                                        "folder": {
+                                            "targetName": "Schemas",
+                                            "contents": [
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/comp/TEMPLATE_XSD_REQ.xsd.atmpl",
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Req.xsd"
+                                                    }
+                                                },
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/comp/TEMPLATE_XSD_RESP.xsd.atmpl",
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Resp.xsd"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "folder": {
+                                            "targetName": "WSDL",
+                                            "contents": [
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/comp/TEMPLATE_WSDL.wsdl.atmpl",
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP.wsdl"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "folder": {
+                                            "targetName": "XQuery",
+                                            "contents": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
         ]
     },
-    "generateImplPrd" :{
+    "generateImplPrd": {
         "rootContents": [
-            
+            {
+                "folder": {
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_&{(urd)versionSvc}_IMPL",
+                    "contents": [
+                        {
+                            "folder": {
+                                "targetName": ".settings",
+                                "contents": [
+                                    {
+                                        "static": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.common.project.facet.core.xml",
+                                            "targetName": "org.eclipse.wst.common.project.facet.core.xml"
+                                        }
+                                    },
+                                    {
+                                        "static": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.validation.prefs",
+                                            "targetName": "org.eclipse.wst.validation.prefs"
+                                        }
+                                    },
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
+                                            "targetName": "org.eclipse.wst.common.component",
+                                            "parameters": {
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_&{(urd)versionSvc}_IMPL"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/common/.project.atmpl",
+                                            "targetName": ".project",
+                                            "parameters": {
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_&{(urd)versionSvc}_IMPL"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "BusinessService",
+                                "contents": [
+                                    {
+                                        "atmpl": {
+                                            "includeif": "&{!isPrd}",
+                                            "location": "./fal-templates/impl/TEMPLATE_BUSINESS.biz.atmpl",
+                                            "targetName": "BS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}.biz"
+                                        }
+                                    },
+                                    {
+                                        "atmpl": {
+                                            "includeif": "&{isPrd}",
+                                            "location": "./fal-templates/prd/TEMPLATE_BUSINESS.biz.atmpl",
+                                            "targetName": "BS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}.biz"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "ProxyServices",
+                                "contents": [
+                                    {
+                                        "atmpl": {
+                                            "location": "./fal-templates/impl/TEMPLATE_PROXY.proxy.atmpl",
+                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}Impl.proxy"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "Resources",
+                                "contents": [
+                                    {
+                                        "folder": {
+                                            "targetName": "Schemas",
+                                            "contents": [
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/impl/TEMPLATE_XSD_REQ.xsd.atmpl",
+                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_IMPL_Resp.xsd"
+                                                    }
+                                                },
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/impl/TEMPLATE_XSD_RESP.xsd.atmpl",
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Resp.xsd"
+                                                    }
+                                                },
+                                                {
+                                                    "atmpl": {
+                                                        "includeif": "&{isPrd}",
+                                                        "location": "./fal-templates/prd/TEMPLATE_XSD_REQ.xsd.atmpl",
+                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}Req_IMPL.xsd"
+                                                    }
+                                                },
+                                                {
+                                                    "atmpl": {
+                                                        "includeif": "&{isPrd}",
+                                                        "location": "./fal-templates/prd/TEMPLATE_XSD_RESP.xsd.atmpl",
+                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}Resp_IMPL.xsd"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "folder": {
+                                            "targetName": "WSDL",
+                                            "contents": [
+                                                {
+                                                    "atmpl": {
+                                                        "location": "./fal-templates/impl/TEMPLATE_WSDL.wsdl.atmpl",
+                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_IMPL.wsdl"
+                                                    }
+                                                },
+                                                {
+                                                    "atmpl": {
+                                                        "includeif": "&{isPrd}",
+                                                        "location": "./fal-templates/prd/TEMPLATE_WSDL.wsdl.atmpl",
+                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_IMPL.wsdl"
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "folder": {
+                                            "targetName": "XQuery",
+                                            "contents": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "folder": {
+                    "includeif": "&{isPrd}",
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP",
+                    "contents": [
+                        {
+                            "atmpl" : {
+                                "location" : "./fal-templates/prd/jdev/TEMPLATE_JWS_APP.jws.atmpl",
+                                "targetName" : "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP"
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB",
+                                "contents": [
+                                    {
+                                        "atmpl" : {
+                                            "location" : "./fal-templates/prd/jdev/TEMPLATE_JPR_EJB.jpr.atmpl",
+                                            "targetName" : "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB"
+                                        }
+                                    },
+                                    {
+                                        "folder": {
+                                            "targetName": "src",
+                                            "contents": [
+                                                {
+                                                    "folder" : {
+                                                        "targetName" : "&{(alc)localizacion}/&{(alc)negocio}/&{(alc)backend}/&{(alc)objDeDatos}&{*(alc,prefixFwdSlash)interfazPackage}/&{(alc)opeComBackend}/model",
+                                                        "contents" : [
+                                                            // TODO: source
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "folder" : {
+                                                        "targetName" : "META-INF",
+                                                        "contents" : [
+                                                            {
+                                                                "static" : {
+                                                                    "location" : "./fal-templates/prd/jdev/weblogic-ejb-jar.xml",
+                                                                    "targetName" : "weblogic-ejb-jar.xml"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "Corp/AppProperties",
+                                "contents": [
+                                    {
+                                        "atmpl" : {
+                                            "location" : "./fal-templates/prd/jdev/AppProperties/TEMPLATE.properties.atmpl",
+                                            "targetName" : "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}.properties"
+                                        }
+                                    },
+                                    {
+                                        "atmpl" : {
+                                            "location" : "./fal-templates/prd/jdev/AppProperties/TEMPLATE_log4j.properties.atmpl",
+                                            "targetName" : "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}_log4j.properties"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName": "ext_lib",
+                                "contents": [
+                                    {
+                                        "static" : {
+                                            "location" : "./fal-templates/prd/jdev/ext_lib/log4j-1.2.15.jar",
+                                            "targetName" : "log4j-1.2.15.jar"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "folder": {
+                                "targetName" : "classes",
+                                "contents" : []
+                            }
+                        }
+                    ]
+                }
+            }
         ]
     }
 }
