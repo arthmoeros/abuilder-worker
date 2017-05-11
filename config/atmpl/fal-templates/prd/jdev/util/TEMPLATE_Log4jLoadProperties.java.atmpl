@@ -19,7 +19,7 @@ import org.apache.log4j.PropertyConfigurator;
  * <br>
  * Registro de versiones:
  * <ul>
- * <li>1.0 27/01/2015 Rodolfo Kafack Ghinelli (SEnTRA): Versi�n inicial.</li>
+ * <li>1.0 xx/xx/xxxx Autor: Versión inicial.</li>
  * </ul>
  */
 public class Log4jLoadProperties {
@@ -33,11 +33,11 @@ public class Log4jLoadProperties {
     private static Log4jLoadProperties log4jLoadProperties;
     
     /**
-     * M�todo para cargar las configuraciones del log4j.
+     * Método para cargar las configuraciones del log4j.
      * <br>
      * Registro de Versiones:
      * <ul>
-     * <li>1.0 27/01/2015 Rodolfo Kafack Ghinelli (SEnTRA): Versi�n inicial.</li>
+     * <li>1.0 xx/xx/xxxx Autor: Versión inicial.</li>
      * </ul>
      * @since 1.0
      */
@@ -58,11 +58,11 @@ public class Log4jLoadProperties {
     }
     
     /**
-     * M�todo para inicializar el log4j.
+     * Método para inicializar el log4j.
      * <br>
      * Registro de Versiones:
      * <ul>
-     * <li>1.0 27/01/2015 Rodolfo Kafack Ghinelli (SEnTRA): Versi�n inicial.</li>
+     * <li>1.0 xx/xx/xxxx Autor: Versión inicial.</li>
      * </ul>
      * @since 1.0
      */

@@ -18,7 +18,7 @@ import org.apache.log4j.PropertyConfigurator;
  * <br>
  * Registro de versiones:
  * <ul>
- * <li>1.0 27/01/2015 Rodolfo Kafack Ghinelli (SEnTRA): Versi�n inicial.</li>
+ * <li>1.0 xx/xx/xxxx Autor: Versión inicial.</li>
  * </ul>
  */
 public class Configurator
@@ -42,11 +42,11 @@ public class Configurator
 	private Properties properties = null;
 
   /**
-   * M�todo para cargar las configuraciones.
+   * Método para cargar las configuraciones.
    * <br>
    * Registro de Versiones:
    * <ul>
-   * <li>1.0 27/01/2015 Rodolfo Kafack Ghinelli (SEnTRA): Versi�n inicial.</li>
+   * <li>1.0 xx/xx/xxxx Autor: Versión inicial.</li>
    * </ul>
    * @throws FileNotFoundException.
    * @throw IOException.
@@ -76,11 +76,11 @@ public class Configurator
   }
   
   /**
-   * M�todo que instancia el configurador.
+   * Método que instancia el configurador.
    * <br>
    * Registro de Versiones:
    * <ul>
-   * <li>1.0 27/01/2015 Rodolfo Kafack Ghinelli (SEnTRA): Versi�n inicial.</li>
+   * <li>1.0 xx/xx/xxxx Autor: Versión inicial.</li>
    * </ul>
    * @throws FileNotFoundException.
    * @throw IOException.
@@ -95,11 +95,11 @@ public class Configurator
   }
   
   /**
-   * M�todo para cargar los valores de las propiedades.
+   * Método para cargar los valores de las propiedades.
    * <br>
    * Registro de Versiones:
    * <ul>
-   * <li>1.0 27/01/2015 Rodolfo Kafack Ghinelli (SEnTRA): Versi�n inicial.</li>
+   * <li>1.0 xx/xx/xxxx Autor: Versión inicial.</li>
    * </ul>
    * @param String key.
    * @since 1.0

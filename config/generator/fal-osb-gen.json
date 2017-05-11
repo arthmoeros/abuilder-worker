@@ -360,9 +360,9 @@
                     "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP",
                     "contents": [
                         {
-                            "atmpl" : {
-                                "location" : "./fal-templates/prd/jdev/TEMPLATE_JWS_APP.jws.atmpl",
-                                "targetName" : "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP"
+                            "atmpl": {
+                                "location": "./fal-templates/prd/jdev/TEMPLATE_JWS_APP.jws.atmpl",
+                                "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP"
                             }
                         },
                         {
@@ -370,9 +370,9 @@
                                 "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB",
                                 "contents": [
                                     {
-                                        "atmpl" : {
-                                            "location" : "./fal-templates/prd/jdev/TEMPLATE_JPR_EJB.jpr.atmpl",
-                                            "targetName" : "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB"
+                                        "atmpl": {
+                                            "location": "./fal-templates/prd/jdev/TEMPLATE_JPR_EJB.jpr.atmpl",
+                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB"
                                         }
                                     },
                                     {
@@ -380,21 +380,83 @@
                                             "targetName": "src",
                                             "contents": [
                                                 {
-                                                    "folder" : {
-                                                        "targetName" : "&{(alc)localizacion}/&{(alc)negocio}/&{(alc)backend}/&{(alc)objDeDatos}&{*(alc,prefixFwdSlash)interfazPackage}/&{(alc)opeComBackend}/model",
-                                                        "contents" : [
-                                                            // TODO: source
+                                                    "folder": {
+                                                        "targetName": "&{(alc)localizacion}/&{(alc)negocio}/&{(alc)backend}/&{(alc)objDeDatos}&{*(alc,prefixFwdSlash)interfazPackage}/&{(alc)opeComBackend}/model",
+                                                        "contents": [
+                                                            {
+                                                                "folder": {
+                                                                    "targetName": "dao",
+                                                                    "contents": [
+                                                                        {
+                                                                            "atmpl": {
+                                                                                "location": "./fal-templates/prd/jdev/dao/TEMPLATE_DAO.java.atmpl",
+                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}DAO.java"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "atmpl": {
+                                                                                "location": "./fal-templates/prd/jdev/dao/TEMPLATE_DAOBean.java.atmpl",
+                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}DAOBean.java"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "atmpl": {
+                                                                                "location": "./fal-templates/prd/jdev/dao/TEMPLATE_DAOLocal.java.atmpl",
+                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}DAOLocal.java"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "folder": {
+                                                                    "targetName" : "dto",
+                                                                    "contents" : [
+                                                                        {
+                                                                            "atmpl": {
+                                                                                "location": "./fal-templates/prd/jdev/dto/TEMPLATE_InDTO.java.atmpl",
+                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}InDTO.java"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "atmpl": {
+                                                                                "location": "./fal-templates/prd/jdev/dto/TEMPLATE_OutDTO.java.atmpl",
+                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}OutDTO.java"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "folder" : {
+                                                                    "targetName" : "util",
+                                                                    "contents" : [
+                                                                        {
+                                                                            "atmpl": {
+                                                                                "location": "./fal-templates/prd/jdev/util/TEMPLATE_Configurator.java.atmpl",
+                                                                                "targetName": "Configurator.java"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "atmpl": {
+                                                                                "location": "./fal-templates/prd/jdev/util/TEMPLATE_Log4jLoadProperties.java.atmpl",
+                                                                                "targetName": "Log4jLoadProperties.java"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
                                                         ]
                                                     }
                                                 },
                                                 {
-                                                    "folder" : {
-                                                        "targetName" : "META-INF",
-                                                        "contents" : [
+                                                    "folder": {
+                                                        "targetName": "META-INF",
+                                                        "contents": [
                                                             {
-                                                                "static" : {
-                                                                    "location" : "./fal-templates/prd/jdev/weblogic-ejb-jar.xml",
-                                                                    "targetName" : "weblogic-ejb-jar.xml"
+                                                                "static": {
+                                                                    "location": "./fal-templates/prd/jdev/weblogic-ejb-jar.xml",
+                                                                    "targetName": "weblogic-ejb-jar.xml"
                                                                 }
                                                             }
                                                         ]
@@ -411,15 +473,15 @@
                                 "targetName": "Corp/AppProperties",
                                 "contents": [
                                     {
-                                        "atmpl" : {
-                                            "location" : "./fal-templates/prd/jdev/AppProperties/TEMPLATE.properties.atmpl",
-                                            "targetName" : "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}.properties"
+                                        "atmpl": {
+                                            "location": "./fal-templates/prd/jdev/AppProperties/TEMPLATE.properties.atmpl",
+                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}.properties"
                                         }
                                     },
                                     {
-                                        "atmpl" : {
-                                            "location" : "./fal-templates/prd/jdev/AppProperties/TEMPLATE_log4j.properties.atmpl",
-                                            "targetName" : "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}_log4j.properties"
+                                        "atmpl": {
+                                            "location": "./fal-templates/prd/jdev/AppProperties/TEMPLATE_log4j.properties.atmpl",
+                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}_log4j.properties"
                                         }
                                     }
                                 ]
@@ -430,9 +492,9 @@
                                 "targetName": "ext_lib",
                                 "contents": [
                                     {
-                                        "static" : {
-                                            "location" : "./fal-templates/prd/jdev/ext_lib/log4j-1.2.15.jar",
-                                            "targetName" : "log4j-1.2.15.jar"
+                                        "static": {
+                                            "location": "./fal-templates/prd/jdev/ext_lib/log4j-1.2.15.jar",
+                                            "targetName": "log4j-1.2.15.jar"
                                         }
                                     }
                                 ]
@@ -440,8 +502,8 @@
                         },
                         {
                             "folder": {
-                                "targetName" : "classes",
-                                "contents" : []
+                                "targetName": "classes",
+                                "contents": []
                             }
                         }
                     ]
