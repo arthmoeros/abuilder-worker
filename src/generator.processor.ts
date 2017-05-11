@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as shelljs from "shelljs";
 import { TemplateProcessor } from "@artifacter/template-engine";
 
 const generatorsPath = "./config/generator";
@@ -68,21 +69,21 @@ export class GeneratorProcessor {
                         return;
                     }
                 }
-                this.processFolder(map, element.folder, ".", ".");
+                this.processFolder(map, element.folder, ".");
             } else if (element.atmpl) {
                 if (element.atmpl.includeif) {
                     if (!TemplateProcessor.evaluateBoolean(element.atmpl.includeif, map)) {
                         return;
                     }
                 }
-                this.processAtmpl(map, element.atmpl, ".", ".");
+                this.processAtmpl(map, element.atmpl, ".");
             } else if (element.static) {
                 if (element.static.includeif) {
                     if (!TemplateProcessor.evaluateBoolean(element.atmpl.includeif, map)) {
                         return;
                     }
                 }
-                this.processStatic(map, element.static, ".", ".");
+                this.processStatic(map, element.static, ".");
             } else {
                 throw new Error("Invalid element found in rootContents of generator file: " + element);
             }
@@ -95,11 +96,11 @@ export class GeneratorProcessor {
      * @param map values map
      */
     private resolveFilename(element: any, map: Map<string, string>) {
-        if (element.targetTmplName) {
-            let nameProcessor: TemplateProcessor = new TemplateProcessor(element.targetTmplName);
+        if (element.targetName) {
+            let nameProcessor: TemplateProcessor = new TemplateProcessor(element.targetName, true);
             return nameProcessor.run(map);
         } else {
-            return element.targetname;
+            throw new Error("targetName not provided for element "+element);
         }
     }
 
@@ -107,12 +108,11 @@ export class GeneratorProcessor {
      * Processes a static element
      * @param map values map
      * @param staticType  static element
-     * @param tmplpath path where the file is located in the templates folder
      * @param targetpath target path where to copy the static element
      */
-    private processStatic(map: Map<string, string>, staticType: any, tmplpath: string, targetpath: string) {
+    private processStatic(map: Map<string, string>, staticType: any, targetpath: string) {
         let filename: string = this.resolveFilename(staticType, map);
-        let fileContents: string = fs.readFileSync(this.templatesFolder + "/" + tmplpath + "/" + staticType.name).toString();
+        let fileContents: string = fs.readFileSync(this.templatesFolder + "/" + staticType.location).toString();
 
         fs.writeFileSync(this.workingFolder + "/" + targetpath + "/" + filename, fileContents);
     }
@@ -121,12 +121,14 @@ export class GeneratorProcessor {
      * Process an atmpl element
      * @param map values map
      * @param atmpl atmpl element
-     * @param tmplpath path where the atmpl file is located in the templates folder
      * @param targetpath target path where to write the generated artifact
      */
-    private processAtmpl(map: Map<string, string>, atmpl: any, tmplpath: string, targetpath: string) {
-        let atmplProcessor: TemplateProcessor = new TemplateProcessor(this.templatesFolder + "/" + tmplpath + "/" + atmpl.name, fs.readFileSync(this.templatesFolder + "/" + tmplpath + "/" + atmpl.name));
+    private processAtmpl(map: Map<string, string>, atmpl: any, targetpath: string) {
+        let atmplProcessor: TemplateProcessor = new TemplateProcessor(this.templatesFolder + "/" + atmpl.location, fs.readFileSync(this.templatesFolder + "/" + atmpl.location));
 
+        if(atmpl.parameters != null){
+            atmplProcessor.setTemplateParameters(atmpl.parameters);
+        }
         let filename: string = this.resolveFilename(atmpl, map);
         let fileContents: string = atmplProcessor.run(map);
 
@@ -140,10 +142,10 @@ export class GeneratorProcessor {
      * @param tmplpath path where the folder is located in the templates folder
      * @param targetpath target path where to make the folder into the generated artifacts
      */
-    private processFolder(map: Map<string, string>, folder: any, tmplpath: string, targetpath: string) {
+    private processFolder(map: Map<string, string>, folder: any, targetpath: string) {
         let folderName: string = this.resolveFilename(folder, map);
 
-        fs.mkdirSync(this.workingFolder + "/" + targetpath + "/" + folderName);
+        shelljs.mkdir('-p', this.workingFolder + "/" + targetpath + "/" + folderName);
         if (folder.contents) {
             folder.contents.forEach(element => {
                 if (element.folder) {
@@ -152,23 +154,23 @@ export class GeneratorProcessor {
                             return;
                         }
                     }
-                    this.processFolder(map, element.folder, tmplpath + "/" + folder.name, targetpath + "/" + folderName);
+                    this.processFolder(map, element.folder, targetpath + "/" + folderName);
                 } else if (element.atmpl) {
                     if (element.atmpl.includeif) {
                         if (!TemplateProcessor.evaluateBoolean(element.atmpl.includeif, map)) {
                             return;
                         }
                     }
-                    this.processAtmpl(map, element.atmpl, tmplpath + "/" + folder.name, targetpath + "/" + folderName);
+                    this.processAtmpl(map, element.atmpl, targetpath + "/" + folderName);
                 } else if (element.static) {
                     if (element.static.includeif) {
                         if (!TemplateProcessor.evaluateBoolean(element.static.includeif, map)) {
                             return;
                         }
                     }
-                    this.processStatic(map, element.static, tmplpath + "/" + folder.name, targetpath + "/" + folderName);
+                    this.processStatic(map, element.static, targetpath + "/" + folderName);
                 } else {
-                    throw new Error("Invalid element found in contents of folder " + tmplpath + "/" + folder.name + " in generator file: " + element);
+                    throw new Error("Invalid element found in contents for folder " + folder.name + " in generator file: " + element);
                 }
             });
 
