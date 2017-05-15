@@ -1,0 +1,25 @@
+package &{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objetoDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)operacionComando}.model.dao;
+
+import javax.ejb.Stateless;
+
+@Stateless(name = "&{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}DAO", mappedName = "EJB-&{(auc)negocio}#&{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objetoDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)operacionComando}.model.dao.&{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}DAO")
+public class &{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}DAOBean implements &{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}DAO,
+                                                    &{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}DAOLocal {
+    
+	// TODO: - ELIMINAR UNA VEZ COMPLETADO:
+	// 
+	// - Crear Web Service usando el WSDL de WLS generado en la capa IMPL, 
+	//   ver punto 2.2(c) del documento "MDW Corporativo - Guia Creacion de Capa Producer con JDeveloper 1.0.pdf"
+	//   Usando los parametros:
+	//        Package Name:						&{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objetoDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)operacionComando}.model.ws
+	//        Root Package for Generated Types:	&{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objetoDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)operacionComando}.model.ws.types
+	//
+	// - Crear Deployment Profile, ver punto 2.3 del documento "MDW Corporativo - Guia Creacion de Capa Producer con JDeveloper 1.0.pdf"
+	//
+	// - Configurar endpoint del Web Service para que coincida con "&{(auc)backend}/&{objetoDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{operacionComando}/&{versionWSDL}"
+	// 
+	// - Borrar este TODO e implementar logica de este EJB (u otro componente como MDB)
+	
+	LINEA QUE NO COMPILA PARA LLAMAR LA ATENCION (A_A!)   ... Vea el TODO de arriba, borrar una vez completado (*^*!)
+	
+}

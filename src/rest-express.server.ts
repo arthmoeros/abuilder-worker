@@ -9,6 +9,7 @@ import * as cors from "cors";
 import * as fs from "fs";
 
 import { RestApi } from "./rest.api";
+import { ServerConfig } from "./server-config";
 
 /**
  * @class WorkerHttpApiServer
@@ -40,11 +41,6 @@ export class RestExpressServer {
     private server: http.Server;
 
     /**
-     * Server config JSON @see ./config/server-config.json
-     */
-    private config: any;
-
-    /**
      * Server port
      */
     private port: number;
@@ -54,8 +50,6 @@ export class RestExpressServer {
      */
     private constructor() {
         console.info("Starting REST express server")
-        console.info("Reading configuration located at " + __dirname + "/../config/server-config.json");
-        this.config = JSON.parse(fs.readFileSync(__dirname + "/../config/server-config.json").toString());
 
         console.info("Setting up express.js");
         this.expressApp = express();
@@ -63,7 +57,7 @@ export class RestExpressServer {
         this.setupMiddleware();
         console.info("Setting up routes");
         this.setupRoutes();
-        this.port = this.config.listenPort;
+        this.port = ServerConfig.readConfig.listenPort;
         this.expressApp.set("port", this.port);
         console.info("Creating node.js HTTP Server");
         this.server = http.createServer(this.expressApp);
@@ -77,8 +71,8 @@ export class RestExpressServer {
      * Setups de Middleware, CORS uses allowed hosts to invoke this API
      */
     private setupMiddleware() {
-        console.info("Setting up CORS to accept only XHR requests from " + this.config.corsOptions.origin)
-        this.expressApp.use(cors(this.config.corsOptions));
+        console.info("Setting up CORS to accept only XHR requests from " + ServerConfig.readConfig.corsOptions.origin)
+        this.expressApp.use(cors(ServerConfig.readConfig.corsOptions));
         this.expressApp.use(logger("dev"));
     }
 

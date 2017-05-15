@@ -1,8 +1,0 @@
-package &{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)opeComBackend}.model.dto;
-
-import java.io.Serializable;
-
-public class &{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}InDTO implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-}

@@ -1,0 +1,8 @@
+log4j.appender.&{objetoDeDatos}&{interfazPackage}&{(suc)operacionComando}=org.apache.log4j.RollingFileAppender
+log4j.appender.&{objetoDeDatos}&{interfazPackage}&{(suc)operacionComando}.File=./Corp/AppLog/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{interfazPackage}&{operacionComando}-&{(urd)versionServicio}.log
+log4j.appender.&{objetoDeDatos}&{interfazPackage}&{(suc)operacionComando}.MaxFileSize=100KB
+log4j.appender.&{objetoDeDatos}&{interfazPackage}&{(suc)operacionComando}.MaxBackupIndex=1
+log4j.appender.&{objetoDeDatos}&{interfazPackage}&{(suc)operacionComando}.layout=org.apache.log4j.PatternLayout
+log4j.appender.&{objetoDeDatos}&{interfazPackage}&{(suc)operacionComando}.layout.ConversionPattern=%p %t %c - %m%n
+
+log4j.logger.&{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objetoDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)operacionComando}.model=DEBUG','&{objetoDeDatos}&{interfazPackage}&{(suc)operacionComando}

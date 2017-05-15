@@ -1,7 +1,0 @@
-package &{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)opeComBackend}.model.dao;
-
-import javax.ejb.Local;
-
-@Local
-public interface &{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}DAOLocal {
-}

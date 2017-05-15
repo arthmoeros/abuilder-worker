@@ -1,8 +1,0 @@
-log4j.appender.&{objDeDatos}&{interfazPackage}&{(suc)opeComBackend}=org.apache.log4j.RollingFileAppender
-log4j.appender.&{objDeDatos}&{interfazPackage}&{(suc)opeComBackend}.File=./Corp/AppLog/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}.log
-log4j.appender.&{objDeDatos}&{interfazPackage}&{(suc)opeComBackend}.MaxFileSize=100KB
-log4j.appender.&{objDeDatos}&{interfazPackage}&{(suc)opeComBackend}.MaxBackupIndex=1
-log4j.appender.&{objDeDatos}&{interfazPackage}&{(suc)opeComBackend}.layout=org.apache.log4j.PatternLayout
-log4j.appender.&{objDeDatos}&{interfazPackage}&{(suc)opeComBackend}.layout.ConversionPattern=%p %t %c - %m%n
-
-log4j.logger.&{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)opeComBackend}.model=DEBUG','&{objDeDatos}&{interfazPackage}&{(suc)opeComBackend}

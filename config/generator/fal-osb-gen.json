@@ -3,7 +3,7 @@
         "rootContents": [
             {
                 "folder": {
-                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_EXP",
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP",
                     "contents": [
                         {
                             "folder": {
@@ -26,7 +26,7 @@
                                             "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
                                             "targetName": "org.eclipse.wst.common.component",
                                             "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_EXP"
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP"
                                             }
                                         }
                                     },
@@ -35,7 +35,7 @@
                                             "location": "./fal-templates/common/.project.atmpl",
                                             "targetName": ".project",
                                             "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_EXP"
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP"
                                             }
                                         }
                                     }
@@ -49,7 +49,7 @@
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/exp/TEMPLATE_PROXY.proxy.atmpl",
-                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}Exp.proxy"
+                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}Exp.proxy"
                                         }
                                     }
                                 ]
@@ -66,13 +66,13 @@
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/exp/TEMPLATE_XSD_REQ.xsd.atmpl",
-                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}Req.xsd"
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}Req.xsd"
                                                     }
                                                 },
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/exp/TEMPLATE_XSD_RESP.xsd.atmpl",
-                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}Resp.xsd"
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}Resp.xsd"
                                                     }
                                                 }
                                             ]
@@ -85,7 +85,7 @@
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/exp/TEMPLATE_WSDL.wsdl.atmpl",
-                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}.wsdl"
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}.wsdl"
                                                     }
                                                 }
                                             ]
@@ -106,7 +106,7 @@
             {
                 "folder": {
                     "includeif": "&{isComp}",
-                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_COMP",
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP",
                     "contents": [
                         {
                             "folder": {
@@ -129,7 +129,7 @@
                                             "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
                                             "targetName": "org.eclipse.wst.common.component",
                                             "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_COMP"
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP"
                                             }
                                         }
                                     },
@@ -138,7 +138,7 @@
                                             "location": "./fal-templates/common/.project.atmpl",
                                             "targetName": ".project",
                                             "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionSvc}_COMP"
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP"
                                             }
                                         }
                                     }
@@ -152,7 +152,7 @@
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/comp/TEMPLATE_PROXY.proxy.atmpl",
-                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}Comp.proxy"
+                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}Comp.proxy"
                                         }
                                     }
                                 ]
@@ -169,13 +169,13 @@
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/comp/TEMPLATE_XSD_REQ.xsd.atmpl",
-                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Req.xsd"
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}_COMP_Req.xsd"
                                                     }
                                                 },
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/comp/TEMPLATE_XSD_RESP.xsd.atmpl",
-                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Resp.xsd"
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}_COMP_Resp.xsd"
                                                     }
                                                 }
                                             ]
@@ -188,7 +188,7 @@
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/comp/TEMPLATE_WSDL.wsdl.atmpl",
-                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP.wsdl"
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}_COMP.wsdl"
                                                     }
                                                 }
                                             ]
@@ -212,7 +212,7 @@
         "rootContents": [
             {
                 "folder": {
-                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_&{(urd)versionSvc}_IMPL",
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_&{(urd)versionServicio}_IMPL",
                     "contents": [
                         {
                             "folder": {
@@ -235,7 +235,7 @@
                                             "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
                                             "targetName": "org.eclipse.wst.common.component",
                                             "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_&{(urd)versionSvc}_IMPL"
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_&{(urd)versionServicio}_IMPL"
                                             }
                                         }
                                     },
@@ -244,7 +244,7 @@
                                             "location": "./fal-templates/common/.project.atmpl",
                                             "targetName": ".project",
                                             "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_&{(urd)versionSvc}_IMPL"
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_&{(urd)versionServicio}_IMPL"
                                             }
                                         }
                                     }
@@ -259,14 +259,14 @@
                                         "atmpl": {
                                             "includeif": "&{!isPrd}",
                                             "location": "./fal-templates/impl/TEMPLATE_BUSINESS.biz.atmpl",
-                                            "targetName": "BS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}.biz"
+                                            "targetName": "BS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}.biz"
                                         }
                                     },
                                     {
                                         "atmpl": {
                                             "includeif": "&{isPrd}",
                                             "location": "./fal-templates/prd/TEMPLATE_BUSINESS.biz.atmpl",
-                                            "targetName": "BS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}.biz"
+                                            "targetName": "BS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}.biz"
                                         }
                                     }
                                 ]
@@ -279,7 +279,7 @@
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/impl/TEMPLATE_PROXY.proxy.atmpl",
-                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}Impl.proxy"
+                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}Impl.proxy"
                                         }
                                     }
                                 ]
@@ -296,27 +296,27 @@
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/impl/TEMPLATE_XSD_REQ.xsd.atmpl",
-                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_IMPL_Resp.xsd"
+                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_IMPL_Resp.xsd"
                                                     }
                                                 },
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/impl/TEMPLATE_XSD_RESP.xsd.atmpl",
-                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Resp.xsd"
+                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}_COMP_Resp.xsd"
                                                     }
                                                 },
                                                 {
                                                     "atmpl": {
                                                         "includeif": "&{isPrd}",
                                                         "location": "./fal-templates/prd/TEMPLATE_XSD_REQ.xsd.atmpl",
-                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}Req_IMPL.xsd"
+                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}Req_IMPL.xsd"
                                                     }
                                                 },
                                                 {
                                                     "atmpl": {
                                                         "includeif": "&{isPrd}",
                                                         "location": "./fal-templates/prd/TEMPLATE_XSD_RESP.xsd.atmpl",
-                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}Resp_IMPL.xsd"
+                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}Resp_IMPL.xsd"
                                                     }
                                                 }
                                             ]
@@ -329,14 +329,14 @@
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/impl/TEMPLATE_WSDL.wsdl.atmpl",
-                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_IMPL.wsdl"
+                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_IMPL.wsdl"
                                                     }
                                                 },
                                                 {
                                                     "atmpl": {
                                                         "includeif": "&{isPrd}",
                                                         "location": "./fal-templates/prd/TEMPLATE_WSDL.wsdl.atmpl",
-                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}_IMPL.wsdl"
+                                                        "targetName": "WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_IMPL.wsdl"
                                                     }
                                                 }
                                             ]
@@ -357,22 +357,22 @@
             {
                 "folder": {
                     "includeif": "&{isPrd}",
-                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP",
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}-&{(urd)versionServicio}_APP",
                     "contents": [
                         {
                             "atmpl": {
                                 "location": "./fal-templates/prd/jdev/TEMPLATE_JWS_APP.jws.atmpl",
-                                "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}-&{(urd)versionSvc}_APP"
+                                "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}-&{(urd)versionServicio}_APP"
                             }
                         },
                         {
                             "folder": {
-                                "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB",
+                                "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}EJB",
                                 "contents": [
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/prd/jdev/TEMPLATE_JPR_EJB.jpr.atmpl",
-                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{*(prefixUnderscore)interfazPackage}_&{opeComBackend}EJB"
+                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}EJB"
                                         }
                                     },
                                     {
@@ -381,7 +381,7 @@
                                             "contents": [
                                                 {
                                                     "folder": {
-                                                        "targetName": "&{(alc)localizacion}/&{(alc)negocio}/&{(alc)backend}/&{(alc)objDeDatos}&{*(alc,prefixFwdSlash)interfazPackage}/&{(alc)opeComBackend}/model",
+                                                        "targetName": "&{(alc)localizacion}/&{(alc)negocio}/&{(alc)backend}/&{(alc)objetoDeDatos}&{*(alc,prefixFwdSlash)interfazPackage}/&{(alc)operacionComando}/model",
                                                         "contents": [
                                                             {
                                                                 "folder": {
@@ -390,19 +390,19 @@
                                                                         {
                                                                             "atmpl": {
                                                                                 "location": "./fal-templates/prd/jdev/dao/TEMPLATE_DAO.java.atmpl",
-                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}DAO.java"
+                                                                                "targetName": "&{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}DAO.java"
                                                                             }
                                                                         },
                                                                         {
                                                                             "atmpl": {
                                                                                 "location": "./fal-templates/prd/jdev/dao/TEMPLATE_DAOBean.java.atmpl",
-                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}DAOBean.java"
+                                                                                "targetName": "&{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}DAOBean.java"
                                                                             }
                                                                         },
                                                                         {
                                                                             "atmpl": {
                                                                                 "location": "./fal-templates/prd/jdev/dao/TEMPLATE_DAOLocal.java.atmpl",
-                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}DAOLocal.java"
+                                                                                "targetName": "&{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}DAOLocal.java"
                                                                             }
                                                                         }
                                                                     ]
@@ -415,13 +415,13 @@
                                                                         {
                                                                             "atmpl": {
                                                                                 "location": "./fal-templates/prd/jdev/dto/TEMPLATE_InDTO.java.atmpl",
-                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}InDTO.java"
+                                                                                "targetName": "&{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}InDTO.java"
                                                                             }
                                                                         },
                                                                         {
                                                                             "atmpl": {
                                                                                 "location": "./fal-templates/prd/jdev/dto/TEMPLATE_OutDTO.java.atmpl",
-                                                                                "targetName": "&{(auc)backend}&{objDeDatos}&{(auc)interfazPackage}&{opeComBackend}OutDTO.java"
+                                                                                "targetName": "&{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}OutDTO.java"
                                                                             }
                                                                         }
                                                                     ]
@@ -475,13 +475,13 @@
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/prd/jdev/AppProperties/TEMPLATE.properties.atmpl",
-                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}.properties"
+                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{interfazPackage}&{operacionComando}-&{(urd)versionServicio}.properties"
                                         }
                                     },
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/prd/jdev/AppProperties/TEMPLATE_log4j.properties.atmpl",
-                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objDeDatos}&{interfazPackage}&{opeComBackend}-&{(urd)versionSvc}_log4j.properties"
+                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{interfazPackage}&{operacionComando}-&{(urd)versionServicio}_log4j.properties"
                                         }
                                     }
                                 ]

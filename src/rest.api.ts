@@ -1,6 +1,7 @@
 import { RestService, RestMethod, ContentType } from "@artifacter/common";
 
 import { MainWorker } from "./main.worker";
+import { ServerConfig } from "./server-config";
 
 /**
  * @class RestApi
@@ -32,6 +33,10 @@ export class RestApi {
 		let map: Map<string, string> = new Map<string, string>();
 		for (var key in req.body.map) {
 			map.set(key, req.body.map[key]);
+		}
+		if(ServerConfig.readConfig.debugInputMaps){
+			console.log("[DEBUG] Got input map with following values:");
+			console.log(map);
 		}
 		let worker: MainWorker = new MainWorker();
 		let zipFile: Buffer = worker.run(generatorName, formFunction, map);
