@@ -1,6 +1,6 @@
 {
 	"listenPort" : 8080,
-	"debugInputMaps" : true,
+	"debugInputMaps" : false,
 	"corsOptions" : {
 		"origin": "http://localhost:3000",
 		"optionsSuccessStatus": 200

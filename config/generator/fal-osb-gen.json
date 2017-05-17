@@ -29,15 +29,6 @@
                                                 "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP"
                                             }
                                         }
-                                    },
-                                    {
-                                        "atmpl": {
-                                            "location": "./fal-templates/common/.project.atmpl",
-                                            "targetName": ".project",
-                                            "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP"
-                                            }
-                                        }
                                     }
                                 ]
                             }
@@ -99,6 +90,15 @@
                                     }
                                 ]
                             }
+                        },
+                        {
+                            "atmpl": {
+                                "location": "./fal-templates/common/.project.atmpl",
+                                "targetName": ".project",
+                                "parameters": {
+                                    "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP"
+                                }
+                            }
                         }
                     ]
                 }
@@ -128,15 +128,6 @@
                                         "atmpl": {
                                             "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
                                             "targetName": "org.eclipse.wst.common.component",
-                                            "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "atmpl": {
-                                            "location": "./fal-templates/common/.project.atmpl",
-                                            "targetName": ".project",
                                             "parameters": {
                                                 "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP"
                                             }
@@ -202,6 +193,15 @@
                                     }
                                 ]
                             }
+                        },
+                        {
+                            "atmpl": {
+                                "location": "./fal-templates/common/.project.atmpl",
+                                "targetName": ".project",
+                                "parameters": {
+                                    "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP"
+                                }
+                            }
                         }
                     ]
                 }
@@ -238,15 +238,6 @@
                                                 "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_&{(urd)versionServicio}_IMPL"
                                             }
                                         }
-                                    },
-                                    {
-                                        "atmpl": {
-                                            "location": "./fal-templates/common/.project.atmpl",
-                                            "targetName": ".project",
-                                            "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_&{(urd)versionServicio}_IMPL"
-                                            }
-                                        }
                                     }
                                 ]
                             }
@@ -256,7 +247,7 @@
                                 "targetName": "BusinessService",
                                 "contents": [
                                     {
-                                        "atmpl": {
+                                        "static": {
                                             "includeif": "&{!isPrd}",
                                             "location": "./fal-templates/impl/TEMPLATE_BUSINESS.biz.atmpl",
                                             "targetName": "BS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}.biz"
@@ -296,13 +287,13 @@
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/impl/TEMPLATE_XSD_REQ.xsd.atmpl",
-                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_IMPL_Resp.xsd"
+                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_IMPL_Req.xsd"
                                                     }
                                                 },
                                                 {
                                                     "atmpl": {
                                                         "location": "./fal-templates/impl/TEMPLATE_XSD_RESP.xsd.atmpl",
-                                                        "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}_COMP_Resp.xsd"
+                                                        "targetName": "&{(auc)capa}_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_IMPL_Resp.xsd"
                                                     }
                                                 },
                                                 {
@@ -349,6 +340,15 @@
                                         }
                                     }
                                 ]
+                            }
+                        },
+                        {
+                            "atmpl": {
+                                "location": "./fal-templates/common/.project.atmpl",
+                                "targetName": ".project",
+                                "parameters": {
+                                    "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_&{(urd)versionServicio}_IMPL"
+                                }
                             }
                         }
                     ]
@@ -410,8 +410,8 @@
                                                             },
                                                             {
                                                                 "folder": {
-                                                                    "targetName" : "dto",
-                                                                    "contents" : [
+                                                                    "targetName": "dto",
+                                                                    "contents": [
                                                                         {
                                                                             "atmpl": {
                                                                                 "location": "./fal-templates/prd/jdev/dto/TEMPLATE_InDTO.java.atmpl",
@@ -428,9 +428,9 @@
                                                                 }
                                                             },
                                                             {
-                                                                "folder" : {
-                                                                    "targetName" : "util",
-                                                                    "contents" : [
+                                                                "folder": {
+                                                                    "targetName": "util",
+                                                                    "contents": [
                                                                         {
                                                                             "atmpl": {
                                                                                 "location": "./fal-templates/prd/jdev/util/TEMPLATE_Configurator.java.atmpl",
