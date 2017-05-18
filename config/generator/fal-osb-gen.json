@@ -473,7 +473,7 @@
                                 "targetName": "Corp/AppProperties",
                                 "contents": [
                                     {
-                                        "atmpl": {
+                                        "static": {
                                             "location": "./fal-templates/prd/jdev/AppProperties/TEMPLATE.properties.atmpl",
                                             "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{interfazPackage}&{operacionComando}-&{(urd)versionServicio}.properties"
                                         }

@@ -7,6 +7,7 @@ import * as bodyParser from "body-parser";
 import * as http from "http";
 import * as cors from "cors";
 import * as fs from "fs";
+import * as col from "colors/safe";
 
 import { RestApi } from "./rest.api";
 import { ServerConfig } from "./server-config";
@@ -49,29 +50,29 @@ export class RestExpressServer {
      * Creates the singleton
      */
     private constructor() {
-        console.info("Starting REST express server")
+        console.info(col.green("Starting REST express server"));
 
-        console.info("Setting up express.js");
+        console.info(col.cyan(">Setting up express.js"));
         this.expressApp = express();
-        console.info("Setting up Middleware");
+        console.info(col.cyan("Setting up Middleware"));
         this.setupMiddleware();
-        console.info("Setting up routes");
+        console.info(col.cyan("Setting up routes"));
         this.setupRoutes();
         this.port = ServerConfig.readConfig.listenPort;
         this.expressApp.set("port", this.port);
-        console.info("Creating node.js HTTP Server");
+        console.info(col.cyan("Creating node.js HTTP Server"));
         this.server = http.createServer(this.expressApp);
         this.server.listen(this.port);
         this.server.on("error", (error) => this.onError(error));
         this.server.on("listening", () => this.onListening());
-        console.info("Server started");
+        console.info(col.green("Server started"));
     }
 
     /**
      * Setups de Middleware, CORS uses allowed hosts to invoke this API
      */
     private setupMiddleware() {
-        console.info("Setting up CORS to accept only XHR requests from " + ServerConfig.readConfig.corsOptions.origin)
+        console.info(col.cyan("Setting up CORS to accept only XHR requests from " + ServerConfig.readConfig.corsOptions.origin));
         this.expressApp.use(cors(ServerConfig.readConfig.corsOptions));
         this.expressApp.use(logger("dev"));
     }
@@ -95,7 +96,7 @@ export class RestExpressServer {
                         let restMethod = restApi[member];
                         restMethod.apply(restApi,[req, res, next]);
                     }]);
-                    console.info("Setup route for method RestApi#" + member + " on path '" + restMetadata.resource + "', expects a '" + restMetadata.requestContentType.value + "' on request and a '" + restMetadata.responseContentType.value + "' on response");
+                    console.info(col.yellow("Setup route for method RestApi#" + member + " on path '" + restMetadata.resource + "', expects a '" + restMetadata.requestContentType.value + "' on request and a '" + restMetadata.responseContentType.value + "' on response"));
                 }
             }
         });
@@ -162,7 +163,7 @@ export class RestExpressServer {
         var bind = typeof addr === "string"
             ? "pipe " + addr
             : "port " + addr.port;
-        console.info("Listening on " + bind);
+        console.info(col.green("Listening on " + bind));
     }
 
 }

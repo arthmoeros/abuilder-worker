@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as col from "colors/safe";
 
 export class ServerConfig {
     
@@ -8,7 +9,7 @@ export class ServerConfig {
     private static readonly config: any = ServerConfig.initConfig();
 
     private static initConfig(): any {
-        console.info("Reading configuration located at " + __dirname + "/../config/server-config.json");
+        console.info(col.gray("Reading configuration located at " + __dirname + "/../config/server-config.json"));
         return JSON.parse(fs.readFileSync(__dirname + "/../config/server-config.json").toString());
     }
 

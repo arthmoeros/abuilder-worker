@@ -3,42 +3,40 @@
         "rootContents": [
             {
                 "folder": {
-                    "name": "osb_project",
-                    "targetTmplName": "OSB_&{(auc)bizDomain}_&{(auc)bizEntity}",
+                    "targetName": "OSB_&{(auc)bizDomain}_&{(auc)bizEntity}",
                     "contents": [
                         {
                             "atmpl": {
-                                "name": "project_file.atmpl",
-                                "targetname": ".project"
+                                "location": "./osb_project/project_file.atmpl",
+                                "targetName": ".project"
                             }
                         },
                         {
                             "atmpl": {
-                                "name": "proxy_service.proxy.atmpl",
-                                "targetTmplName": "PX_&{(sixPaddLeftZero)serviceId}_&{serviceName}&{(prefixUnderscore)serviceType}_&{(auc)serviceVersion}.proxy"
+                                "location": "./osb_project/proxy_service.proxy.atmpl",
+                                "targetName": "PX_&{(sixPaddLeftZero)serviceId}_&{serviceName}&{(prefixUnderscore)serviceType}_&{(auc)serviceVersion}.proxy"
                             }
                         },
                         {
                             "folder": {
-                                "name": "settings_folder",
-                                "targetname": ".settings",
+                                "targetName": ".settings",
                                 "contents": [
                                     {
                                         "atmpl": {
-                                            "name": "org.eclipse.wst.common.component.atmpl",
-                                            "targetname": "org.eclipse.wst.common.component"
+                                            "location": "./osb_project/settings_folder/org.eclipse.wst.common.component.atmpl",
+                                            "targetName": "org.eclipse.wst.common.component"
                                         }
                                     },
                                     {
                                         "static": {
-                                            "name": "org.eclipse.wst.common.project.facet.core.xml.static",
-                                            "targetname": "org.eclipse.wst.common.project.facet.core.xml"
+                                            "location": "./osb_project/settings_folder/org.eclipse.wst.common.project.facet.core.xml.static",
+                                            "targetName": "org.eclipse.wst.common.project.facet.core.xml"
                                         }
                                     },
                                     {
                                         "static": {
-                                            "name": "org.eclipse.wst.validation.prefs.static",
-                                            "targetname": "org.eclipse.wst.validation.prefs"
+                                            "location": "./osb_project/settings_folder/org.eclipse.wst.validation.prefs.static",
+                                            "targetName": "org.eclipse.wst.validation.prefs"
                                         }
                                     }
                                 ]
@@ -47,8 +45,7 @@
                         {
                             "folder": {
                                 "includeif": "&{additionalFolders}",
-                                "name": "resources_folder",
-                                "targetname": "Resources"
+                                "targetName": "Resources"
                             }
                         }
                     ]
