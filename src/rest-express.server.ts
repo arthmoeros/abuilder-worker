@@ -59,10 +59,10 @@ export class RestExpressServer {
         console.info(col.cyan("Setting up routes"));
         this.setupRoutes();
         this.port = ServerConfig.readConfig.listenPort;
-        this.expressApp.set("port", this.port);
+        this.expressApp.set("port", (process.env.PORT || this.port));
         console.info(col.cyan("Creating node.js HTTP Server"));
         this.server = http.createServer(this.expressApp);
-        this.server.listen(this.port);
+        this.server.listen(this.expressApp.get("port"));
         this.server.on("error", (error) => this.onError(error));
         this.server.on("listening", () => this.onListening());
         console.info(col.green("Server started"));

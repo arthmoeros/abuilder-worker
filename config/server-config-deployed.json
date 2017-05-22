@@ -1,8 +1,8 @@
 {
 	"listenPort" : 8080,
-	"debugInputMaps" : true,
+	"debugInputMaps" : false,
 	"corsOptions" : {
-		"origin": "http://localhost:5000",
+		"origin": "http://artifacter.herokuapp.com",
 		"optionsSuccessStatus": 200
 	}
 }

@@ -2,10 +2,11 @@
   "name": "@artifacter/worker",
   "version": "0.9.0",
   "description": "Artifacter's worker module (artifact generation management)",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node --no-ignore -P .\\src .\\src\\start-server.ts"
+    "build": "tsc -p src/",
+    "build:watch": "tsc -p src/ -w",
+    "start": "node ./src/start-server.js",
+    "dev": "npm run build && concurrently \"npm run build:watch\" \"node ./src/start-server.js\""
   },
   "repository": {
     "type": "git",
@@ -41,5 +42,11 @@
     "reflect-metadata": "^0.1.10",
     "shelljs": "^0.7.7",
     "uuid": "^3.0.1"
+  },
+  "engines": {
+    "node": "6.10.1"
+  },
+  "devDependencies": {
+    "concurrently": "^3.4.0"
   }
 }
