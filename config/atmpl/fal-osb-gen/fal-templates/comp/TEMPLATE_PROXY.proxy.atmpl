@@ -3,10 +3,10 @@
 <xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:env="http://www.bea.com/wli/config/env" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:con1="http://www.bea.com/wli/sb/stages/logging/config" xmlns:con2="http://www.bea.com/wli/sb/stages/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config" xmlns:con4="http://www.bea.com/wli/sb/stages/routing/config">
   <ser:coreEntry isProxy="true" isEnabled="true">
     <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
-      <con:wsdl ref="&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionServicio}_COMP/Resources/WSDL/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP"/>
+      <con:wsdl ref="&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}-&{(urd)versionServicio}_COMP/Resources/WSDL/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}_COMP"/>
       <con:port>
         <con:name>&{objetoDeNegocio}&{entidadDiscreta}&{operacion}PortCOMP</con:name>
-        <con:namespace>http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP</con:namespace>
+        <con:namespace>http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP</con:namespace>
       </con:port>
       <con:selector type="SOAP body"/>
       <con:WSI-compliant>false</con:WSI-compliant>
@@ -48,7 +48,7 @@
       <con:stage name="validateRequestComp">
         <con:context>
           <con2:varNsDecl namespace="http://mdwcorp.falabella.com/common/schema/clientservice" prefix="cli"/>
-          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" prefix="req"/>
         </con:context>
         <con:actions>
           <con3:validate>
@@ -62,8 +62,8 @@
           </con3:validate>
           <con3:validate>
             <con2:id>_ActionId-&{#actionId}</con2:id>
-            <con3:schema ref="&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}-&{(urd)versionServicio}_COMP/Resources/Schemas/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Req"/>
-            <con3:schemaElement xmlns:req="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}">req:&{objetoDeNegocio}&{entidadDiscreta}&{operacion}CompReq</con3:schemaElement>
+            <con3:schema ref="&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}-&{(urd)versionServicio}_COMP/Resources/Schemas/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}_COMP_Req"/>
+            <con3:schemaElement xmlns:req="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}">req:&{objetoDeNegocio}&{entidadDiscreta}&{operacion}CompReq</con3:schemaElement>
             <con3:varName>body</con3:varName>
             <con3:location>
               <con2:xpathText>./req:&{objetoDeNegocio}&{entidadDiscreta}&{operacion}CompReq</con2:xpathText>
@@ -73,7 +73,7 @@
       </con:stage>
       <con:stage name="setRequestImpl">
         <con:context>
-          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" prefix="req"/>
         </con:context>
         <con:actions>
           <con3:assign varName="requestImpl">
@@ -93,8 +93,8 @@
     <con:pipeline type="response" name="proxyComposicion_response">
       <con:stage name="setResponse">
         <con:context>
-          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" prefix="req"/>
-          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Resp/COMP/&{versionXSDResp}" prefix="resp"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" prefix="req"/>
+          <con2:varNsDecl namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Resp/COMP/&{versionXSDResp}" prefix="resp"/>
         </con:context>
         <con:actions>
           <con3:assign varName="responseComposicion">
@@ -143,7 +143,7 @@
             <con1:expr>
               <con2:xqueryText>$fault</con2:xqueryText>
             </con1:expr>
-            <con1:message>Error en [PX_&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}&{operacion}Comp] --></con1:message>
+            <con1:message>Error en [PX_&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}Comp] --></con1:message>
           </con1:log>
         </con:actions>
       </con:stage>

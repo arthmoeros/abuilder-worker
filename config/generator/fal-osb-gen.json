@@ -3,7 +3,7 @@
         "rootContents": [
             {
                 "folder": {
-                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP",
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}-&{(urd)versionServicio}_EXP",
                     "contents": [
                         {
                             "folder": {
@@ -26,7 +26,7 @@
                                             "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
                                             "targetName": "org.eclipse.wst.common.component",
                                             "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP"
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}-&{(urd)versionServicio}_EXP"
                                             }
                                         }
                                     }
@@ -40,7 +40,7 @@
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/exp/TEMPLATE_PROXY.proxy.atmpl",
-                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}Exp.proxy"
+                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}Exp.proxy"
                                         }
                                     }
                                 ]
@@ -96,7 +96,7 @@
                                 "location": "./fal-templates/common/.project.atmpl",
                                 "targetName": ".project",
                                 "parameters": {
-                                    "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_EXP"
+                                    "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}-&{(urd)versionServicio}_EXP"
                                 }
                             }
                         }
@@ -106,7 +106,7 @@
             {
                 "folder": {
                     "includeif": "&{isComp}",
-                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP",
+                    "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}-&{(urd)versionServicio}_COMP",
                     "contents": [
                         {
                             "folder": {
@@ -129,7 +129,7 @@
                                             "location": "./fal-templates/common/.settings/org.eclipse.wst.common.component.atmpl",
                                             "targetName": "org.eclipse.wst.common.component",
                                             "parameters": {
-                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP"
+                                                "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}-&{(urd)versionServicio}_COMP"
                                             }
                                         }
                                     }
@@ -143,7 +143,7 @@
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/comp/TEMPLATE_PROXY.proxy.atmpl",
-                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}Comp.proxy"
+                                            "targetName": "PX_&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}Comp.proxy"
                                         }
                                     }
                                 ]
@@ -199,7 +199,7 @@
                                 "location": "./fal-templates/common/.project.atmpl",
                                 "targetName": ".project",
                                 "parameters": {
-                                    "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}_&{operacion}-&{(urd)versionServicio}_COMP"
+                                    "projectName": "&{(auc)negocio}_&{(auc)localizacion}_&{objetoDeNegocio}&{*(prefixUnderscore)entidadDiscreta}&{operacion}-&{(urd)versionServicio}_COMP"
                                 }
                             }
                         }
@@ -244,7 +244,7 @@
                         },
                         {
                             "folder": {
-                                "targetName": "BusinessService",
+                                "targetName": "BusinessServices",
                                 "contents": [
                                     {
                                         "static": {
@@ -362,7 +362,7 @@
                         {
                             "atmpl": {
                                 "location": "./fal-templates/prd/jdev/TEMPLATE_JWS_APP.jws.atmpl",
-                                "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}-&{(urd)versionServicio}_APP"
+                                "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}-&{(urd)versionServicio}_APP.jws"
                             }
                         },
                         {
@@ -372,7 +372,7 @@
                                     {
                                         "atmpl": {
                                             "location": "./fal-templates/prd/jdev/TEMPLATE_JPR_EJB.jpr.atmpl",
-                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}EJB"
+                                            "targetName": "&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}EJB.jpr"
                                         }
                                     },
                                     {

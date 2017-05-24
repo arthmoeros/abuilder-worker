@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions name="&{objetoDeNegocio}&{entidadDiscreta}&{operacion}"
-	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP" 
-	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP" 
+	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP" 
+	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP" 
 	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
 	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/"
 	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
@@ -10,13 +10,13 @@
 	xmlns:cs="http://mdwcorp.falabella.com/common/schema/clientservice"
 	xmlns:csfif="http://mdwcorp.falabella.com/common/schema/clientserviceFIF"
 	xmlns:env="http://schemas.xmlsoap.org/soap/envelope/"
-	xmlns:req="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" 
-	xmlns:resp="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Resp/COMP/&{versionXSDResp}">
+	xmlns:req="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" 
+	xmlns:resp="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Resp/COMP/&{versionXSDResp}">
 	
 	<wsdl:types>
-		<xs:schema targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP" elementFormDefault="qualified">
-			<xs:import namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" schemaLocation="../Schemas/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Req.xsd"/>
-			<xs:import namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Resp/COMP/&{versionXSDResp}" schemaLocation="../Schemas/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Resp.xsd"/>
+		<xs:schema targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP" elementFormDefault="qualified">
+			<xs:import namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Req/COMP/&{versionXSDReq}" schemaLocation="../Schemas/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Req.xsd"/>
+			<xs:import namespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}/Resp/COMP/&{versionXSDResp}" schemaLocation="../Schemas/&{(auc)negocio}_&{(auc)localizacion}_&{(auc)capa}_&{objetoDeNegocio}&{*(prefixUnderscore)localizacion}_&{operacion}_COMP_Resp.xsd"/>
 			<xs:import namespace="http://mdwcorp.falabella.com/common/schema/clientservice" schemaLocation="../../../UT_EsquemasComunes_V.2.0/Specifications/XSD/Common/MdwCorp_Common_clientService.xsd"/>
 			<xs:import
 				schemaLocation="../../../UT_EsquemasComunesFIF_V.1.0/Specifications/XSD/Common/MdwCorp_Common_clientServiceFIF.xsd"
@@ -50,7 +50,7 @@
 	<wsdl:binding name="&{objetoDeNegocio}&{entidadDiscreta}&{operacion}Binding" type="tns:&{objetoDeNegocio}&{entidadDiscreta}&{operacion}Pt">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsdl:operation name="&{objetoDeNegocio}&{entidadDiscreta}&{operacion}Op">
-			<soap:operation soapAction="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}$&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP/Op" style="document"/>
+			<soap:operation soapAction="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/wsdl/&{objetoDeNegocio}&{*(prefixFwdSlash)entidadDiscreta}/&{operacion}-&{versionWSDL}/COMP/Op" style="document"/>
 			<wsdl:input>
 				<soap:header message="tns:ClientServiceMsg" part="ClientServiceParam" use="literal"/>
 				<soap:header message="tns:ClientServiceFIFMsg" part="ClientServiceFIFParam"
