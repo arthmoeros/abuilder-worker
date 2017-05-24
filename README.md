@@ -21,3 +21,6 @@ This worker has a great flaw, because it has a tight coupling with @artifacter/u
 
 #### What's coming next? - Planned features for a future release
 A lot, I want to implement asynchronous generation requests using any queue provider, also I want to improve its tightened coupling with @artifacter/ui, maybe implementing methods for querying the configuration state of the worker, but as I mentioned before, I still have to put some thought into that.
+
+#### How do I run this?
+Just do a *npm start*, which will start the server.
