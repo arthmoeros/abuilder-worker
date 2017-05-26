@@ -123,7 +123,7 @@ export class RestExpressServer {
         } else if (contentType == "text/plain") {
             return bodyParser.text();
         } else if (contentType == "application/x-www-form-urlencoded") {
-            return bodyParser.urlencoded();
+            return bodyParser.urlencoded({extended: true});
         } else {
             return bodyParser.raw();
         }

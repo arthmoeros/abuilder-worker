@@ -5,7 +5,7 @@ import * as shelljs from "shelljs";
 
 import { GeneratorProcessor } from "./generator.processor";
 
-const tmpFilesFolder: string = "./tmp/";
+export const tmpFilesFolder: string = "./tmp/";
 /**
  * @class MainWorker
  * @see npm @artifacter/worker
@@ -27,29 +27,25 @@ export class MainWorker {
      * @param formFunction FormFunction to use in the generator
      * @param workingFolder Path to the temporary working folder to store generated artifacts
 	 */
-	public run(generator: string, formFunction: string, map: Map<string, string>): Buffer {
-		let tmpFolder: string = this.generateTmpDir();
+	public run(generator: string, formFunction: string, map: Map<string, string>): string {
+		let tmpName: string = uuid();
+		let tmpFolder: string = this.generateTmpDir(tmpName);
 		try {
 			new GeneratorProcessor(generator, formFunction, tmpFolder).run(map);
-			zipFolder(tmpFolder, tmpFolder + "_zip/out.zip");
-
-			let zipFile: Buffer = fs.readFileSync(tmpFolder + "_zip/out.zip");
-			return zipFile;
+			zipFolder(tmpFolder, tmpFolder + ".zip");
+			return tmpName;
 		} catch (error) {
 			throw error;
 		} finally {
 			shelljs.rm("-rf", tmpFolder);
-			shelljs.rm("-rf", tmpFolder + "_zip");
 		}
 	}
 
 	/**
 	 * Generates temporary folders for generated artifacts and zip file
 	 */
-	private generateTmpDir(): string {
-		let dirName: string = uuid();
+	private generateTmpDir(dirName: string): string {
 		fs.mkdirSync(tmpFilesFolder + dirName);
-		fs.mkdirSync(tmpFilesFolder + dirName + "_zip");
 		return tmpFilesFolder + dirName;
 	}
 }
