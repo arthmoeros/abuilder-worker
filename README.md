@@ -12,7 +12,7 @@ The worker is meant to be run as a server, via **npm start**, there are 2 REST s
 
 Request ContentType   |    Response ContentType
 ----- | -----
-application/json | application/zip
+application/json | application/json
 
 Sends an artifact generation request, the data provided must match the worker's own configuration. Responds synchronously with an UUID for the zip file retrieval.
 
