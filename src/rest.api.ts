@@ -26,11 +26,11 @@ export class RestApi {
 	 */
 	@RestService({
 		method: RestMethod.POST,
-		resource: "/artifactGenerationRequest",
+		resource: "/artifacts",
 		requestContentType: ContentType.applicationJson,
 		responseContentType: ContentType.applicationJson
 	})
-	public postArtifactGenerationRequest(req: Request, res: Response, next: NextFunction) {
+	public createArtifact(req: Request, res: Response, next: NextFunction) {
 		let generatorName: string = req.body.generator;
 		let formFunction: string = req.body.formFunction;
 		let map: Map<string, string> = new Map<string, string>();
@@ -44,25 +44,25 @@ export class RestApi {
 		let worker: MainWorker = new MainWorker();
 		let tmpName: string = worker.run(generatorName, formFunction, map);
 
-		let jsonResponse: any = {};
-		jsonResponse.artifactsUUID = tmpName;
-
-		res.end(JSON.stringify(jsonResponse));
+		res.send(201);
+		res.setHeader("Location", "/artifacts/"+tmpName)
+		res.end();
 	}
 
 	/**
-	 * Retrieves a generated artifacts file using a uuid, once is retrieved it expires
+	 * Retrieves a generated artifacts file using an uuid, once is retrieved it expires, it does
+	 * not allow querying for the artifacts list, an uuid must be provided
 	 * @param req 
 	 * @param res 
 	 * @param next 
 	 */
 	@RestService({
 		method: RestMethod.GET,
-		resource: "/generatedArtifacts",
+		resource: "/artifacts",
 		requestContentType: ContentType.urlEncoded,
 		responseContentType: ContentType.applicationZip
 	})
-	public getGeneratedArtifacts(req: Request, res: Response, next: NextFunction) {
+	public getArtifact(req: Request, res: Response, next: NextFunction) {
 		let uuid: string = req.query['uuid'];
 		if(!/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(uuid)){
 			res.sendStatus(403);
@@ -71,7 +71,7 @@ export class RestApi {
 		}
 
 		if(!fs.existsSync(tmpFilesFolder + "/" + uuid + ".zip")){
-			res.sendStatus(410);
+			res.sendStatus(404);
 			res.end();
 			return;
 		}
@@ -81,7 +81,25 @@ export class RestApi {
 		shelljs.rm("-f", tmpFilesFolder + "/" + uuid + ".zip");
 
 		res.setHeader('Content-disposition', 'attachment; filename=generatedArtifacts.zip');
+		res.send(200);
 		res.end(zipFile);
+	}
+
+	/**
+	 * Retrieves a list of available configurations for Artifacter or a single one if
+	 * the id is provided
+	 * @param req 
+	 * @param res 
+	 * @param next 
+	 */
+	@RestService({
+		method: RestMethod.GET,
+		resource: "/configurations",
+		requestContentType: ContentType.urlEncoded,
+		responseContentType: ContentType.applicationJson
+	})
+	public getConfigurations(req: Request, res: Response, next: NextFunction){
+
 	}
 
 }
