@@ -1,10 +1,11 @@
 {
     "forms": [
         {
-            "formKey": "sampleFormOne",
             "formName": "Sample Form 1",
             "formDescription": "This sample form generates a JDeveloper Project for a OSB proxy service, using the data provided by the user and the configured templates",
             "input": {
+                "$generator" : "sample-arch-osb-gen",
+                "$task": "generate-sample-arch-osb",
                 "generalInfo": {
                     "additionalFolders": {
                         "@type": "boolean",
@@ -42,6 +43,18 @@
                             "XYZ"
                         ]
                     }
+                },
+                "schemaInfo": {
+                    "schemas": {
+                        "@type": "array",
+                        "@required": false,
+                        "@item": {
+                            "schemaName": {
+                                "@type": "string",
+                                "@required": true
+                            }
+                        }
+                    }
                 }
             },
             "inputDisplayData": {
@@ -65,7 +78,7 @@
                     "label": "Service ID",
                     "helptext": "Identification number for the service"
                 },
-                "specificInfo":{
+                "specificInfo": {
                     "label": "Specific Information"
                 },
                 "specificInfo.serviceName": {
@@ -79,6 +92,16 @@
                 "specificInfo.serviceType": {
                     "label": "Service Type",
                     "helptext": "Indicates Service Type"
+                },
+                "schemasInfo": {
+                    "label": "Provide information about support schemas to include"
+                },
+                "schemasInfo.schemas": {
+                    "label": "Schemas List"
+                },
+                "schemasInfo.schemas.schemaName": {
+                    "label": "Schema Name",
+                    "helptext": "The support schema name"
                 }
             },
             "declaredPostProcessors": {
@@ -87,12 +110,12 @@
                     "string.blanksToCamelCase",
                     "string.startWithUpperCase"
                 ],
-                "generalInfo.serviceName": [
+                "generalInfo.specificInfo.serviceName": [
                     "string.allLowerCase",
                     "string.blanksToCamelCase",
                     "string.startWithUpperCase"
                 ],
-                "generalInfo.serviceVersion": [
+                "generalInfo.specificInfo.serviceVersion": [
                     "string.allLowerCase"
                 ]
             }

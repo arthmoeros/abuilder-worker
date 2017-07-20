@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>OSB_&{(auc)bizDomain}_&{(auc)bizEntity}</name>
+	<name>OSB_&{(auc)generalInfo.bizDomain}_&{(auc)generalInfo.bizEntity}</name>
 	<comment></comment>
 	<projects>
 	</projects>

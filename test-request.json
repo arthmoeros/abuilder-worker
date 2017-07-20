@@ -1,0 +1,25 @@
+{
+    "$generator": "sample-arch-osb-gen",
+    "$task": "generate-sample-arch-osb",
+    "generalInfo": {
+        "additionalFolders": true,
+        "bizDomain": "General",
+        "bizEntity": "Entidad",
+        "serviceId": 111
+    },
+    "specificInfo": {
+        "serviceName": "GetInfo",
+        "serviceVersion": "v1.0",
+        "serviceType": "ABC"
+    },
+    "schemaInfo": {
+        "schemas": [
+            {
+                "schemaName": "Esquema1"
+            },
+            {
+                "schemaName": "Esquema2"
+            }
+        ]
+    }
+}

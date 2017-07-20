@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="http://osb.sample.com/&{(auc)generalInfo.bizDomain}/&{(auc)generalInfo.bizEntity}/schema&{*(prefix['/'])specificInfo.serviceType}/&{specificInfo.serviceName}/&{specificInfo.serviceVersion}" 
+	xmlns:tns="http://osb.sample.com/&{(auc)generalInfo.bizDomain}/&{(auc)generalInfo.bizEntity}/schema&{*(prefix['/'])specificInfo.serviceType}/&{specificInfo.serviceName}/&{specificInfo.serviceVersion}"
+	targetNamespace="http://osb.sample.com/&{(auc)generalInfo.bizDomain}/&{(auc)generalInfo.bizEntity}/schema&{*(prefix['/'])specificInfo.serviceType}/&{specificInfo.serviceName}/&{specificInfo.serviceVersion}">
+	<xs:element name="&{generalInfo.bizDomain}&{generalInfo.bizEntity}&{specificInfo.serviceName}_&{:schemaName}" type="tns:&{generalInfo.bizDomain}&{generalInfo.bizEntity}&{specificInfo.serviceName}_&{:schemaName}_TYPE"/>
+	<xs:complexType name="&{generalInfo.bizDomain}&{generalInfo.bizEntity}&{specificInfo.serviceName}_&{:schemaName}_TYPE">
+		<!-- ##SCHEMA_CONTENTS## !-->
+	</xs:complexType>
+</xs:schema>

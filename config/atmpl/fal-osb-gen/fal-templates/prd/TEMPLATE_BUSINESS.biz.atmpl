@@ -2,10 +2,10 @@
 <xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services" xmlns:tran="http://www.bea.com/wli/sb/transports" xmlns:http="http://www.bea.com/wli/sb/transports/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:env="http://www.bea.com/wli/config/env">
   <ser:coreEntry isProxy="false" isEnabled="true">
     <ser:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType" xmlns:con="http://www.bea.com/wli/sb/services/bindings/config">
-      <con:wsdl ref="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_&{(urd)versionServicio}_IMPL/Resources/WSDL/WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefixUnderscore)interfazPackage}_&{operacionComando}_IMPL"/>
+      <con:wsdl ref="&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefix['_'])interfazPackage}_&{operacionComando}_&{(urd)versionServicio}_IMPL/Resources/WSDL/WLS_&{(auc)negocio}_&{(auc)localizacion}_&{(auc)backend}_&{objetoDeDatos}&{*(prefix['_'])interfazPackage}_&{operacionComando}_IMPL"/>
       <con:port>
         <con:name>&{backend}&{objetoDeDatos}&{interfazPackage}&{operacionComando}PortIMPL</con:name>
-        <con:namespace>http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/wsdl/&{(auc)backend}/&{objetoDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{operacionComando}/IMPL/&{versionWSDL}</con:namespace>
+        <con:namespace>http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/wsdl/&{(auc)backend}/&{objetoDeDatos}&{*(prefix['/'])interfazPackage}/&{operacionComando}/IMPL/&{versionWSDL}</con:namespace>
       </con:port>
     </ser:binding>
     <ser:monitoring isEnabled="false">
@@ -22,7 +22,7 @@
     <tran:provider-id>http</tran:provider-id>
     <tran:inbound>false</tran:inbound>
     <tran:URI>
-      <env:value>http://localhost:7001/&{(auc)backend}/&{objetoDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{operacionComando}/&{versionWSDL}</env:value>
+      <env:value>http://localhost:7001/&{(auc)backend}/&{objetoDeDatos}&{*(prefix['/'])interfazPackage}/&{operacionComando}/&{versionWSDL}</env:value>
     </tran:URI>
     <tran:outbound-properties>
       <tran:load-balancing-algorithm>round-robin</tran:load-balancing-algorithm>

@@ -1,9 +1,9 @@
 {
-    "generateSampleArchOSB1": {
+    "generate-sample-arch-osb": {
         "rootContents": [
             {
                 "folder": {
-                    "targetName": "OSB_&{(auc)bizDomain}_&{(auc)bizEntity}",
+                    "targetName": "OSB_&{(auc)generalInfo.bizDomain}_&{(auc)generalInfo.bizEntity}",
                     "contents": [
                         {
                             "atmpl": {
@@ -14,7 +14,7 @@
                         {
                             "atmpl": {
                                 "location": "./osb_project/proxy_service.proxy.atmpl",
-                                "targetName": "PX_&{(sixPaddLeftZero)serviceId}_&{serviceName}&{(prefixUnderscore)serviceType}_&{(auc)serviceVersion}.proxy"
+                                "targetName": "PX_&{(paddLeft[6,'0')specificInfo.generalInfo.serviceId}_&{specificInfo.serviceName}&{(prefix['_'])specificInfo.serviceType}_&{(auc)specificInfo.serviceVersion}.proxy"
                             }
                         },
                         {
@@ -44,8 +44,22 @@
                         },
                         {
                             "folder": {
-                                "includeif": "&{additionalFolders}",
-                                "targetName": "Resources"
+                                "includeif": "&{generalInfo.additionalFolders}",
+                                "targetName": "Resources",
+                                "contents": [
+                                    {
+                                        "foreach": {
+                                            "expression": "schema in schemaInfo.schemas",
+                                            "atmpl": {
+                                                "location": "./osb_project/support_schema.xsd.atmpl",
+                                                "targetName": "SCHEMA_&{schema.schemaName}.xsd",
+                                                "parameters": {
+                                                    "schemaName": "&{schema.schemaName}"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
                             }
                         }
                     ]

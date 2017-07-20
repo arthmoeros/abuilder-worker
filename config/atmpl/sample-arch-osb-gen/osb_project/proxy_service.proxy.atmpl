@@ -22,7 +22,7 @@
     <tran:provider-id>http</tran:provider-id>
     <tran:inbound>true</tran:inbound>
     <tran:URI>
-      <env:value>/OSB_&{(auc)bizDomain}_&{(auc)bizEntity}/&{(sixPaddLeftZero)serviceId}_&{serviceName}&{*(prefixUnderscore)serviceType}_&{(auc)serviceVersion}</env:value>
+      <env:value>/OSB_&{(auc)generalInfo.bizDomain}_&{(auc)generalInfo.bizEntity}/&{(paddLeft[6,'0'])generalInfo.serviceId}_&{specificInfo.serviceName}&{*(prefix['_'])specificInfo.serviceType}_&{(auc)specificInfo.serviceVersion}</env:value>
     </tran:URI>
     <tran:inbound-properties/>
     <tran:all-headers>false</tran:all-headers>
@@ -31,7 +31,7 @@
     </tran:provider-specific>
   </ser:endpointConfig>
   <ser:router>
-    <con:pipeline type="request" name="&{(sixPaddLeftZero)serviceId}_&{serviceName}_request">
+    <con:pipeline type="request" name="&{(paddLeft[6,'0'])generalInfo.serviceId}_&{specificInfo.serviceName}_request">
       <con:stage name="Setup_values">
         <con:context/>
         <con:actions>
@@ -50,11 +50,11 @@
         </con:actions>
       </con:stage>
     </con:pipeline>
-    <con:pipeline type="response" name="&{(sixPaddLeftZero)serviceId}_&{serviceName}_response"/>
+    <con:pipeline type="response" name="&{(paddLeft[6,'0'])generalInfo.serviceId}_&{specificInfo.serviceName}_response"/>
     <con:flow>
-      <con:pipeline-node name="&{(sixPaddLeftZero)serviceId}_&{serviceName}">
-        <con:request>&{(sixPaddLeftZero)serviceId}_&{serviceName}_request</con:request>
-        <con:response>&{(sixPaddLeftZero)serviceId}_&{serviceName}_response</con:response>
+      <con:pipeline-node name="&{(paddLeft[6,'0'])generalInfo.serviceId}_&{specificInfo.serviceName}">
+        <con:request>&{(paddLeft[6,'0'])generalInfo.serviceId}_&{specificInfo.serviceName}_request</con:request>
+        <con:response>&{(paddLeft[6,'0'])generalInfo.serviceId}_&{specificInfo.serviceName}_response</con:response>
       </con:pipeline-node>
     </con:flow>
   </ser:router>
