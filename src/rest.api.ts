@@ -1,10 +1,7 @@
 import { RestService, RestMethod, ContentType } from "@artifacter/common";
 import { Request, Response, NextFunction } from "express";
-import * as fs from "fs";
-import * as shelljs from "shelljs";
 
-import { MainWorker, tmpFilesFolder, configurationsFolder } from "./main.worker";
-import { ServerConfig } from "./server-config";
+import { ArtifacterApi } from "./artifacter.api";
 
 /**
  * @class RestApi
@@ -17,7 +14,7 @@ import { ServerConfig } from "./server-config";
  */
 export class RestApi {
 
-	private static readonly
+	private readonly api: ArtifacterApi = new ArtifacterApi();
 
 	/**
 	 * Requests an artifact generation and responds synchronously with an uuid
@@ -28,20 +25,13 @@ export class RestApi {
 	 */
 	@RestService({
 		method: RestMethod.POST,
-		resource: "/artifacts",
+		resource: "/generatedArtifacts",
 		requestContentType: ContentType.applicationJson,
 		responseContentType: ContentType.applicationJson
 	})
-	public createArtifact(req: Request, res: Response, next: NextFunction) {
-		let generatorName: string = req.body["$generator"];
-		let task: string = req.body["$task"];
-		if (ServerConfig.readConfig.debugInputMaps) {
-			console.log("[DEBUG] Got input map with following values:");
-			console.log(req.body);
-		}
-		let worker: MainWorker = new MainWorker();
-		let tmpName: string = worker.run(generatorName, task, req.body);
-		res.setHeader("Location", "/artifacts/" + tmpName);
+	public postArtifactGeneration(req: Request, res: Response, next: NextFunction) {
+		let tmpName: string = this.api.requestArtifactGeneration(req.body);
+		res.setHeader("Location", "/generatedArtifacts/" + tmpName);
 		res.status(201);
 		res.end();
 	}
@@ -54,30 +44,15 @@ export class RestApi {
 	 */
 	@RestService({
 		method: RestMethod.GET,
-		resource: "/artifacts/:uuid",
+		resource: "/generatedArtifacts/:uuid",
 		requestContentType: ContentType.urlEncoded,
 		responseContentType: ContentType.applicationZip
 	})
-	public getArtifact(req: Request, res: Response, next: NextFunction) {
+	public getGeneratedArtifacts(req: Request, res: Response, next: NextFunction) {
 		let uuid: string = req.params['uuid'];
-		if (!/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(uuid)) {
-			res.sendStatus(400);
-			res.end();
-			return;
-		}
-
-		if (!fs.existsSync(tmpFilesFolder + "/" + uuid + ".zip")) {
-			res.sendStatus(404);
-			res.end();
-			return;
-		}
-
-		let zipFile: Buffer = fs.readFileSync(tmpFilesFolder + "/" + uuid + ".zip");
-
-		shelljs.rm("-f", tmpFilesFolder + "/" + uuid + ".zip");
-
+		let zipFile: Buffer = this.api.getGeneratedArtifacts(uuid);
 		res.setHeader('Content-disposition', 'attachment; filename=generatedArtifacts.zip');
-		res.send(200);
+		res.status(200);
 		res.end(zipFile);
 	}
 
@@ -94,20 +69,7 @@ export class RestApi {
 		responseContentType: ContentType.applicationJson
 	})
 	public getConfigurations(req: Request, res: Response, next: NextFunction) {
-		let configList: string[] = fs.readdirSync(configurationsFolder);
-		let response: string[] = [];
-		configList.forEach(config => {
-			let jsonIndex: number = config.indexOf(".json");
-			if (jsonIndex == -1) {
-				return;
-			}
-			response.push(config.substring(0, jsonIndex));
-		});
-		if (response.length == 0) {
-			res.status(404);
-			res.end();
-			return
-		}
+		let response: string[] = this.api.getConfigurations();
 		res.status(200);
 		res.end(JSON.stringify(response));
 	}
@@ -126,24 +88,9 @@ export class RestApi {
 	})
 	public getConfiguration(req: Request, res: Response, next: NextFunction) {
 		let id: string = req.params['id'];
-		if(/[/\\]/.test(id)){
-			res.status(400);
-			res.end("I see what are you doing, it's not going to work :)");
-			return;
-		}
-		if (id != null) {
-			if (!fs.existsSync(configurationsFolder + id + ".json")) {
-				res.status(404);
-				res.end();
-				return;
-			}
-			let configuration: string = fs.readFileSync(configurationsFolder + id + ".json").toString();
-			res.status(200);
-			res.end(configuration);
-		} else {
-			res.status(400);
-			res.end();
-		}
+		let configuration: string = this.api.getConfiguration(id);
+		res.status(200);
+		res.end(configuration);
 	}
 
 }

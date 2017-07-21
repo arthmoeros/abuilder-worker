@@ -1,12 +1,17 @@
 {
-  "name": "@artifacter/worker",
-  "version": "1.0.0",
-  "description": "Artifacter's worker module (artifact generation management)",
+  "name": "@artifacter/api",
+  "version": "0.0.7",
+  "description": "Artifacter's api module (artifact generation management)",
   "scripts": {
-    "build": "tsc -p src/",
-    "build:watch": "tsc -p src/ -w",
+    "prepublish": "tsc",
+    "build": "tsc -p .",
+    "build:watch": "tsc -p . -w",
     "start": "node ./src/start-server.js",
     "dev": "npm run build && concurrently \"npm run build:watch\" \"node ./src/start-server.js\""
+  },
+  "main": "index.js",
+  "bin": {
+    "artifacter": "./src/start-server.js"
   },
   "repository": {
     "type": "git",
@@ -43,9 +48,6 @@
     "reflect-metadata": "^0.1.10",
     "shelljs": "^0.7.7",
     "uuid": "^3.0.1"
-  },
-  "engines": {
-    "node": "6.10.1"
   },
   "devDependencies": {
     "concurrently": "^3.4.0"

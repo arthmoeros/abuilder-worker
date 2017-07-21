@@ -14,7 +14,7 @@
                         {
                             "atmpl": {
                                 "location": "./osb_project/proxy_service.proxy.atmpl",
-                                "targetName": "PX_&{(paddLeft[6,'0')specificInfo.generalInfo.serviceId}_&{specificInfo.serviceName}&{(prefix['_'])specificInfo.serviceType}_&{(auc)specificInfo.serviceVersion}.proxy"
+                                "targetName": "PX_&{(paddLeft[6,'0'])generalInfo.serviceId}_&{specificInfo.serviceName}&{(prefix['_'])specificInfo.serviceType}_&{(auc)specificInfo.serviceVersion}.proxy"
                             }
                         },
                         {

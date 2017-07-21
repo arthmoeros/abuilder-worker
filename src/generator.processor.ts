@@ -2,9 +2,10 @@ import * as fs from "fs";
 import * as shelljs from "shelljs";
 import { TemplateProcessor } from "@artifacter/template-engine";
 import { ObjectPropertyLocator } from "@artifacter/common";
+import { configurationsFolder } from "./paths";
 
-const generatorsPath = "./config/generator";
-const templatesPath = "./config/atmpl";
+const generatorsPath = configurationsFolder+"generator";
+const templatesPath = configurationsFolder+"atmpl";
 /**
  * @class GeneratorProcessor
  * @see npm @artifacter/worker
@@ -143,37 +144,46 @@ export class GeneratorProcessor {
         fs.writeFileSync(this.workingFolder + "/" + targetpath + "/" + filename, fileContents);
     }
 
+    /**
+     * Process a foreach element, it will process a single contained element (atmpl, static or folder)
+     * including its iterated item in a copied request object
+     * @param request values request
+     * @param foreach foreach element
+     * @param targetpath target path where to write the generated artifact
+     */
     private processForeach(request: {}, foreach: any, targetpath: string) {
         let expression: RegExpExecArray = /([A-Za-z0-9]+) +in +([A-Za-z0-9.]+)/.exec(foreach.expression);
         if (expression == null) {
             throw new Error(`Invalid expression in foreach found in running task: ${foreach.expression}`);
         }
-
         let list: any[] = ObjectPropertyLocator.lookup(request, expression[2]);
+        if(request[expression[1]] != null){
+            throw new Error(`foreach names its iterated item ${expression[1]}, but the request body already has a property with that name, fix the configuration and use another name on the foreach expression`);
+        }
         let requestCopy: {} = JSON.parse(JSON.stringify(request));
         list.forEach(item => {
             requestCopy[expression[1]] = item;
             if (foreach.folder) {
                 if (foreach.folder.includeif) {
-                    if (!TemplateProcessor.evaluateBoolean(foreach.folder.includeif, request)) {
+                    if (!TemplateProcessor.evaluateBoolean(foreach.folder.includeif, requestCopy)) {
                         return;
                     }
                 }
-                this.processFolder(request, foreach.folder, targetpath);
+                this.processFolder(requestCopy, foreach.folder, targetpath);
             } else if (foreach.atmpl) {
                 if (foreach.atmpl.includeif) {
-                    if (!TemplateProcessor.evaluateBoolean(foreach.atmpl.includeif, request)) {
+                    if (!TemplateProcessor.evaluateBoolean(foreach.atmpl.includeif, requestCopy)) {
                         return;
                     }
                 }
-                this.processAtmpl(request, foreach.atmpl, targetpath);
+                this.processAtmpl(requestCopy, foreach.atmpl, targetpath);
             } else if (foreach.static) {
                 if (foreach.static.includeif) {
-                    if (!TemplateProcessor.evaluateBoolean(foreach.static.includeif, request)) {
+                    if (!TemplateProcessor.evaluateBoolean(foreach.static.includeif, requestCopy)) {
                         return;
                     }
                 }
-                this.processStatic(request, foreach.static, targetpath);
+                this.processStatic(requestCopy, foreach.static, targetpath);
             } else {
                 throw new Error(`foreach with expression ${foreach.expression} does not have a valid inner element (atmpl|static|folder) in task ${request['$generator']}:${request['$task']}`);
             }

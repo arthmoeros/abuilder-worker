@@ -4,9 +4,8 @@ import * as zipFolder from "folder-zip-sync";
 import * as shelljs from "shelljs";
 
 import { GeneratorProcessor } from "./generator.processor";
+import { tmpFilesFolder, configurationsFolder } from "./paths";
 
-export const tmpFilesFolder: string = "./tmp/";
-export const configurationsFolder: string = "./config/configuration/";
 /**
  * @class MainWorker
  * @see npm @artifacter/worker

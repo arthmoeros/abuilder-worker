@@ -4,21 +4,21 @@
     "generalInfo": {
         "additionalFolders": true,
         "bizDomain": "General",
-        "bizEntity": "Entidad",
+        "bizEntity": "Retail",
         "serviceId": 111
     },
     "specificInfo": {
-        "serviceName": "GetInfo",
+        "serviceName": "getInfo",
         "serviceVersion": "v1.0",
         "serviceType": "ABC"
     },
     "schemaInfo": {
         "schemas": [
             {
-                "schemaName": "Esquema1"
+                "schemaName": "Customer"
             },
             {
-                "schemaName": "Esquema2"
+                "schemaName": "Employee"
             }
         ]
     }

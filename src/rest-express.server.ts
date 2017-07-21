@@ -1,4 +1,4 @@
-import { Application, Router } from "express";
+import { Application, Router, Response } from "express";
 import { Annotation, RestMethod } from "@artifacter/common";
 
 import * as express from "express";
@@ -11,6 +11,7 @@ import * as col from "colors/safe";
 
 import { RestApi } from "./rest.api";
 import { ServerConfig } from "./server-config";
+import { tmpFilesFolder, configurationsFolder } from "./paths";
 
 /**
  * @class WorkerHttpApiServer
@@ -51,8 +52,16 @@ export class RestExpressServer {
      */
     private constructor() {
         console.info(col.green("Starting REST express server"));
+        console.info(col.gray("Temp files folder is in: "+tmpFilesFolder));
+        if(process.env.ARTIFACTER_TMP == null){
+            console.info(col.yellow("If you want to set your own Temp files path, set the ARTIFACTER_TMP env variable"));
+        }
+        console.info(col.gray("Config files folder is in: "+configurationsFolder));
+        if(process.env.ARTIFACTER_CONFIG == null){
+            console.info(col.yellow("If you want to set your own Config files path, set the ARTIFACTER_CONFIG env variable"));
+        }
 
-        console.info(col.cyan(">Setting up express.js"));
+        console.info(col.cyan("Setting up express.js"));
         this.expressApp = express();
         console.info(col.cyan("Setting up Middleware"));
         this.setupMiddleware();
@@ -94,13 +103,37 @@ export class RestExpressServer {
                     routeFunction.apply(router, [restMetadata.resource, this.resolveBodyParser(restMetadata.requestContentType.value), (req, res, next) => {
                         res.contentType(restMetadata.responseContentType.value);
                         let restMethod = restApi[member];
-                        restMethod.apply(restApi,[req, res, next]);
+                        try {
+                            restMethod.apply(restApi, [req, res, next]);
+                        } catch (error) {
+                            this.handleHttpError(error, res);
+                        }
                     }]);
                     console.info(col.yellow("Setup route for method RestApi#" + member + " on path '" + restMetadata.resource + "', expects a '" + restMetadata.requestContentType.value + "' on request and a '" + restMetadata.responseContentType.value + "' on response"));
                 }
             }
         });
         this.expressApp.use(router);
+    }
+
+	/**
+	 * Handles a thrown error, if this informs in its message an HTTP status
+	 * code, it will handle it within the express.js Response object.
+	 * 
+	 * If the error cannot be handled, it will be rethrown to get a 500 status code
+	 * @param error Error caught
+	 * @param res express.js Response object
+	 */
+    private handleHttpError(error: Error, res: Response) {
+        if (/400/.test(error.message)) {
+            res.status(400);
+            res.end();
+        } else if (/404/.test(error.message)) {
+            res.status(404);
+            res.end();
+        } else {
+            throw error;
+        }
     }
 
     private resolveRouteFunction(router: Router, method: RestMethod) {
@@ -123,7 +156,7 @@ export class RestExpressServer {
         } else if (contentType == "text/plain") {
             return bodyParser.text();
         } else if (contentType == "application/x-www-form-urlencoded") {
-            return bodyParser.urlencoded({extended: true});
+            return bodyParser.urlencoded({ extended: true });
         } else {
             return bodyParser.raw();
         }
