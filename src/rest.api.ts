@@ -1,7 +1,7 @@
 import { RestService, RestMethod, ContentType } from "@artifacter/common";
 import { Request, Response, NextFunction } from "express";
 
-import { ArtifacterApi } from "./artifacter.api";
+import { Artifacter } from "./artifacter";
 
 /**
  * @class RestApi
@@ -14,7 +14,7 @@ import { ArtifacterApi } from "./artifacter.api";
  */
 export class RestApi {
 
-	private readonly api: ArtifacterApi = new ArtifacterApi();
+	private readonly api: Artifacter = new Artifacter();
 
 	/**
 	 * Requests an artifact generation and responds synchronously with an uuid

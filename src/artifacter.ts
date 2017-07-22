@@ -4,15 +4,16 @@ import * as shelljs from "shelljs";
 import { tmpFilesFolder, configurationsFolder } from "./paths";
 import { MainWorker } from "./main.worker";
 import { ServerConfig } from "./server-config";
+import { PostSubmitProcessor } from "./post-submit.processor";
 
 /**
- * @class ArtifacterApi
+ * @class Artifacter
  * 
  * This class provides all four available operations on Artifacter, if it is required
  * to handle artifact generation programmaticly, it can be done using an instance
  * of this class.
  */
-export class ArtifacterApi {
+export class Artifacter {
 
     /**
      * Requests an artifact generation, it requires a valid Request Object to work,
@@ -28,8 +29,10 @@ export class ArtifacterApi {
             console.log(request);
         }
         if (generatorName == null || task == null) {
-            throw new Error("500 Request Object is not valid");
+            throw new Error("400 Request Object is not valid");
         }
+        PostSubmitProcessor.run(request);
+        console.log(request);
         let worker: MainWorker = new MainWorker();
         return worker.run(generatorName, task, request);
     }

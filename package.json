@@ -1,7 +1,7 @@
 {
-  "name": "@artifacter/api",
-  "version": "0.0.7",
-  "description": "Artifacter's api module (artifact generation management)",
+  "name": "@artifacter/core",
+  "version": "2.0.3",
+  "description": "Artifacter's core module (artifact generation management)",
   "scripts": {
     "prepublish": "tsc",
     "build": "tsc -p .",
@@ -13,9 +13,10 @@
   "bin": {
     "artifacter": "./src/start-server.js"
   },
+  "readme": "README_NPM.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arthmoeros/artifacter-worker.git"
+    "url": "git+https://github.com/arthmoeros/artifacter-core.git"
   },
   "keywords": [
     "artifacter",
@@ -26,11 +27,11 @@
   "author": "arthmoeros",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/arthmoeros/artifacter-worker/issues"
+    "url": "https://github.com/arthmoeros/artifacter-core/issues"
   },
-  "homepage": "https://github.com/arthmoeros/artifacter-worker#readme",
+  "homepage": "https://github.com/arthmoeros/artifacter-core#readme",
   "dependencies": {
-    "@artifacter/common": "^1.0.0",
+    "@artifacter/common": "^1.0.5",
     "@artifacter/template-engine": "^2.0.0",
     "@types/body-parser": "^1.16.3",
     "@types/express": "^4.0.35",

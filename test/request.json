@@ -1,4 +1,5 @@
 {
+    "$configuration": "sample-arch-osb-form",
     "$generator": "sample-arch-osb-gen",
     "$task": "generate-sample-arch-osb",
     "generalInfo": {

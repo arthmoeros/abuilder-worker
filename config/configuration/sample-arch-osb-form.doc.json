@@ -1,12 +1,35 @@
 {
+    /* 
+        A forms array, each one represent a possible input for a single generator and task,
+        it is suggested that one group of forms = 1 generator.
+    */
     "$forms": [ 
         {
+            /*
+                A display name and description for the Form
+            */
             "$formName": "Sample Form 1",
             "$formDescription": "This sample form generates a JDeveloper Project for a OSB proxy service, using the data provided by the user and the configured templates",
+
+            /*
+                The main input object, the contents of this element must be used as a reference
+                for an artifact generation request
+            */
             "$requestSchema": {
+                /* ***** Static Data Section ***** */
+                /* Self reference to this processor file */
                 "$configuration" : "sample-arch-osb-form",
+                /* Identifier for the linked generator for artifact generation */
                 "$generator" : "sample-arch-osb-gen",
+                /* Underlying task in the generator, it is suggested that 1 input(form) = 1 task */
                 "$task": "generate-sample-arch-osb",
+
+                /* ***** Variable Data Section ***** */
+                /*
+                    Schema definition, the elements can be nested at whatever level necessary,
+                    the last child elements must have a type and miscellaneous definition,
+                    except when it is an array, which must have an item definition
+                */
                 "generalInfo": {
                     "additionalFolders": {
                         "@type": "boolean",
@@ -58,6 +81,11 @@
                     }
                 }
             },
+            /*
+                Additional metadata for the input definition, inputDisplayData defines
+                how can the data required be labeled and further supported, this information
+                is essential for a better understanding of the data required by the form
+            */
             "$inputDisplayData": {
                 "generalInfo": {
                     "label": "General Information"
@@ -105,6 +133,18 @@
                     "helptext": "The support schema name"
                 }
             },
+            /*
+                Declared post processors for some values, these are run before any template
+                processing, just after recieving the request.
+
+                For now, Artifacter only supports these postProcessors:
+
+                string.allLowerCase
+                string.allUpperCase
+                string.startWithUpperCase
+                string.startWithLowerCase
+                string.blanksToCamelCase
+            */
             "$declaredPostProcessors": {
                 "generalInfo.bizEntity": [
                     "string.allLowerCase",

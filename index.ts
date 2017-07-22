@@ -1,1 +1,1 @@
-export * from "./src/artifacter.api";
+export * from "./src/artifacter";
