@@ -32,59 +32,56 @@ export ARTIFACTER_TMP=/var/artifacter_custom
 Artifacter is meant to be run as a server, although it can be accessed as a Programmatic API too, there are 4 services available in the API, via REST and Programmatic methods.
 
 ---------------------------------
-##### Get Configurations list
+#### Get Configurations list
 
-###### Programmatic API
+##### Programmatic API
 Class Name | Method
 ---------- | ------
 Artifacter | #getConfigurations(): string[]
 
-###### RESTful API
+##### RESTful API
 Resource | Method | Request ContentType   |    Response ContentType
 -------- | ------ | --------------------- | -----------------------
 /configurations | GET | application/x-www-form-urlencoded | application/json
 
 Retrieves a list of presumably valid configurations ids on the configuration path of Artifacter. It returns a string array containing each configuration ID.
 
----------------------------------
-##### Get Configuration
+#### Get Configuration
 
-###### Programmatic API
+##### Programmatic API
 Class Name | Method
 ---------- | ------
 Artifacter | #getConfiguration(id: string): string
 
-###### RESTful API
+##### RESTful API
 Resource | Method | Request ContentType   |    Response ContentType
 -------- | ------ | --------------------- | -----------------------
 /configurations/:id | GET | application/x-www-form-urlencoded | application/json
 
 Retrieves the contents of a identified configuration file on Artifacter as a json string.
 
----------------------------------
-##### Request Artifact Generation
+#### Request Artifact Generation
 
-###### Programmatic API
+##### Programmatic API
 Class Name | Method
 ---------- | ------
 Artifacter | #requestArtifactGeneration(request: {}): string
 
-###### RESTful API
+##### RESTful API
 Resource | Method | Request ContentType   |    Response ContentType
 -------- | ------ | --------------------- | -----------------------
 /generatedArtifacts | POST | application/json | application/json
 
 Requests an artifact generation and returns an uuid to retrieve the generated artifacts. The RESTful API responds with the location of the created resource (generated artifact) in the **Location** header.
 
----------------------------------
-##### Retrieve generated artifacts
+#### Retrieve generated artifacts
 
-###### Programmatic API
+##### Programmatic API
 Class Name | Method
 ---------- | ------
 Artifacter | #getGeneratedArtifacts(uuid: string): Buffer
 
-###### RESTful API
+##### RESTful API
 Resource | Method | Request ContentType   |    Response ContentType
 -------- | ------ | --------------------- | -----------------------
 /generatedArtifacts/:uuid | GET | application/x-www-form-urlencoded | application/zip
