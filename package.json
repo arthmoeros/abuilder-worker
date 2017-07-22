@@ -1,16 +1,22 @@
 {
-  "name": "@artifacter/worker",
-  "version": "1.0.0",
-  "description": "Artifacter's worker module (artifact generation management)",
+  "name": "@artifacter/core",
+  "version": "2.0.3",
+  "description": "Artifacter's core module (artifact generation management)",
   "scripts": {
-    "build": "tsc -p src/",
-    "build:watch": "tsc -p src/ -w",
+    "prepublish": "tsc",
+    "build": "tsc -p .",
+    "build:watch": "tsc -p . -w",
     "start": "node ./src/start-server.js",
     "dev": "npm run build && concurrently \"npm run build:watch\" \"node ./src/start-server.js\""
   },
+  "main": "index.js",
+  "bin": {
+    "artifacter": "./src/start-server.js"
+  },
+  "readme": "README_NPM.md",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arthmoeros/artifacter-worker.git"
+    "url": "git+https://github.com/arthmoeros/artifacter-core.git"
   },
   "keywords": [
     "artifacter",
@@ -21,12 +27,12 @@
   "author": "arthmoeros",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/arthmoeros/artifacter-worker/issues"
+    "url": "https://github.com/arthmoeros/artifacter-core/issues"
   },
-  "homepage": "https://github.com/arthmoeros/artifacter-worker#readme",
+  "homepage": "https://github.com/arthmoeros/artifacter-core#readme",
   "dependencies": {
-    "@artifacter/common": "^0.9.8",
-    "@artifacter/template-engine": "^2",
+    "@artifacter/common": "^1.0.5",
+    "@artifacter/template-engine": "^2.0.0",
     "@types/body-parser": "^1.16.3",
     "@types/express": "^4.0.35",
     "@types/fs-extra": "^2.1.0",
@@ -43,9 +49,6 @@
     "reflect-metadata": "^0.1.10",
     "shelljs": "^0.7.7",
     "uuid": "^3.0.1"
-  },
-  "engines": {
-    "node": "6.10.1"
   },
   "devDependencies": {
     "concurrently": "^3.4.0"

@@ -36,7 +36,9 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-src/**/*.js
-src/**/*.js.map
-.git_heroku/
-index.js
+config/atmpl/fal-osb-gen
+config/generator/fal-osb-gen.json
+config/server-config-deployed.json
+push_heroku.bat
+.gitignore_heroku
+.git_heroku

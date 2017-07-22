@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
-	xmlns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/&{objetoDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{operacionComando}/Resp/IMPL/&{versionXSDResp}"
+	xmlns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/&{objetoDeDatos}&{*(prefix['/'])interfazPackage}/&{operacionComando}/Resp/IMPL/&{versionXSDResp}"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/&{objetoDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{operacionComando}/Resp/IMPL/&{versionXSDResp}"
-	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/&{objetoDeDatos}&{*(prefixFwdSlash)interfazPackage}/&{operacionComando}/Resp/IMPL/&{versionXSDResp}">
+	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/&{objetoDeDatos}&{*(prefix['/'])interfazPackage}/&{operacionComando}/Resp/IMPL/&{versionXSDResp}"
+	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/WLS/schema/&{(auc)backend}/&{objetoDeDatos}&{*(prefix['/'])interfazPackage}/&{operacionComando}/Resp/IMPL/&{versionXSDResp}">
 	<xs:element name="&{backend}&{objetoDeDatos}&{interfazPackage}&{operacionComando}Resp" type="tns:&{backend}&{objetoDeDatos}&{interfazPackage}&{operacionComando}Resp_TYPE" />
 	<xs:complexType name="&{backend}&{objetoDeDatos}&{interfazPackage}&{operacionComando}Resp_TYPE">
 		<!-- ##RESP_CONTENTS## !-->

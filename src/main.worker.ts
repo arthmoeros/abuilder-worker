@@ -4,8 +4,8 @@ import * as zipFolder from "folder-zip-sync";
 import * as shelljs from "shelljs";
 
 import { GeneratorProcessor } from "./generator.processor";
+import { tmpFilesFolder, configurationsFolder } from "./paths";
 
-export const tmpFilesFolder: string = "./tmp/";
 /**
  * @class MainWorker
  * @see npm @artifacter/worker
@@ -24,14 +24,14 @@ export class MainWorker {
 	 * of temporary files created during its execution.
 	 * 
      * @param generator Generator's name
-     * @param formFunction FormFunction to use in the generator
+     * @param task task to use in the generator
      * @param workingFolder Path to the temporary working folder to store generated artifacts
 	 */
-	public run(generator: string, formFunction: string, map: Map<string, string>): string {
+	public run(generator: string, task: string, request: {}): string {
 		let tmpName: string = uuid();
 		let tmpFolder: string = this.generateTmpDir(tmpName);
 		try {
-			new GeneratorProcessor(generator, formFunction, tmpFolder).run(map);
+			new GeneratorProcessor(generator, task, tmpFolder).run(request);
 			zipFolder(tmpFolder, tmpFolder + ".zip");
 			return tmpName;
 		} catch (error) {

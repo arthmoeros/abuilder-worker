@@ -1,0 +1,26 @@
+{
+    "$configuration": "sample-arch-osb-form",
+    "$generator": "sample-arch-osb-gen",
+    "$task": "generate-sample-arch-osb",
+    "generalInfo": {
+        "additionalFolders": true,
+        "bizDomain": "General",
+        "bizEntity": "Retail",
+        "serviceId": 111
+    },
+    "specificInfo": {
+        "serviceName": "getInfo",
+        "serviceVersion": "v1.0",
+        "serviceType": "ABC"
+    },
+    "schemaInfo": {
+        "schemas": [
+            {
+                "schemaName": "Customer"
+            },
+            {
+                "schemaName": "Employee"
+            }
+        ]
+    }
+}
