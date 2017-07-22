@@ -32,33 +32,33 @@ export ARTIFACTER_TMP=/var/artifacter_custom
 Artifacter is meant to be run as a server, although it can be accessed as a Programmatic API too, there are 4 services available in the API, via REST and Programmatic methods.
 
 ---------------------------------
-#### Get Configurations list
+#### Get Form Configurations list
 
 ##### Programmatic API
 Class Name | Method
 ---------- | ------
-Artifacter | #getConfigurations(): string[]
+Artifacter | #getForms(): string[]
 
 ##### RESTful API
 Resource | Method | Request ContentType   |    Response ContentType
 -------- | ------ | --------------------- | -----------------------
-/configurations | GET | application/x-www-form-urlencoded | application/json
+/forms | GET | application/x-www-form-urlencoded | application/json
 
-Retrieves a list of presumably valid configurations ids on the configuration path of Artifacter. It returns a string array containing each configuration ID.
+Retrieves a list of presumably valid form configurations ids on the configuration path of Artifacter. It returns a string array containing each form configuration ID (file name without extension).
 
-#### Get Configuration
+#### Get Form Configuration
 
 ##### Programmatic API
 Class Name | Method
 ---------- | ------
-Artifacter | #getConfiguration(id: string): string
+Artifacter | #getForm(id: string): string
 
 ##### RESTful API
 Resource | Method | Request ContentType   |    Response ContentType
 -------- | ------ | --------------------- | -----------------------
-/configurations/:id | GET | application/x-www-form-urlencoded | application/json
+/forms/:id | GET | application/x-www-form-urlencoded | application/json
 
-Retrieves the contents of a identified configuration file on Artifacter as a json string.
+Retrieves the contents of a identified form configuration file on Artifacter as a json string.
 
 #### Request Artifact Generation
 
@@ -89,11 +89,11 @@ Resource | Method | Request ContentType   |    Response ContentType
 Retrieves a generated artifact, once is retrieved it is deleted from the temporary folder, any subsequent try to get the same artifact will result in a 404 status code.
 
 ---------------------------------
-#### How do I make a Configuration? - Configuration "Schema"
-Configurations in Artifacter are JSON files with expected properties to define how a client can request an artifact generation, this configuration will be explained using the sample configuration bundled with it.
+#### How do I make a Form Configuration? - Form Configuration "Schema"
+Form Configurations in Artifacter are JSON files with expected properties to define how a client can request an artifact generation, this file will be explained using the sample configuration bundled with it.
 
 ##### Forms
-The root of each Configuration is a forms array, each contains a name, description and input data required to be submitted.
+The root of each Form Configuration is a forms array, each contains a name, description and input data required to be submitted.
 A forms begins like this:
 
 ```js
@@ -113,7 +113,7 @@ A forms begins like this:
 
 ##### Request Schema
 This is 'like' a Schema, and since there is no yet a single decent json schema parser in npm (and the standard is not finished), this one will do for now.
-At its base has static data for internal referencing, such as its own configuration name, generation name and its underlying task name, these must be provided as is in each request that uses this structure, Artifacter expects this data to work.
+At its base has static data for internal referencing, such as its own form configuration json file name, generation name and its underlying task name, these must be provided as is in each request that uses this structure, Artifacter expects this data to work.
 The rest of the structure is what it should be expected when a request for artifact generation is submitted along with the before mentioned static data, except each last child in each hierarchy, which have a type definition and miscellaneous information, such as:
 
 "Tag" | Meaning
@@ -138,7 +138,7 @@ Artifacter for now supports these:
 - string.blanksToCamelCase
 
 #### I saw something about a Generator? - Generator "Schema"
-Just like the Configuration json files, there are Generator json files, these contains tasks that can be executed for a corresponding artifact generation. There is a sample packaged with the application.
+Just like the Form Configuration json files, there are Generator json files, these contains tasks that can be executed for a corresponding artifact generation. There is a sample packaged with the application.
 
 Each task can contain a subset of instructions for the internal generator processor to read and execute, these instructions have their underlying properties and can be nested and represent for each task the outcoming structure of the artifacts generated. Some properties uses the same template engine and request values for processing template'd values.
 
@@ -171,8 +171,8 @@ Yes, the expected Artifacter configuration must follow this structure:
         - *generator-folder* (the matching folders names for each generator json, that contains all necessary templates and static files for each task of the generator)
     - generator
         - *generator-json* (generators json files, explained above)
-    - configuration
-        - *configuration-json* (configurations json files, explained above too)
+    - form
+        - *form-json* (form configuration json files, explained above too)
 
 If you need an example for this structure and its files, check out the sample provided [here](https://github.com/arthmoeros/artifacter-core/tree/master/config), if you want a sample request from the sample request schema, check out [this json file](https://github.com/arthmoeros/artifacter-core/tree/master/test/request.json)
 
