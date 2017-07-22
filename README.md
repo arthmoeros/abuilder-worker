@@ -127,74 +127,8 @@ The rest of the structure is what it should be expected when a request for artif
 @options | Used by a 'choice' @type, must provide a string array for fixed options of this value
 @item | Used by an 'array' @type, must provide a underlying element(s) with its own type and miscellaneous information
 
-```js
-            /*
-                The main input object, the contents of this element must be used as a reference
-                for an artifact generation request
-            */
-            "$requestSchema": {
-                /* ***** Static Data Section ***** */
-                /* Self reference to this processor file */
-                "$configuration" : "sample-arch-osb-form",
-                /* Identifier for the linked generator for artifact generation */
-                "$generator" : "sample-arch-osb-gen",
-                /* Underlying task in the generator, it is suggested that 1 input(form) = 1 task */
-                "$task": "generate-sample-arch-osb",
-
-                /* ***** Variable Data Section ***** */
-                /*
-                    Schema definition, the elements can be nested at whatever level necessary,
-                    the last child elements must have a type and miscellaneous definition,
-                    except when it is an array, which must have an item definition
-                */
-                "generalInfo": {
-                    "additionalFolders": {
-                        "@type": "boolean",
-                        "@defaultValue": true,
-                        "@required": true
-                    }
-                },
-                "schemaInfo": {
-                    "schemas": {
-                        "@type": "array",
-                        "@required": false,
-                        "@item": {
-                            "schemaName": {
-                                "@type": "string",
-                                "@required": true
-                            }
-                        }
-                    }
-                }
-```
-
 ##### Input Display Data
 Additional metadata for the input definition, inputDisplayData defines how can the data required be labeled and further supported, this information is essential for a better understanding of the data required by the form.
-
-```js
-            "$inputDisplayData": {
-                "generalInfo": {
-                    "label": "General Information"
-                },
-                "generalInfo.additionalFolders": {
-                    "label": "Additional Folders",
-                    "helptext": "Indicates whether or not to generate additional empty folders"
-                },
-                "generalInfo.bizDomain": {
-                    "label": "Business Domain",
-                    "helptext": "Service's business domain, default is \"General\""
-                },
-                "schemasInfo": {
-                    "label": "Provide information about support schemas to include"
-                },
-                "schemasInfo.schemas": {
-                    "label": "Schemas List"
-                },
-                "schemasInfo.schemas.schemaName": {
-                    "label": "Schema Name",
-                    "helptext": "The support schema name"
-                }
-```
 
 ##### Declared Post Processors
 Declared post processors for the submitted values, these are run before any template processing, just after recieving the request.
@@ -205,24 +139,6 @@ Artifacter for now supports these:
 - string.startWithUpperCase
 - string.startWithLowerCase
 - string.blanksToCamelCase
-
-```js
-            "$declaredPostProcessors": {
-                "generalInfo.bizEntity": [
-                    "string.allLowerCase",
-                    "string.blanksToCamelCase",
-                    "string.startWithUpperCase"
-                ],
-                "generalInfo.specificInfo.serviceName": [
-                    "string.allLowerCase",
-                    "string.blanksToCamelCase",
-                    "string.startWithUpperCase"
-                ],
-                "generalInfo.specificInfo.serviceVersion": [
-                    "string.allLowerCase"
-                ]
-            }
-```
 
 #### I saw something about a Generator? - Generator "Schema"
 Just like the Configuration json files, there are Generator json files, these contains tasks that can be executed for a corresponding artifact generation. There is a sample packaged with the application.
@@ -261,5 +177,7 @@ Yes, the expected Artifacter configuration must follow this structure:
     - configuration
         - *configuration-json* (configurations json files, explained above too)
 
+If you need an example for this structure and its files, check out the sample provided [here](https://github.com/arthmoeros/artifacter-core/tree/master/config)
+
 #### What's coming next? - Planned features for a future release
-Not much, this is a second version and I already covered pretty everything I wanted to achieve, it is still lacking a configuration validation check and maybe some queued generation with some queue framework, also I thought about a security layer, if you have any other suggestion I would gladly hear you out, along with a use case.
+Not much, this is a second version and I already covered pretty much everything I wanted to achieve, it is still lacking a configuration validation check and maybe some queued generation with some queue framework, also I thought about a security layer and migrating the configuration storage to a MongoDB, if you have any other suggestion I would gladly hear you out, along with a use case.
