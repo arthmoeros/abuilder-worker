@@ -225,30 +225,41 @@ Artifacter for now supports these:
 ```
 
 #### I saw something about a Generator? - Generator "Schema"
-Just like the Configuration json files, there are Generator json files, these contains tasks that can be executed for a corresponding artifact generation.
+Just like the Configuration json files, there are Generator json files, these contains tasks that can be executed for a corresponding artifact generation. There is a sample packaged with the application.
 
-Each task can contain a subset of instructions for the internal generator processor to read and execute, these instructions have their underlying properties and can be nested and represent for each task the outcome structure of the artifacts generated. Some properties uses the same template engine and input values for processing template'd values.
+Each task can contain a subset of instructions for the internal generator processor to read and execute, these instructions have their underlying properties and can be nested and represent for each task the outcoming structure of the artifacts generated. Some properties uses the same template engine and request values for processing template'd values.
 
 Instruction | Properties | Description
 ----------- | ---------- | -----------
 rootContents | - | Array that describes the root point from where the outcome of the generation is output'd, is treated like a folder instruction
-folder | - | Outputs a folder
+**folder** | **-** | **Outputs a folder**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element and its nested elements will be included in the generated artifacts
 \- | targetName | A template name for the expected name of the folder
 \- | contents | Nested instructions for more output elements
-atmpl | - | Outputs a file using an atmpl template file
+**atmpl** | **-** | **Outputs a file using an atmpl template file**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
-\- | location | Path to look for the atmpl file, this is relative to the *ARTIFACTER_CONFIG*/config/atmpl/<generator-name> folder
-\- | targetName | A template name for the expected name of the resulting artifact
+\- | location | Path to look for the atmpl file, this is relative to the ***ARTIFACTER_CONFIG*/atmpl/<generator-name> folder**
+\- | targetName | A template name for the expected name of the generated artifact
 \- | parameters | Passed parameters to the Template Processor, for use with Parameterized Expressions
-static | - | Outputs a file in a static way, in other words, it just makes a copy of it
+**static** | **-** | **Outputs a file in a static way, in other words, it just makes a copy of it**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
 \- | location | Path to look for the static file, this is relative to the ***ARTIFACTER_CONFIG*/config/atmpl/<generator-name>** folder
-\- | targetName | A template name for the expected name of the resulting artifact
-foreach | - | Instruction to iterate a contained element given a specific array, if you wish to iterate more than one object, use a folder instruction
+\- | targetName | A template name for the expected name of the copied file
+**foreach** | **-** | **Instruction to iterate a contained element given a specific array, if you wish to iterate more than one object, use a folder instruction**
 \- | expression | A valid foreach expression, like *'item in items'*, within this instruction the 'item' value is available but must not override a existing property in the original request, otherwise it will throw an error
-\- | <instruction> | A nested instruction (folder, atmpl or static), a nested foreach won't work, if you need to nest a foreach, use a folder and then a foreach
+\- | *instruction* | A nested instruction (folder, atmpl or static), a nested foreach won't work, if you need to nest a foreach, use a folder and then a foreach
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this foreach will be processed
 
+#### Anything else I should know? - Other info
+Yes, the expected Artifacter configuration must follow this structure:
+
+- *ARTIFACTER_CONFIG* (default is './config')
+    - atmpl
+        - *generator-folder* (the matching folders names for each generator json, that contains all necessary templates and static files for each task of the generator)
+    - generator
+        - *generator-json* (generators json files, explained above)
+    - configuration
+        - *configuration-json* (configurations json files, explained above too)
+
 #### What's coming next? - Planned features for a future release
-Not much, this is a second version and I already covered pretty everything I wanted to achieve, it is still lacking a configuration validation check and maybe some queued generation with some queue framework, if you have any other suggestion I would gladly hear you out, along with a use case.
+Not much, this is a second version and I already covered pretty everything I wanted to achieve, it is still lacking a configuration validation check and maybe some queued generation with some queue framework, also I thought about a security layer, if you have any other suggestion I would gladly hear you out, along with a use case.
