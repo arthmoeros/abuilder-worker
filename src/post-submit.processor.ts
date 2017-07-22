@@ -33,7 +33,7 @@ export class PostSubmitProcessor{
     }
 
     private static locateConfiguration(configuration: string): any{
-        return JSON.parse(fs.readFileSync(`${configurationsFolder}/configuration/${configuration}.json`).toString());
+        return JSON.parse(fs.readFileSync(`${configurationsFolder}/form/${configuration}.json`).toString());
     }
 
     private static locateForm(configuration: any, task: string): any{
@@ -46,7 +46,7 @@ export class PostSubmitProcessor{
             }
         });
         if(foundForm == null){
-            throw new Error(`Task ${task} was not found in the specified configuration`);
+            throw new Error(`Task ${task} was not found in the specified form configuration`);
         }
         return foundForm;
     }

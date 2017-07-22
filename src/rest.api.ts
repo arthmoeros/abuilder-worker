@@ -57,38 +57,38 @@ export class RestApi {
 	}
 
 	/**
-	 * Retrieves a list of available configurations for Artifacter
+	 * Retrieves a list of available forms configurations for Artifacter
 	 * @param req 
 	 * @param res 
 	 * @param next 
 	 */
 	@RestService({
 		method: RestMethod.GET,
-		resource: "/configurations",
+		resource: "/forms",
 		requestContentType: ContentType.urlEncoded,
 		responseContentType: ContentType.applicationJson
 	})
 	public getConfigurations(req: Request, res: Response, next: NextFunction) {
-		let response: string[] = this.api.getConfigurations();
+		let response: string[] = this.api.getForms();
 		res.status(200);
 		res.end(JSON.stringify(response));
 	}
 
 	/**
-	 * Retrieves a specific configuration for Artifacter with the id provided
+	 * Retrieves a specific forms configuration for Artifacter with the id provided
 	 * @param req 
 	 * @param res 
 	 * @param next 
 	 */
 	@RestService({
 		method: RestMethod.GET,
-		resource: "/configurations/:id",
+		resource: "/forms/:id",
 		requestContentType: ContentType.urlEncoded,
 		responseContentType: ContentType.applicationJson
 	})
 	public getConfiguration(req: Request, res: Response, next: NextFunction) {
 		let id: string = req.params['id'];
-		let configuration: string = this.api.getConfiguration(id);
+		let configuration: string = this.api.getForm(id);
 		res.status(200);
 		res.end(configuration);
 	}

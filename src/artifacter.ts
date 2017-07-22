@@ -57,11 +57,11 @@ export class Artifacter {
     }
 
     /**
-     * Retrieves a list of presumably valid configurations ids on the configuration path
+     * Retrieves a list of presumably valid form configuration ids on the configuration path
      * of Artifacter
      */
-    public getConfigurations(): string[] {
-        let configList: string[] = fs.readdirSync(configurationsFolder + "configuration/");
+    public getForms(): string[] {
+        let configList: string[] = fs.readdirSync(configurationsFolder + "form/");
         let response: string[] = [];
         configList.forEach(config => {
             let jsonIndex: number = config.indexOf(".json");
@@ -71,24 +71,24 @@ export class Artifacter {
             response.push(config.substring(0, jsonIndex));
         });
         if (response.length == 0) {
-            throw new Error("404 No configurations found");
+            throw new Error("404 No form configurations found");
         }
         return response;
     }
 
     /**
-     * Retrieves the contents of a identified configuration file on Artifacter
+     * Retrieves the contents of a identified form configuration file on Artifacter
      * @param id configuration identifier
      */
-    public getConfiguration(id: string): string {
+    public getForm(id: string): string {
         if (/[/\\]/.test(id)) {
             throw new Error("400 ID is invalid");
         }
         if (id != null) {
-            if (!fs.existsSync(configurationsFolder + "configuration/" + id + ".json")) {
-                throw new Error("404 Configuration does not exist");
+            if (!fs.existsSync(configurationsFolder + "form/" + id + ".json")) {
+                throw new Error("404 Form Configuration does not exist");
             }
-            return fs.readFileSync(configurationsFolder + "configuration/" + id + ".json").toString();
+            return fs.readFileSync(configurationsFolder + "form/" + id + ".json").toString();
         } else {
             throw new Error("400 ID is invalid");
         }
