@@ -19,7 +19,7 @@ npm install --save @artifacter/core
 node_modules/.bin/artifacter
 ```
 
-In both cases, by default the config and temporary directories are within the same project, you can customize these paths using the environment variables *ARTIFACTER_CONFIG* and *ARTIFACTER_TMP*, here is a unix example:
+In both cases, by default the config and temporary directories are within the core base folder, you can customize these paths using the environment variables *ARTIFACTER_CONFIG* and *ARTIFACTER_TMP*, here is a unix example:
 
 ```bash
 # Default is ./config
@@ -29,8 +29,9 @@ export ARTIFACTER_TMP=/var/artifacter_custom
 ```
 
 #### What's in here? - API
-Artifacter is meant to be run as a server, via **npm start**, although it can be accessed as a Programmatic API too, there are 4 services available in the API, via REST and Programmatic methods.
+Artifacter is meant to be run as a server, although it can be accessed as a Programmatic API too, there are 4 services available in the API, via REST and Programmatic methods.
 
+---------------------------------
 ##### Get Configurations list
 
 ###### Programmatic API
@@ -45,6 +46,7 @@ Resource | Method | Request ContentType   |    Response ContentType
 
 Retrieves a list of presumably valid configurations ids on the configuration path of Artifacter. It returns a string array containing each configuration ID.
 
+---------------------------------
 ##### Get Configuration
 
 ###### Programmatic API
@@ -59,6 +61,7 @@ Resource | Method | Request ContentType   |    Response ContentType
 
 Retrieves the contents of a identified configuration file on Artifacter as a json string.
 
+---------------------------------
 ##### Request Artifact Generation
 
 ###### Programmatic API
@@ -73,6 +76,7 @@ Resource | Method | Request ContentType   |    Response ContentType
 
 Requests an artifact generation and returns an uuid to retrieve the generated artifacts. The RESTful API responds with the location of the created resource (generated artifact) in the **Location** header.
 
+---------------------------------
 ##### Retrieve generated artifacts
 
 ###### Programmatic API
@@ -87,11 +91,12 @@ Resource | Method | Request ContentType   |    Response ContentType
 
 Retrieves a generated artifact, once is retrieved it is deleted from the temporary folder, any subsequent try to get the same artifact will result in a 404 status code.
 
+---------------------------------
 #### How do I make a Configuration? - Configuration "Schema"
 Configurations in Artifacter are JSON files with expected properties to define how a client can request an artifact generation, this configuration will be explained using the sample configuration bundled with it.
 
 ##### Forms
-The root of each Configuration, is a forms array, each contains a name, description and input data required to be submitted.
+The root of each Configuration is a forms array, each contains a name, description and input data required to be submitted.
 A forms begins like this:
 
 ```js
@@ -219,5 +224,31 @@ Artifacter for now supports these:
             }
 ```
 
+#### I saw something about a Generator? - Generator "Schema"
+Just like the Configuration json files, there are Generator json files, these contains tasks that can be executed for a corresponding artifact generation.
+
+Each task can contain a subset of instructions for the internal generator processor to read and execute, these instructions have their underlying properties and can be nested and represent for each task the outcome structure of the artifacts generated. Some properties uses the same template engine and input values for processing template'd values.
+
+Instruction | Properties | Description
+----------- | ---------- | -----------
+rootContents | - | Array that describes the root point from where the outcome of the generation is output'd, is treated like a folder instruction
+folder | - | Outputs a folder
+- | includeif | A mapped expression those result will be used as a boolean to determine if this element and its nested elements will be included in the generated artifacts
+- | targetName | A template name for the expected name of the folder
+- | contents | Nested instructions for more output elements
+atmpl | - | Outputs a file using an atmpl template file
+- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
+- | location | Path to look for the atmpl file, this is relative to the *ARTIFACTER_CONFIG*/config/atmpl/<generator-name> folder
+- | targetName | A template name for the expected name of the resulting artifact
+- | parameters | Passed parameters to the Template Processor, for use with Parameterized Expressions
+static | - | Outputs a file in a static way, in other words, it just makes a copy of it
+- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
+- | location | Path to look for the static file, this is relative to the ***ARTIFACTER_CONFIG*/config/atmpl/<generator-name>** folder
+- | targetName | A template name for the expected name of the resulting artifact
+foreach | - | Instruction to iterate a contained element given a specific array, if you wish to iterate more than one object, use a folder instruction
+- | expression | A valid foreach expression, like *'item in items'*, within this instruction the 'item' value is available but must not override a existing property in the original request, otherwise it will throw an error
+- | <instruction> | A nested instruction (folder, atmpl or static), a nested foreach won't work, if you need to nest a foreach, use a folder and then a foreach
+- | includeif | A mapped expression those result will be used as a boolean to determine if this foreach will be processed
+
 #### What's coming next? - Planned features for a future release
-Not much, this is a second version and I already covered pretty everything I wanted to achieve, maybe some queued generation with some queue framework is left, if you have any other suggestion I would gladly hear you out, along with a use case.
+Not much, this is a second version and I already covered pretty everything I wanted to achieve, it is still lacking a configuration validation check and maybe some queued generation with some queue framework, if you have any other suggestion I would gladly hear you out, along with a use case.
