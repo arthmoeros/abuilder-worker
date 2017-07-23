@@ -32,7 +32,6 @@ export class Artifacter {
             throw new Error("400 Request Object is not valid");
         }
         PostSubmitProcessor.run(request);
-        console.log(request);
         let worker: MainWorker = new MainWorker();
         return worker.run(generatorName, task, request);
     }

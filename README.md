@@ -151,12 +151,12 @@ rootContents | - | Array that describes the root point from where the outcome of
 \- | contents | Nested instructions for more output elements
 **atmpl** | **-** | **Outputs a file using an atmpl template file**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
-\- | location | Path to look for the atmpl file, this is relative to the ***ARTIFACTER_CONFIG*/atmpl/<generator-name> folder**
+\- | location | Path to look for the atmpl file, this is relative to the ***ARTIFACTER_CONFIG*/blueprints/<generator-name> folder**
 \- | targetName | A template name for the expected name of the generated artifact
 \- | parameters | Passed parameters to the Template Processor, for use with Parameterized Expressions
 **static** | **-** | **Outputs a file in a static way, in other words, it just makes a copy of it**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
-\- | location | Path to look for the static file, this is relative to the ***ARTIFACTER_CONFIG*/config/atmpl/<generator-name>** folder
+\- | location | Path to look for the static file, this is relative to the ***ARTIFACTER_CONFIG*/config/blueprints/<generator-name>** folder
 \- | targetName | A template name for the expected name of the copied file
 **foreach** | **-** | **Instruction to iterate a contained element given a specific array, if you wish to iterate more than one object, use a folder instruction**
 \- | expression | A valid foreach expression, like *'item in items'*, within this instruction the 'item' value is available but must not override a existing property in the original request, otherwise it will throw an error
@@ -167,8 +167,8 @@ rootContents | - | Array that describes the root point from where the outcome of
 Yes, the expected Artifacter configuration must follow this structure:
 
 - *ARTIFACTER_CONFIG* (default is './config')
-    - atmpl
-        - *generator-folder* (the matching folders names for each generator json, that contains all necessary templates and static files for each task of the generator)
+    - blueprints
+        - *blueprint-folder* (the matching folders names for each generator json, that contains all necessary templates and static files for each task of the generator)
     - generator
         - *generator-json* (generators json files, explained above)
     - form

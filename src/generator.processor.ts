@@ -5,7 +5,7 @@ import { ObjectPropertyLocator } from "@artifacter/common";
 import { configurationsFolder } from "./paths";
 
 const generatorsPath = configurationsFolder+"generator";
-const templatesPath = configurationsFolder+"atmpl";
+const templatesPath = configurationsFolder+"blueprints";
 /**
  * @class GeneratorProcessor
  * @see npm @artifacter/worker
