@@ -2,7 +2,7 @@
 	"listenPort" : 8080,
 	"debugInputMaps" : true,
 	"corsOptions" : {
-		"origin": "http://localhost:5000",
+		"origin": "http://localhost:4200",
 		"optionsSuccessStatus": 200
 	}
 }

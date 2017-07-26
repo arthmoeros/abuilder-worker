@@ -1,8 +1,9 @@
 {
+    "$formsTitle": "Artifacter's Sample Forms",
+    "$formsDescription": "This sample form generates an Eclipse Project for a OSB proxy service, using the data provided by the user and the configured templates",
     "$forms": [ 
         {
             "$formName": "Sample Form 1",
-            "$formDescription": "This sample form generates a JDeveloper Project for a OSB proxy service, using the data provided by the user and the configured templates",
             "$requestSchema": {
                 "$configuration" : "sample-arch-osb-form",
                 "$generator" : "sample-arch-osb-gen",
@@ -94,13 +95,13 @@
                     "label": "Service Type",
                     "helptext": "Indicates Service Type"
                 },
-                "schemasInfo": {
+                "schemaInfo": {
                     "label": "Provide information about support schemas to include"
                 },
-                "schemasInfo.schemas": {
+                "schemaInfo.schemas": {
                     "label": "Schemas List"
                 },
-                "schemasInfo.schemas.schemaName": {
+                "schemaInfo.schemas.schemaName": {
                     "label": "Schema Name",
                     "helptext": "The support schema name"
                 }
