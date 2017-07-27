@@ -1,8 +1,26 @@
 {
-	"listenPort" : 8080,
-	"debugInputMaps" : true,
-	"corsOptions" : {
+	"listenPort": 8080,
+	"debugInputMaps": true,
+	"corsOptions": {
 		"origin": "http://localhost:4200",
-		"optionsSuccessStatus": 200
+		"optionsSuccessStatus": 200,
+		"allowedHeaders": [
+			"Location",
+			"Cache-Control",
+			"Content-Language",
+			"Content-Type",
+			"Expires",
+			"Last-Modified",
+			"Pragma"
+		],
+		"exposedHeaders": [
+			"Location",
+			"Cache-Control",
+			"Content-Language",
+			"Content-Type",
+			"Expires",
+			"Last-Modified",
+			"Pragma"
+		]
 	}
 }

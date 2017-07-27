@@ -31,7 +31,7 @@ export class RestApi {
 	})
 	public postArtifactGeneration(req: Request, res: Response, next: NextFunction) {
 		let tmpName: string = this.api.requestArtifactGeneration(req.body);
-		res.setHeader("Location", "/generatedArtifacts/" + tmpName);
+		res.location("/generatedArtifacts/" + tmpName);
 		res.status(201);
 		res.end();
 	}
