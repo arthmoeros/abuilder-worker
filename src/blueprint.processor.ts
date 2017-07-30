@@ -4,27 +4,27 @@ import { TemplateProcessor } from "@artifacter/template-engine";
 import { ObjectPropertyLocator } from "@artifacter/common";
 import { configurationsFolder } from "./paths";
 
-const generatorsPath = configurationsFolder+"generator";
-const templatesPath = configurationsFolder+"blueprints";
+const blueprintsPath = configurationsFolder+"blueprint";
+const templatesPath = configurationsFolder+"blueprint-material";
 /**
- * @class GeneratorProcessor
+ * @class BlueprintProcessor
  * @see npm @artifacter/worker
- * @see also the abgenerator.schema.json file
+ * @see also the abblueprint.schema.json file
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
  * This class manages the template processors and packages a outputs in a temporary
  * folder the generated artifacts.
  * 
  * It makes use of a JSON file as a "tasked script" for to-be generated artifacts,
- * this file is called the "generator"
+ * this file is called the "blueprint"
  * 
  */
-export class GeneratorProcessor {
+export class BlueprintProcessor {
 
     /**
      * Reference to the json 
      */
-    private generator: any;
+    private blueprint: any;
 
     /**
      * Path to the templates folder to use
@@ -37,34 +37,34 @@ export class GeneratorProcessor {
     private workingFolder: string;
 
     /**
-     * Creates a GeneratorProcessor availale to run, it loads the generator tasked script
+     * Creates a BlueprintProcessor availale to run, it loads the blueprint tasked script
      * and underlying task into memory, if it can't find either of those it will
      * throw an Error
      * 
-     * @param generator Generator's name
-     * @param task task to use in the generator
+     * @param blueprint Blueprint's name
+     * @param task task to use in the blueprint
      * @param workingFolder Path to the temporary working folder to store generated artifacts
      */
-    constructor(generator: string, task: string, workingFolder: string) {
-        if (!fs.existsSync(generatorsPath + "/" + generator + ".json")) {
-            throw new Error("Couldn't find a generator file at location: " + generatorsPath + "/" + generator + ".json");
+    constructor(blueprint: string, task: string, workingFolder: string) {
+        if (!fs.existsSync(blueprintsPath + "/" + blueprint + ".json")) {
+            throw new Error("Couldn't find a blueprint file at location: " + blueprintsPath + "/" + blueprint + ".json");
         }
-        let generatorFile: Buffer = fs.readFileSync(generatorsPath + "/" + generator + ".json");
-        this.generator = JSON.parse(generatorFile.toString())[task];
-        if (this.generator == null) {
-            throw new Error("Couldn't find a task named '" + task + "' at the generator " + generator + ".json");
+        let blueprintFile: Buffer = fs.readFileSync(blueprintsPath + "/" + blueprint + ".json");
+        this.blueprint = JSON.parse(blueprintFile.toString())[task];
+        if (this.blueprint == null) {
+            throw new Error("Couldn't find a task named '" + task + "' at the blueprint " + blueprint + ".json");
         }
         this.workingFolder = workingFolder;
-        this.templatesFolder = templatesPath + "/" + generator;
+        this.templatesFolder = templatesPath + "/" + blueprint;
     }
 
     /**
-     * Runs the Generator, it will execute the generator tasked script's task
+     * Runs the Blueprint, it will execute the blueprint tasked script's task
      * 
-     * @param request values request to use with the generator
+     * @param request values request to use with the blueprint
      */
     public run(request: {}) {
-        this.generator.rootContents.forEach(element => {
+        this.blueprint.rootContents.forEach(element => {
             if (element.folder) {
                 if (element.folder.includeif) {
                     if (!TemplateProcessor.evaluateBoolean(element.folder.includeif, request)) {
@@ -94,14 +94,14 @@ export class GeneratorProcessor {
                 }
                 this.processForeach(request, element.foreach, ".");
             } else {
-                throw new Error("Invalid element found in rootContents of generator file: " + element);
+                throw new Error("Invalid element found in rootContents of blueprint file: " + element);
             }
         });
     }
 
     /**
      * Uses the template engine for artifact target name resolution
-     * @param element folder, atmpl or static from the generator
+     * @param element folder, atmpl or static from the blueprint
      * @param request values request
      */
     private resolveFilename(element: any, request: {}) {
@@ -185,7 +185,7 @@ export class GeneratorProcessor {
                 }
                 this.processStatic(requestCopy, foreach.static, targetpath);
             } else {
-                throw new Error(`foreach with expression ${foreach.expression} does not have a valid inner element (atmpl|static|folder) in task ${request['$generator']}:${request['$task']}`);
+                throw new Error(`foreach with expression ${foreach.expression} does not have a valid inner element (atmpl|static|folder) in task ${request['$blueprint']}:${request['$task']}`);
             }
         });
 
@@ -233,7 +233,7 @@ export class GeneratorProcessor {
                     }
                     this.processForeach(request, element.foreach, targetpath + "/" + folderName);
                 } else {
-                    throw new Error("Invalid element found in contents for folder " + folder.name + " in generator file: " + element);
+                    throw new Error("Invalid element found in contents for folder " + folder.name + " in blueprint file: " + element);
                 }
             });
 

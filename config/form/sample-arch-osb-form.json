@@ -6,13 +6,12 @@
             "$formName": "Sample Form 1",
             "$requestSchema": {
                 "$configuration" : "sample-arch-osb-form",
-                "$generator" : "sample-arch-osb-gen",
+                "$blueprint" : "sample-arch-osb-gen",
                 "$task": "generate-sample-arch-osb",
                 "generalInfo": {
                     "additionalFolders": {
                         "@type": "boolean",
-                        "@defaultValue": true,
-                        "@required": true
+                        "@defaultValue": true
                     },
                     "bizDomain": {
                         "@type": "string",

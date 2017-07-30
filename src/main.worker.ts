@@ -3,7 +3,7 @@ import * as uuid from "uuid/v1";
 import * as zipFolder from "folder-zip-sync";
 import * as shelljs from "shelljs";
 
-import { GeneratorProcessor } from "./generator.processor";
+import { BlueprintProcessor } from "./blueprint.processor";
 import { tmpFilesFolder, configurationsFolder } from "./paths";
 
 /**
@@ -11,7 +11,7 @@ import { tmpFilesFolder, configurationsFolder } from "./paths";
  * @see npm @artifacter/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
- * This class runs the Generator Processor through a temporary working folder, and
+ * This class runs the Blueprint Processor through a temporary working folder, and
  * manages its posterior deletion, returning a Buffer containing the zip result of
  * the artifact generation.
  * 
@@ -23,15 +23,15 @@ export class MainWorker {
 	 * the generated artifacts into a zip file. It also handles the deletion
 	 * of temporary files created during its execution.
 	 * 
-     * @param generator Generator's name
-     * @param task task to use in the generator
+     * @param blueprint Blueprint's name
+     * @param task task to use in the blueprint
      * @param workingFolder Path to the temporary working folder to store generated artifacts
 	 */
-	public run(generator: string, task: string, request: {}): string {
+	public run(blueprint: string, task: string, request: {}): string {
 		let tmpName: string = uuid();
 		let tmpFolder: string = this.generateTmpDir(tmpName);
 		try {
-			new GeneratorProcessor(generator, task, tmpFolder).run(request);
+			new BlueprintProcessor(blueprint, task, tmpFolder).run(request);
 			zipFolder(tmpFolder, tmpFolder + ".zip");
 			return tmpName;
 		} catch (error) {

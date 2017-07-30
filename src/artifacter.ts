@@ -22,18 +22,18 @@ export class Artifacter {
      * @param request Request Object based on an existing configuration
      */
     public requestArtifactGeneration(request: {}): string {
-        let generatorName: string = request["$generator"];
+        let blueprintName: string = request["$blueprint"];
         let task: string = request["$task"];
         if (ServerConfig.readConfig.debugInputMaps) {
             console.log("[DEBUG] Got input map with following values:");
             console.log(request);
         }
-        if (generatorName == null || task == null) {
+        if (blueprintName == null || task == null) {
             throw new Error("400 Request Object is not valid");
         }
         PostSubmitProcessor.run(request);
         let worker: MainWorker = new MainWorker();
-        return worker.run(generatorName, task, request);
+        return worker.run(blueprintName, task, request);
     }
 
     /**

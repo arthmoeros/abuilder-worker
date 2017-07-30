@@ -99,8 +99,8 @@ A forms begins like this:
 ```js
 {
     /* 
-        A forms array, each one represent a possible input for a single generator and task,
-        it is suggested that one group of forms = 1 generator.
+        A forms array, each one represent a possible input for a single blueprint and task,
+        it is suggested that one group of forms = 1 blueprint.
     */
     "$forms": [ 
         {
@@ -112,23 +112,23 @@ A forms begins like this:
 ```
 
 ##### Request Schema
-This is 'like' a Schema, and since there is no yet a single decent json schema parser in npm (and the standard is not finished), this one will do for now.
-At its base has static data for internal referencing, such as its own form configuration json file name, generation name and its underlying task name, these must be provided as is in each request that uses this structure, Artifacter expects this data to work.
+This is 'like' a Schema, and since there is no yet a single decent json schema parser in npm (and the specification is not finished), this one will do for now.
+At its base has static data for internal referencing, such as its own form configuration json file name, generation name and its underlying task name, these must be provided as is in each request that uses this structure. Artifacter expects this data to work.
 The rest of the structure is what it should be expected when a request for artifact generation is submitted along with the before mentioned static data, except each last child in each hierarchy, which have a type definition and miscellaneous information, such as:
 
 "Tag" | Meaning
 ----- | -------
 @type | Describes the data/field type (string,number,date,array,choice)
 @defaultValue | Default value provided by the configuration
-@required | A flag that indicates that this value is required by its underlying templates
+@required | A flag that indicates that this value is required by the matching blueprint underlying templates
 @options | Used by a 'choice' @type, must provide a string array for fixed options of this value
 @item | Used by an 'array' @type, must provide a underlying element(s) with its own type and miscellaneous information
 
 ##### Input Display Data
-Additional metadata for the input definition, inputDisplayData defines how can the data required be labeled and further supported, this information is essential for a better understanding of the data required by the form.
+Additional metadata for the input definition, this defines how can the input data be labeled and further supported, this information is essential for a better understanding of the data required by the form.
 
 ##### Declared Post Processors
-Declared post processors for the submitted values, these are run before any template processing, just after recieving the request.
+Declared post processors for the submitted values, these are run by Artifacter before any template processing, just after recieving the request.
 
 Artifacter for now supports these:
 - string.allLowerCase
@@ -137,10 +137,10 @@ Artifacter for now supports these:
 - string.startWithLowerCase
 - string.blanksToCamelCase
 
-#### I saw something about a Generator? - Generator "Schema"
-Just like the Form Configuration json files, there are Generator json files, these contains tasks that can be executed for a corresponding artifact generation. There is a sample packaged with the application.
+#### I saw something about a Blueprint? - Blueprint "Schema"
+Just like the Form Configuration json files, there are Blueprint json files, these contains tasks that can be executed for a corresponding artifact generation. There is a sample packaged with the application.
 
-Each task can contain a subset of instructions for the internal generator processor to read and execute, these instructions have their underlying properties and can be nested and represent for each task the outcoming structure of the artifacts generated. Some properties uses the same template engine and request values for processing template'd values.
+Each task can contain a subset of instructions for the internal blueprint processor to read and execute, these instructions have their underlying properties, can be nested and represent the outcoming structure of the artifacts generated for each task. Some properties uses the same template engine and request values for processing template'd values.
 
 Instruction | Properties | Description
 ----------- | ---------- | -----------
@@ -151,12 +151,12 @@ rootContents | - | Array that describes the root point from where the outcome of
 \- | contents | Nested instructions for more output elements
 **atmpl** | **-** | **Outputs a file using an atmpl template file**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
-\- | location | Path to look for the atmpl file, this is relative to the ***ARTIFACTER_CONFIG*/blueprints/<generator-name> folder**
+\- | location | Path to look for the atmpl file, this is relative to the ***ARTIFACTER_CONFIG*/blueprint-material/<blueprint-name> folder**
 \- | targetName | A template name for the expected name of the generated artifact
 \- | parameters | Passed parameters to the Template Processor, for use with Parameterized Expressions
 **static** | **-** | **Outputs a file in a static way, in other words, it just makes a copy of it**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
-\- | location | Path to look for the static file, this is relative to the ***ARTIFACTER_CONFIG*/config/blueprints/<generator-name>** folder
+\- | location | Path to look for the static file, this is relative to the ***ARTIFACTER_CONFIG*/config/blueprint-material/<blueprint-name>** folder
 \- | targetName | A template name for the expected name of the copied file
 **foreach** | **-** | **Instruction to iterate a contained element given a specific array, if you wish to iterate more than one object, use a folder instruction**
 \- | expression | A valid foreach expression, like *'item in items'*, within this instruction the 'item' value is available but must not override a existing property in the original request, otherwise it will throw an error
@@ -167,10 +167,10 @@ rootContents | - | Array that describes the root point from where the outcome of
 Yes, the expected Artifacter configuration must follow this structure:
 
 - *ARTIFACTER_CONFIG* (default is './config')
-    - blueprints
-        - *blueprint-folder* (the matching folders names for each generator json, that contains all necessary templates and static files for each task of the generator)
-    - generator
-        - *generator-json* (generators json files, explained above)
+    - blueprint-material
+        - *blueprint-folder* (the matching folders names for each blueprint json, that contains all necessary templates and static files for each task of the blueprint)
+    - blueprint
+        - *blueprint-json* (blueprints json files, explained above)
     - form
         - *form-json* (form configuration json files, explained above too)
 

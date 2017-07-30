@@ -36,8 +36,8 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
-config/blueprints/fal-osb-gen
-config/generator/fal-osb-gen.json
+config/blueprint-material/fal-osb-gen
+config/blueprint/fal-osb-gen.json
 config/server-config-deployed.json
 push_heroku.bat
 .gitignore_heroku

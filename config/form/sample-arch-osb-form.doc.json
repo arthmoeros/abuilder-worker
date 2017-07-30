@@ -1,7 +1,7 @@
 {
     /* 
-        A forms array, each one represent a possible input for a single generator and task,
-        it is suggested that one group of forms = 1 generator.
+        A forms array, each one represent a possible input for a single blueprint and task,
+        it is suggested that one group of forms = 1 blueprint.
     */
     "$forms": [ 
         {
@@ -19,9 +19,9 @@
                 /* ***** Static Data Section ***** */
                 /* Self reference to this processor file */
                 "$configuration" : "sample-arch-osb-form",
-                /* Identifier for the linked generator for artifact generation */
-                "$generator" : "sample-arch-osb-gen",
-                /* Underlying task in the generator, it is suggested that 1 input(form) = 1 task */
+                /* Identifier for the linked blueprint for artifact generation */
+                "$blueprint" : "sample-arch-osb-gen",
+                /* Underlying task in the blueprint, it is suggested that 1 input(form) = 1 task */
                 "$task": "generate-sample-arch-osb",
 
                 /* ***** Variable Data Section ***** */

@@ -1,6 +1,6 @@
 {
     "$configuration": "sample-arch-osb-form",
-    "$generator": "sample-arch-osb-gen",
+    "$blueprint": "sample-arch-osb-gen",
     "$task": "generate-sample-arch-osb",
     "generalInfo": {
         "additionalFolders": true,
