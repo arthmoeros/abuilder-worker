@@ -176,5 +176,7 @@ Yes, the expected Artifacter configuration must follow this structure:
 
 If you need an example for this structure and its files, check out the sample provided [here](https://github.com/arthmoeros/artifacter-core/tree/master/config), if you want a sample request from the sample request schema, check out [this json file](https://github.com/arthmoeros/artifacter-core/tree/master/test/request.json)
 
+If you need an User Interface for this, use [@artifacter/ui](https://github.com/arthmoeros/artifacter-ui)
+
 #### What's coming next? - Planned features for a future release
 Not much, this is a second version and I already covered pretty much everything I wanted to achieve, it is still lacking a configuration validation check and maybe some queued generation with some queue framework, also I thought about a security layer and migrating the configuration storage to a MongoDB, if you have any other suggestion I would gladly hear you out, along with a use case.
