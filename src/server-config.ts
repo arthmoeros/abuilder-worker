@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as col from "colors/safe";
+import { configurationsFolder } from "./paths";
 
 export class ServerConfig {
 
@@ -13,8 +14,8 @@ export class ServerConfig {
             console.info(col.gray("Reading configuration located at " + __dirname + "/../config/server-config-deployed.json"));
             return JSON.parse(fs.readFileSync(__dirname + "/../config/server-config-deployed.json").toString());
         } else {
-            console.info(col.gray("Reading configuration located at " + __dirname + "/../config/server-config.json"));
-            return JSON.parse(fs.readFileSync(__dirname + "/../config/server-config.json").toString());
+            console.info(col.gray("Reading configuration located at " + configurationsFolder + "/server-config.json"));
+            return JSON.parse(fs.readFileSync(configurationsFolder + "/server-config.json").toString());
         }
     }
 

@@ -2,8 +2,8 @@
 	"listenPort": 8080,
 	"debugInputMaps": true,
 	"corsOptions": {
-		"origin": "http://localhost:4200",
 		"optionsSuccessStatus": 200,
+		"origin": "http://localhost:4200",
 		"allowedHeaders": [
 			"Location",
 			"Cache-Control",
