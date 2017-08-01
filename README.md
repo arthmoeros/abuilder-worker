@@ -16,7 +16,7 @@ npm start
 ...or use it as a npm package, and start it using the provided bin
 ```bash
 npm install --save @artifacter/core
-node_modules/.bin/artifacter
+node_modules/.bin/artifacter-serve
 ```
 
 In both cases, by default the config and temporary directories are within the core base folder, you can customize these paths using the environment variables *ARTIFACTER_CONFIG* and *ARTIFACTER_TMP*, here is a unix example:
