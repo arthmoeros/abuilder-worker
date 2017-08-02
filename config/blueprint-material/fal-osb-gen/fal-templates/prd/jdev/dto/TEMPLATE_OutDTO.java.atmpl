@@ -1,9 +1,0 @@
-package &{(alc)localizacion}.&{(alc)negocio}.&{(alc)backend}.&{(alc)objetoDeDatos}&{*(alc,prefixDot)interfazPackage}.&{(alc)operacionComando}.model.dto;
-
-import java.io.Serializable;
-
-public class &{(auc)backend}&{objetoDeDatos}&{(auc)interfazPackage}&{operacionComando}OutDTO implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-	
-}

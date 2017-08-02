@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefix['/'])entidadDiscreta}/&{operacion}/Req-&{versionXSDReq}" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-	xmlns:tns="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefix['/'])entidadDiscreta}/&{operacion}/Req-&{versionXSDReq}"
-	targetNamespace="http://mdwcorp.falabella.com/&{(auc)negocio}/&{(auc)localizacion}/&{(auc)capa}/schema/&{objetoDeNegocio}&{*(prefix['/'])entidadDiscreta}/&{operacion}/Req-&{versionXSDReq}">
-	<xs:element name="&{objetoDeNegocio}&{entidadDiscreta}&{operacion}ExpReq" type="tns:&{objetoDeNegocio}&{entidadDiscreta}&{operacion}ExpReq_TYPE"/>
-	<xs:complexType name="&{objetoDeNegocio}&{entidadDiscreta}&{operacion}ExpReq_TYPE">
-		<!-- ##REQ_CONTENTS## !-->
-	</xs:complexType>
-</xs:schema>

@@ -10,13 +10,8 @@ export class ServerConfig {
     private static readonly config: any = ServerConfig.initConfig();
 
     private static initConfig(): any {
-        if (process.env.PORT) {
-            console.info(col.gray("Reading configuration located at " + __dirname + "/../config/server-config-deployed.json"));
-            return JSON.parse(fs.readFileSync(__dirname + "/../config/server-config-deployed.json").toString());
-        } else {
-            console.info(col.gray("Reading configuration located at " + configurationsFolder + "/server-config.json"));
-            return JSON.parse(fs.readFileSync(configurationsFolder + "/server-config.json").toString());
-        }
+        console.info(col.gray("Reading configuration located at " + configurationsFolder + "/server-config.json"));
+        return JSON.parse(fs.readFileSync(configurationsFolder + "/server-config.json").toString());
     }
 
     public static get readConfig(): any {

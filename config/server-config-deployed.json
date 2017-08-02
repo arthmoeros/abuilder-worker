@@ -1,8 +1,0 @@
-{
-	"listenPort" : 8080,
-	"debugInputMaps" : false,
-	"corsOptions" : {
-		"origin": "https://artifacter.herokuapp.com",
-		"optionsSuccessStatus": 200
-	}
-}

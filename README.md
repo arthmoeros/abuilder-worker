@@ -2,13 +2,28 @@
 
 ### Artifacter's artifacts core generation service
 
-### Checkout Github's parsed README for a better visualization! -> https://github.com/arthmoeros/artifacter-core/
+<!--### Checkout Github's parsed README for a better visualization! -> https://github.com/arthmoeros/artifacter-core/-->
 
 #### What's this? - Intro
 This is Artifacter's core module (previously known as @artifacter/worker), it makes use of the template engine to build all the artifacts required via a RESTful API or the Programmatic API. Artifacter provides any necessary details about its current configuration via the same RESTful and Programmatic APIs. On an artifact generation request, Artifacter will take its input and process it through its configuration, the outcome of this is a zip file, which is stored in a temporary folder until a get request is issued to retrieve this file.
 
 #### How do I use this?
-You can git clone this same repo and start it just like this
+
+##### Docker
+You can pull the docker image from Docker Hub and run it, if you want to run it with your own configuration, bind a volume to a host path with it.
+
+[![dockeri.co](http://dockeri.co/image/arthmoeros/artifacter-core)](https://hub.docker.com/r/arthmoeros/artifacter-core/)
+
+```bash
+docker pull arthmoeros/artifacter-core
+docker run -v <host-path>:/etc/artifacter/ -p <host-port>:8080 -d arthmoeros/artifacter-core
+```
+
+The Docker image stores the temporary files within the container, the config folder must be provided as a binded volume in the *docker run* command, otherwise it will start with the sample configuration.
+
+##### Other
+
+You can also git clone this same repo and start it just like this
 ```bash
 git clone https://github.com/arthmoeros/artifacter-core/
 npm install
