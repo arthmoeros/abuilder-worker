@@ -1,12 +1,15 @@
 FROM node:boron
 
-WORKDIR /usr/src/app
+ENV APPDIR /usr/src/app
+
+
+WORKDIR $APPDIR
 RUN mkdir /var/artifacter
 
 COPY package.json .
 RUN npm install
 
-COPY . .
+ADD . $APPDIR
 EXPOSE 8080
 
 ENV ARTIFACTER_TMP=/var/artifacter/
