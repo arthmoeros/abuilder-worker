@@ -8,7 +8,7 @@ RUN mkdir /var/artifacter
 COPY package.json .
 RUN npm install
 RUN npm install -g typescript
-RUN tsc -P .
+RUN tsc -P $APPDIR
 
 ADD . $APPDIR
 EXPOSE 8080
