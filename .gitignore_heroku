@@ -1,5 +1,0 @@
-node_modules/
-push_heroku.bat
-.gitignore_origin
-.git
-.git_heroku

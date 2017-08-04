@@ -3,7 +3,6 @@ import * as shelljs from "shelljs";
 
 import { tmpFilesFolder, configurationsFolder } from "./paths";
 import { MainWorker } from "./main.worker";
-import { ServerConfig } from "./server-config";
 import { PostSubmitProcessor } from "./post-submit.processor";
 
 /**
@@ -24,10 +23,6 @@ export class Artifacter {
     public requestArtifactGeneration(request: {}): string {
         let blueprintName: string = request["$blueprint"];
         let task: string = request["$task"];
-        if (ServerConfig.readConfig.debugInputMaps) {
-            console.log("[DEBUG] Got input map with following values:");
-            console.log(request);
-        }
         if (blueprintName == null || task == null) {
             throw new Error("400 Request Object is not valid");
         }

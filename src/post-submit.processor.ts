@@ -38,7 +38,6 @@ export class PostSubmitProcessor{
 
     private static locateForm(configuration: any, task: string): any{
         let foundForm = null;
-        console.log(configuration);
         configuration.$forms.forEach(form => {
             if(form.$requestSchema.$task == task){
                 foundForm = form;
