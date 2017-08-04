@@ -4,7 +4,7 @@
 
 <!--### Checkout Github's parsed README for a better visualization! -> https://github.com/arthmoeros/artifacter-core/-->
 
-(If you are looking for the RESTful API, check @artifacter/webapi)
+(If you are looking for the RESTful API, check [@artifacter/webapi](https://github.com/arthmoeros/artifacter-webapi)
 
 #### What's this? - Intro
 This is Artifacter's core module (previously known as @artifacter/worker), it makes use of the template engine to build all the artifacts required via a Programmatic API. Artifacter provides any necessary details about its current configuration via this same API. On an artifact generation request, Artifacter will take its input and process it through its configuration, the outcome of this is a zip file, which is stored in a temporary folder until a get request is issued to retrieve this file.
