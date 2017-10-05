@@ -1,7 +1,7 @@
-const Artifacter = require('./../src/artifacter').Artifacter;
+const QSDT = require('./../src/qsdt').QSDT;
 const fs = require('fs');
 
-const api = new Artifacter();
+const api = new QSDT();
 
 const forms = api.getForms();
 console.log(forms);

@@ -1,4 +1,4 @@
-import { StringContainer } from "@artifacter/common";
+import { StringContainer } from "@qsdt/common";
 
 /**
  * @class StringOperation

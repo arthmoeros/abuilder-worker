@@ -6,13 +6,13 @@ import { MainWorker } from "./main.worker";
 import { PostSubmitProcessor } from "./post-submit.processor";
 
 /**
- * @class Artifacter
+ * @class QSDT
  * 
- * This class provides all four available operations on Artifacter, if it is required
+ * This class provides all four available operations on QSDT, if it is required
  * to handle artifact generation programmaticly, it can be done using an instance
  * of this class.
  */
-export class Artifacter {
+export class QSDT {
 
     /**
      * Requests an artifact generation, it requires a valid Request Object to work,
@@ -52,7 +52,7 @@ export class Artifacter {
 
     /**
      * Retrieves a list of presumably valid form configuration ids on the configuration path
-     * of Artifacter
+     * of QSDT
      */
     public getForms(): string[] {
         let configList: string[] = fs.readdirSync(configurationsFolder + "form/");
@@ -71,7 +71,7 @@ export class Artifacter {
     }
 
     /**
-     * Retrieves the contents of a identified form configuration file on Artifacter
+     * Retrieves the contents of a identified form configuration file on QSDT
      * @param id configuration identifier
      */
     public getForm(id: string): string {

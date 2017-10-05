@@ -1,4 +1,4 @@
-import { ObjectPropertyLocator } from "@artifacter/common";
+import { ObjectPropertyLocator } from "@qsdt/common";
 import * as fs from "fs";
 
 import { StringOperation } from "./string-operation";

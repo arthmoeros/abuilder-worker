@@ -137,7 +137,7 @@
                 Declared post processors for some values, these are run before any template
                 processing, just after recieving the request.
 
-                For now, Artifacter only supports these postProcessors:
+                For now, QSDT only supports these postProcessors:
 
                 string.allLowerCase
                 string.allUpperCase

@@ -1,14 +1,14 @@
 import * as fs from "fs";
 import * as shelljs from "shelljs";
-import { TemplateProcessor } from "@artifacter/template-engine";
-import { ObjectPropertyLocator } from "@artifacter/common";
+import { TemplateProcessor } from "@qsdt/template-engine";
+import { ObjectPropertyLocator } from "@qsdt/common";
 import { configurationsFolder } from "./paths";
 
 const blueprintsPath = configurationsFolder+"blueprint";
 const templatesPath = configurationsFolder+"blueprint-material";
 /**
  * @class BlueprintProcessor
- * @see npm @artifacter/worker
+ * @see npm @qsdt/worker
  * @see also the abblueprint.schema.json file
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 

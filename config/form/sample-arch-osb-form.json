@@ -1,5 +1,5 @@
 {
-    "$formsTitle": "Artifacter's Sample Forms",
+    "$formsTitle": "QSDT's Sample Forms",
     "$formsDescription": "This sample form generates an Eclipse Project for a OSB proxy service, using the data provided by the user and the configured templates",
     "$forms": [ 
         {

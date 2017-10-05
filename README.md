@@ -1,55 +1,55 @@
-# ![artifacter-logo](https://raw.githubusercontent.com/arthmoeros/artifacter-ui/master/src/assets/img/rsz_artifacter-logo.png)@artifacter/core
+# ![qsdt-logo](https://raw.githubusercontent.com/arthmoeros/qsdt-ui/master/src/assets/img/rsz_qsdt-logo.png)@qsdt/core
 
-### Artifacter's artifacts core generation service
+### QSDT's artifacts core generation service
 
-<!--### Checkout Github's parsed README for a better visualization! -> https://github.com/arthmoeros/artifacter-core/-->
+<!--### Checkout Github's parsed README for a better visualization! -> https://github.com/arthmoeros/qsdt-core/-->
 
-(If you are looking for the RESTful API, check [@artifacter/webapi](https://github.com/arthmoeros/artifacter-webapi)
+(If you are looking for the RESTful API, check [@qsdt/webapi](https://github.com/arthmoeros/qsdt-webapi)
 
 #### What's this? - Intro
-This is Artifacter's core module (previously known as @artifacter/worker), it makes use of the template engine to build all the artifacts required via a Programmatic API. Artifacter provides any necessary details about its current configuration via this same API. On an artifact generation request, Artifacter will take its input and process it through its configuration, the outcome of this is a zip file, which is stored in a temporary folder until a get request is issued to retrieve this file.
+This is QSDT's core module (previously known as @qsdt/worker), it makes use of the template engine to build all the artifacts required via a Programmatic API. QSDT provides any necessary details about its current configuration via this same API. On an artifact generation request, QSDT will take its input and process it through its configuration, the outcome of this is a zip file, which is stored in a temporary folder until a get request is issued to retrieve this file.
 
 #### How do I use this?
 
 This is available as a npm package
 ```bash
-npm install @artifacter/core
+npm install @qsdt/core
 ```
 
-By default the config and temp directories are within the core base folder, you can customize these paths using the environment variables *ARTIFACTER_CONFIG* and *ARTIFACTER_TMP*, here is a unix example:
+By default the config and temp directories are within the core base folder, you can customize these paths using the environment variables *QSDT_CONFIG* and *QSDT_TMP*, here is a unix example:
 
 ```bash
 # Default is ./config
-export ARTIFACTER_CONFIG=/etc/artifacter_custom
+export QSDT_CONFIG=/etc/qsdt_custom
 # Default is ./tmp
-export ARTIFACTER_TMP=/var/artifacter_custom
+export QSDT_TMP=/var/qsdt_custom
 ```
 
 #### What's in here? - API
-Artifacter can be used as a Programmatic API, accesible via the Artifacter class, which contains the following methods:
+QSDT can be used as a Programmatic API, accesible via the QSDT class, which contains the following methods:
 
 ---------------------------------
 #### Get Form Configurations list
 
 Class Name | Method
 ---------- | ------
-Artifacter | #getForms(): string[]
+QSDT | #getForms(): string[]
 
-Retrieves a list of presumably valid form configurations ids on the configuration path of Artifacter. It returns a string array containing each form configuration ID (file name without extension).
+Retrieves a list of presumably valid form configurations ids on the configuration path of QSDT. It returns a string array containing each form configuration ID (file name without extension).
 
 #### Get Form Configuration
 
 Class Name | Method
 ---------- | ------
-Artifacter | #getForm(id: string): string
+QSDT | #getForm(id: string): string
 
-Retrieves the contents of an identified form configuration file on Artifacter as a generic object.
+Retrieves the contents of an identified form configuration file on QSDT as a generic object.
 
 #### Request Artifact Generation
 
 Class Name | Method
 ---------- | ------
-Artifacter | #requestArtifactGeneration(request: {}): string
+QSDT | #requestArtifactGeneration(request: {}): string
 
 Requests an artifact generation and returns an uuid to retrieve the generated artifacts. 
 
@@ -57,13 +57,13 @@ Requests an artifact generation and returns an uuid to retrieve the generated ar
 
 Class Name | Method
 ---------- | ------
-Artifacter | #getGeneratedArtifacts(uuid: string): Buffer
+QSDT | #getGeneratedArtifacts(uuid: string): Buffer
 
 Retrieves a generated artifact, once is retrieved it is deleted from the temp folder, any subsequent try to get the same artifact will result in a 404 not found error.
 
 ---------------------------------
 #### How do I make a Form Configuration? - Form Configuration "Schema"
-Form Configurations in Artifacter are JSON files with expected properties to define how a client can request an artifact generation, this file will be explained using the sample configuration bundled with it.
+Form Configurations in QSDT are JSON files with expected properties to define how a client can request an artifact generation, this file will be explained using the sample configuration bundled with it.
 
 ##### Forms
 The root of each Form Configuration is a forms array, each contains a name, description and input data required to be submitted.
@@ -86,7 +86,7 @@ A forms begins like this:
 
 ##### Request Schema
 This is 'like' a Schema, and since there is no yet a single decent json schema parser in npm (and the specification is not finished), this one will do for now.
-At its base has static data for internal referencing, such as its own form configuration json file name, generation name and its underlying task name, these must be provided as is in each request that uses this structure. Artifacter expects this data to work.
+At its base has static data for internal referencing, such as its own form configuration json file name, generation name and its underlying task name, these must be provided as is in each request that uses this structure. QSDT expects this data to work.
 The rest of the structure is what it should be expected when a request for artifact generation is submitted along with the before mentioned static data, except each last child in each hierarchy, which have a type definition and miscellaneous information, such as:
 
 "Tag" | Meaning
@@ -101,9 +101,9 @@ The rest of the structure is what it should be expected when a request for artif
 Additional metadata for the input definition, this defines how can the input data be labeled and further supported, this information is essential for a better understanding of the data required by the form.
 
 ##### Declared Post Processors
-Declared post processors for the submitted values, these are run by Artifacter before any template processing, just after recieving the request.
+Declared post processors for the submitted values, these are run by QSDT before any template processing, just after recieving the request.
 
-Artifacter for now supports these:
+QSDT for now supports these:
 - string.allLowerCase
 - string.allUpperCase
 - string.startWithUpperCase
@@ -124,12 +124,12 @@ rootContents | - | Array that describes the root point from where the outcome of
 \- | contents | Nested instructions for more output elements
 **atmpl** | **-** | **Outputs a file using an atmpl template file**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
-\- | location | Path to look for the atmpl file, this is relative to the ***ARTIFACTER_CONFIG*/blueprint-material/<blueprint-name>** folder
+\- | location | Path to look for the atmpl file, this is relative to the ***QSDT_CONFIG*/blueprint-material/<blueprint-name>** folder
 \- | targetName | A template name for the expected name of the generated artifact
 \- | parameters | Passed parameters to the Template Processor, for use with Parameterized Expressions
 **static** | **-** | **Outputs a file in a static way, in other words, it just makes a copy of it**
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this element will be included in the generated artifacts
-\- | location | Path to look for the static file, this is relative to the ***ARTIFACTER_CONFIG*/config/blueprint-material/<blueprint-name>** folder
+\- | location | Path to look for the static file, this is relative to the ***QSDT_CONFIG*/config/blueprint-material/<blueprint-name>** folder
 \- | targetName | A template name for the expected name of the copied file
 **foreach** | **-** | **Instruction to iterate a contained element given a specific array, if you wish to iterate more than one object, use a folder instruction**
 \- | expression | A valid foreach expression, like *'item in items'*, within this instruction the 'item' value is available but must not override a existing property in the original request, otherwise it will throw an error
@@ -137,9 +137,9 @@ rootContents | - | Array that describes the root point from where the outcome of
 \- | includeif | A mapped expression those result will be used as a boolean to determine if this foreach will be processed
 
 #### Anything else I should know? - Other info
-Yes, the expected Artifacter configuration must follow this structure:
+Yes, the expected QSDT configuration must follow this structure:
 
-- *ARTIFACTER_CONFIG* (default is './config')
+- *QSDT_CONFIG* (default is './config')
     - blueprint-material
         - *blueprint-folder* (the matching folders names for each blueprint json, that contains all necessary templates and static files for each task of the blueprint)
     - blueprint
@@ -147,9 +147,9 @@ Yes, the expected Artifacter configuration must follow this structure:
     - form
         - *form-json* (form configuration json files, explained above too)
 
-If you need an example for this structure and its files, check out the sample provided [here](https://github.com/arthmoeros/artifacter-core/tree/master/config), if you want a sample request from the sample request schema, check out [this json file](https://github.com/arthmoeros/artifacter-core/tree/master/test/request.json)
+If you need an example for this structure and its files, check out the sample provided [here](https://github.com/arthmoeros/qsdt-core/tree/master/config), if you want a sample request from the sample request schema, check out [this json file](https://github.com/arthmoeros/qsdt-core/tree/master/test/request.json)
 
-If you need an User Interface for this, use [@artifacter/ui](https://github.com/arthmoeros/artifacter-ui) in conjunction with [@artifacter/webapi](https://github.com/arthmoeros/artifacter-webapi) instead of this package alone
+If you need an User Interface for this, use [@qsdt/ui](https://github.com/arthmoeros/qsdt-ui) in conjunction with [@qsdt/webapi](https://github.com/arthmoeros/qsdt-webapi) instead of this package alone
 
 #### What's coming next? - Planned features for a future release
 Not much, this is a second version and I already covered pretty much everything I wanted to achieve, it is still lacking a configuration validation check and maybe some queued generation with some queue framework, also I thought about a security layer and migrating the configuration storage to a MongoDB, if you have any other suggestion I would gladly hear you out, along with a use case.

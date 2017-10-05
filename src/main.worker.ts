@@ -8,7 +8,7 @@ import { tmpFilesFolder, configurationsFolder } from "./paths";
 
 /**
  * @class MainWorker
- * @see npm @artifacter/worker
+ * @see npm @qsdt/worker
  * @author arthmoeros (Arturo Saavedra) artu.saavedra@gmail.com
  * 
  * This class runs the Blueprint Processor through a temporary working folder, and
