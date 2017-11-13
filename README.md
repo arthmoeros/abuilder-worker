@@ -9,6 +9,8 @@
 #### What's this? - Intro
 This is QSDT's core module (previously known as @qsdt/worker), it makes use of the template engine to build all the artifacts required via a Programmatic API. QSDT provides any necessary details about its current configuration via this same API. On an artifact generation request, QSDT will take its input and process it through its configuration, the outcome of this is a zip file, which is stored in a temporary folder until a get request is issued to retrieve this file.
 
+This new version has its API Promisified for compatibility with other storage methods besides file system.
+
 #### How do I use this?
 
 This is available as a npm package
@@ -33,7 +35,7 @@ QSDT can be used as a Programmatic API, accesible via the QSDT class, which cont
 
 Class Name | Method
 ---------- | ------
-QSDT | #getForms(): string[]
+QSDT | #getForms(): Promise<string[]>
 
 Retrieves a list of presumably valid form configurations ids on the configuration path of QSDT. It returns a string array containing each form configuration ID (file name without extension).
 
@@ -41,7 +43,7 @@ Retrieves a list of presumably valid form configurations ids on the configuratio
 
 Class Name | Method
 ---------- | ------
-QSDT | #getForm(id: string): string
+QSDT | #getForm(id: string): Promise<string>
 
 Retrieves the contents of an identified form configuration file on QSDT as a generic object.
 
@@ -49,7 +51,7 @@ Retrieves the contents of an identified form configuration file on QSDT as a gen
 
 Class Name | Method
 ---------- | ------
-QSDT | #requestArtifactGeneration(request: {}): string
+QSDT | #requestArtifactGeneration(request: {}): Promise<string>
 
 Requests an artifact generation and returns an uuid to retrieve the generated artifacts. 
 

@@ -4,6 +4,8 @@ import * as shelljs from "shelljs";
 import { tmpFilesFolder, configurationsFolder } from "./paths";
 import { MainWorker } from "./main.worker";
 import { PostSubmitProcessor } from "./post-submit.processor";
+import { BlueprintManager, FormManager } from '@qsdt/common';
+import { ManagerLocator } from "./manager.locator";
 
 /**
  * @class QSDT
@@ -14,13 +16,15 @@ import { PostSubmitProcessor } from "./post-submit.processor";
  */
 export class QSDT {
 
+    private managerLocator: ManagerLocator = new ManagerLocator();
+
     /**
      * Requests an artifact generation, it requires a valid Request Object to work,
      * when the request is done, an UUID number is returned to request the resulting
      * artifacts from the generation.
      * @param request Request Object based on an existing configuration
      */
-    public requestArtifactGeneration(request: {}): string {
+    public async requestArtifactGeneration(request: {}): Promise<string> {
         let blueprintName: string = request["$blueprint"];
         let task: string = request["$task"];
         if (blueprintName == null || task == null) {
@@ -54,16 +58,9 @@ export class QSDT {
      * Retrieves a list of presumably valid form configuration ids on the configuration path
      * of QSDT
      */
-    public getForms(): string[] {
+    public async getForms(): Promise<string[]> {
         let configList: string[] = fs.readdirSync(configurationsFolder + "form/");
-        let response: string[] = [];
-        configList.forEach(config => {
-            let jsonIndex: number = config.indexOf(".json");
-            if (jsonIndex == -1) {
-                return;
-            }
-            response.push(config.substring(0, jsonIndex));
-        });
+        let response: string[] = await this.managerLocator.getFormManager().getFormsIndex();
         if (response.length == 0) {
             throw new Error("404 No form configurations found");
         }
@@ -74,18 +71,8 @@ export class QSDT {
      * Retrieves the contents of a identified form configuration file on QSDT
      * @param id configuration identifier
      */
-    public getForm(id: string): string {
-        if (/[/\\]/.test(id)) {
-            throw new Error("400 ID is invalid");
-        }
-        if (id != null) {
-            if (!fs.existsSync(configurationsFolder + "form/" + id + ".json")) {
-                throw new Error("404 Form Configuration does not exist");
-            }
-            return fs.readFileSync(configurationsFolder + "form/" + id + ".json").toString();
-        } else {
-            throw new Error("400 ID is invalid");
-        }
+    public async getForm(id: string): Promise<string> {
+        return this.managerLocator.getFormManager().getForm(id);
     }
 
 }

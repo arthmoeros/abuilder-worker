@@ -1,11 +1,12 @@
 import * as fs from "fs";
 import * as shelljs from "shelljs";
 import { TemplateProcessor } from "@qsdt/template-engine";
-import { ObjectPropertyLocator } from "@qsdt/common";
+import { ObjectPropertyLocator, BlueprintContainer } from "@qsdt/common";
 import { configurationsFolder } from "./paths";
+import { ManagerLocator } from "./manager.locator";
 
-const blueprintsPath = configurationsFolder+"blueprint";
-const templatesPath = configurationsFolder+"blueprint-material";
+const blueprintsPath = configurationsFolder + "blueprint";
+const templatesPath = configurationsFolder + "blueprint-material";
 /**
  * @class BlueprintProcessor
  * @see npm @qsdt/worker
@@ -21,10 +22,16 @@ const templatesPath = configurationsFolder+"blueprint-material";
  */
 export class BlueprintProcessor {
 
+    private managerLocator: ManagerLocator = new ManagerLocator();
+
     /**
      * Reference to the json 
      */
     private blueprint: any;
+
+    private blueprintName: string;
+
+    private blueprintTask: string;
 
     /**
      * Path to the templates folder to use
@@ -46,14 +53,8 @@ export class BlueprintProcessor {
      * @param workingFolder Path to the temporary working folder to store generated artifacts
      */
     constructor(blueprint: string, task: string, workingFolder: string) {
-        if (!fs.existsSync(blueprintsPath + "/" + blueprint + ".json")) {
-            throw new Error("Couldn't find a blueprint file at location: " + blueprintsPath + "/" + blueprint + ".json");
-        }
-        let blueprintFile: Buffer = fs.readFileSync(blueprintsPath + "/" + blueprint + ".json");
-        this.blueprint = JSON.parse(blueprintFile.toString())[task];
-        if (this.blueprint == null) {
-            throw new Error("Couldn't find a task named '" + task + "' at the blueprint " + blueprint + ".json");
-        }
+        this.blueprintName = blueprint;
+        this.blueprintTask = task;
         this.workingFolder = workingFolder;
         this.templatesFolder = templatesPath + "/" + blueprint;
     }
@@ -63,7 +64,8 @@ export class BlueprintProcessor {
      * 
      * @param request values request to use with the blueprint
      */
-    public run(request: {}) {
+    public async run(request: {}) {
+        this.blueprint = (await this.managerLocator.getBlueprintManager().getBlueprint(this.blueprintName, this.blueprintTask)).getContents();
         this.blueprint.rootContents.forEach(element => {
             if (element.folder) {
                 if (element.folder.includeif) {
@@ -119,9 +121,9 @@ export class BlueprintProcessor {
      * @param staticType  static element
      * @param targetpath target path where to copy the static element
      */
-    private processStatic(request: {}, staticType: any, targetpath: string) {
+    private async processStatic(request: {}, staticType: any, targetpath: string) {
         let filename: string = this.resolveFilename(staticType, request);
-        let fileContents: string = fs.readFileSync(this.templatesFolder + "/" + staticType.location).toString();
+        let fileContents: string = await this.managerLocator.getBlueprintManager().getBlueprintMaterial(this.blueprintName, staticType.location);
 
         fs.writeFileSync(this.workingFolder + "/" + targetpath + "/" + filename, fileContents);
     }
@@ -132,8 +134,9 @@ export class BlueprintProcessor {
      * @param atmpl atmpl element
      * @param targetpath target path where to write the generated artifact
      */
-    private processAtmpl(request: {}, atmpl: any, targetpath: string) {
-        let atmplProcessor: TemplateProcessor = new TemplateProcessor(this.templatesFolder + "/" + atmpl.location, fs.readFileSync(this.templatesFolder + "/" + atmpl.location));
+    private async processAtmpl(request: {}, atmpl: any, targetpath: string) {
+        let atmplFileContents: string = await this.managerLocator.getBlueprintManager().getBlueprintMaterial(this.blueprintName,atmpl.location);
+        let atmplProcessor: TemplateProcessor = new TemplateProcessor(`${this.blueprintName} -> ${atmpl.location}`, atmplFileContents);
 
         if (atmpl.parameters != null) {
             atmplProcessor.setTemplateParameters(atmpl.parameters);
@@ -157,7 +160,7 @@ export class BlueprintProcessor {
             throw new Error(`Invalid expression in foreach found in running task: ${foreach.expression}`);
         }
         let list: any[] = ObjectPropertyLocator.lookup(request, expression[2]);
-        if(request[expression[1]] != null){
+        if (request[expression[1]] != null) {
             throw new Error(`foreach names its iterated item ${expression[1]}, but the request body already has a property with that name, fix the configuration and use another name on the foreach expression`);
         }
         let requestCopy: {} = JSON.parse(JSON.stringify(request));
