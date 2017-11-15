@@ -1,9 +1,9 @@
 {
   "name": "@qsdt/core",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "QSDT's core module (artifact generation manager)",
   "scripts": {
-    "prepublish": "tsc",
+    "prepublishOnly": "tsc",
     "build": "tsc -p .",
     "build:watch": "tsc -p . -w",
     "dev": "npm run build && concurrently \"npm run build:watch\" \"node ./src/start-server.js\""
@@ -26,10 +26,11 @@
   },
   "homepage": "https://github.com/arthmoeros/qsdt-core#readme",
   "dependencies": {
-    "@qsdt/common": "^1.0.5",
-    "@qsdt/template-engine": "^2.0.7",
+    "@qsdt/common": "^2.0.3",
+    "@qsdt/core-storage-fs": "0.0.3",
+    "@qsdt/template-engine": "^2.0.10",
     "@types/fs-extra": "^2.1.0",
-    "@types/shelljs": "^0.7.2",
+    "@types/shelljs": "^0.7.5",
     "@types/uuid": "^2.0.30",
     "folder-zip-sync-fork": "^1.0.6",
     "fs-extra": "^3.0.1",

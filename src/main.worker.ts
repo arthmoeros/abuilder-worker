@@ -27,11 +27,11 @@ export class MainWorker {
      * @param task task to use in the blueprint
      * @param workingFolder Path to the temporary working folder to store generated artifacts
 	 */
-	public run(blueprint: string, task: string, request: {}): string {
+	public async run(blueprint: string, task: string, request: {}): Promise<string> {
 		let tmpName: string = uuid();
 		let tmpFolder: string = this.generateTmpDir(tmpName);
 		try {
-			new BlueprintProcessor(blueprint, task, tmpFolder).run(request);
+			await new BlueprintProcessor(blueprint, task, tmpFolder).run(request);
 			zipFolder(tmpFolder, tmpFolder + ".zip");
 			return tmpName;
 		} catch (error) {
