@@ -1,6 +1,6 @@
 {
   "name": "@qsdt/core",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "QSDT's core module (artifact generation manager)",
   "scripts": {
     "prepublishOnly": "tsc",
