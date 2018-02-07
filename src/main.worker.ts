@@ -1,6 +1,6 @@
 import * as fs from "fs-extra";
 import * as uuid from "uuid/v1";
-import * as zipFolder from "folder-zip-sync-fork";
+import * as zipFolder from "folder-zip-sync";
 import * as shelljs from "shelljs";
 
 import { BlueprintProcessor } from "./blueprint.processor";
