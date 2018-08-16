@@ -1,6 +1,6 @@
 {
   "name": "@qsdt/core",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "QSDT's core module (artifact generation manager)",
   "scripts": {
     "prepublishOnly": "tsc",
@@ -27,7 +27,7 @@
   "homepage": "https://github.com/arthmoeros/qsdt-core#readme",
   "dependencies": {
     "@qsdt/common": "^2.0.3",
-    "@qsdt/core-storage-fs": "0.0.3",
+    "@qsdt/core-storage-fs": "0.0.4",
     "@qsdt/template-engine": "^2.0.11",
     "@types/fs-extra": "^2.1.0",
     "@types/shelljs": "^0.7.5",
