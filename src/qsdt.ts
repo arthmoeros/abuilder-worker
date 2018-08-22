@@ -24,13 +24,14 @@ export class QSDT {
      * artifacts from the generation.
      * @param request Request Object based on an existing configuration
      */
-    public async requestArtifactGeneration(request: {}): Promise<string> {
+    public async requestArtifactGeneration(request: any): Promise<string> {
         let blueprintName: string = request["$blueprint"];
         let task: string = request["$task"];
         if (blueprintName == null || task == null) {
             throw new Error("400 Request Object is not valid");
         }
-        PostSubmitProcessor.run(request);
+        let formConfiguration = JSON.parse(await this.getForm(request.$configuration));
+        PostSubmitProcessor.run(request, formConfiguration);
         let worker: MainWorker = new MainWorker();
         return worker.run(blueprintName, task, request);
     }

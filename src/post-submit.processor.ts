@@ -10,8 +10,7 @@ import { configurationsFolder } from "./paths";
  */
 export class PostSubmitProcessor{
 
-    public static run(requestBody: any){
-        let configuration = PostSubmitProcessor.locateConfiguration(requestBody.$configuration);
+    public static run(requestBody: any, configuration: any){
         let declaredPostProcessors = PostSubmitProcessor.locateForm(configuration, requestBody.$task).$declaredPostProcessors;
         for(let key in declaredPostProcessors){
             let value: string = ObjectPropertyLocator.lookup(requestBody, key);
